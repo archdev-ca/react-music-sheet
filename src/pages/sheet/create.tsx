@@ -6,16 +6,10 @@ import Staff from "@/components/Staff";
 
 const SheetCreate = () => {
   return (
-    <Card>
-      <CardHeader>
-        <Stack>
-          <h2 className="text-2xl">Create Sheet Music</h2>
-        </Stack>
-      </CardHeader>
-      <CardContainer>
-        <Staff />
-      </CardContainer>
-    </Card>
+    <>
+      <h2 className="text-2xl">Create Sheet Music</h2>
+      <Staff />
+    </>
   );
 };
 
