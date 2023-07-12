@@ -3,7 +3,7 @@ import React from "react";
 type Props = {
   children?: React.ReactNode;
   color: "primary" | "secondary";
-  onClick?: () => {};
+  onClick?: () => void;
 };
 
 const defaultProps = {
