@@ -5,8 +5,11 @@ import halfNote from "@/assets/notes/half.png";
 import quarterNote from "@/assets/notes/quarter.png";
 import eightNote from "@/assets/notes/eighth.png";
 import sixteenthNote from "@/assets/notes/sixteenth.png";
+import { useContext } from "react";
+import { AppContext } from "@/context/AppContext";
 
 const SheetCreate = () => {
+  const appState = useContext(AppContext);
   return (
     <>
       <h2 className="text-2xl">Create Sheet Music</h2>
