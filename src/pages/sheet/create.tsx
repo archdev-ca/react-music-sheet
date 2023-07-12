@@ -1,5 +1,5 @@
 import Staff from "@/components/Staff";
-import { Box, Card, CardContent, IconButton } from "@mui/joy";
+import { Box, Card, IconButton } from "@mui/joy";
 import wholeNote from "@/assets/notes/whole.png";
 import halfNote from "@/assets/notes/half.png";
 import quarterNote from "@/assets/notes/quarter.png";
