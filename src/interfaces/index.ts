@@ -3,14 +3,14 @@ export interface ISheet {
 }
 
 export interface IStaff {
+    bpm: number
+    beat: number
     treble: IBar
     bass: IBar
 }
 
 export interface IBar {
     notes: INote[]
-    bpm: number
-    beat: number
 }
 
 export interface INote {
