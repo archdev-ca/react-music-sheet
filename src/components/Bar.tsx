@@ -16,6 +16,8 @@ const Bar = () => {
       <BarSpace />
       <BarLine isFloating />
       <BarSpace />
+      <BarLine isFloating />
+      <BarSpace />
     </div>
   );
 };

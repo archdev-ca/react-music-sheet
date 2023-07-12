@@ -7,8 +7,11 @@ interface Props {
 const StyledBarLine = styled("div")(({ theme }) => {
   return {
     padding: "4px 0",
-    "&:hover > div": {
+    "&:hover": {
       backgroundColor: `${theme.palette.primary.plainHoverBg} !important`,
+      "& > div": {
+        backgroundColor: "#000 !important",
+      },
     },
   };
 });

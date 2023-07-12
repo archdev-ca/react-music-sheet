@@ -7,15 +7,55 @@ import eightNote from "@/assets/notes/eighth.png";
 import sixteenthNote from "@/assets/notes/sixteenth.png";
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
+import Cursor from "@/components/Cursor";
+import { NoteCursorMap } from "@/interfaces/images";
 
 const SheetCreate = () => {
   const { activeNote, setActiveNote } = useContext(AppContext);
 
-  const handleClickNote = (note) => {
-    setActiveNote(note);
+  const handleClickNote = (note: number) => {
+    if (activeNote === note) {
+      setActiveNote(null);
+    } else {
+      setActiveNote(note);
+    }
   };
 
-  console.log({ activeNote });
+  const getCursor = (note: number) => {
+    const noteImageMap: NoteCursorMap = {
+      1: {
+        image: wholeNote,
+        x: "7",
+        y: "7",
+      },
+      2: {
+        image: halfNote,
+        x: "8",
+        y: "36",
+      },
+      4: {
+        image: quarterNote,
+        x: "8",
+        y: "36",
+      },
+      8: {
+        image: eightNote,
+        x: "8",
+        y: "36",
+      },
+      16: {
+        image: sixteenthNote,
+        x: "8",
+        y: "36",
+      },
+    };
+    if (noteImageMap[note]) {
+      return noteImageMap[note];
+    }
+    return null;
+  };
+
+  const cursor = getCursor(activeNote);
 
   return (
     <>
@@ -89,13 +129,13 @@ const SheetCreate = () => {
           </IconButton>
         </Box>
       </Card>
-      <Card>
-        <Box
-          sx={{
-            display: "flex",
-            gap: 1,
-          }}
-        ></Box>
+      <Card
+        sx={{
+          cursor: activeNote
+            ? `url(${cursor?.image}) ${cursor?.x} ${cursor?.y}, auto`
+            : "default",
+        }}
+      >
         <Staff />
       </Card>
     </>

@@ -4,7 +4,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const AppContext = createContext();
+const AppContext = createContext("");
 
 const AppContextProvider = ({ children }: Props) => {
   const [activeNote, setActiveNote] = useState(null);
