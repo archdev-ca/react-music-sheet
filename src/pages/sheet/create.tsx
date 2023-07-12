@@ -1,7 +1,3 @@
-import Card from "@/components/Card";
-import CardContainer from "@/components/CardContainer";
-import CardHeader from "@/components/CardHeader";
-import Stack from "@/components/Stack";
 import Staff from "@/components/Staff";
 
 const SheetCreate = () => {

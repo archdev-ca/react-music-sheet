@@ -1,9 +1,21 @@
+import { styled } from "@mui/joy";
+
 interface Props {
   isFloating?: boolean;
 }
 
+const StyledBarLine = styled("div")`
+  height: 2px;
+`;
+
 const BarLine = ({ isFloating }: Props) => {
-  return <div className={`h-0.5 ${isFloating ? "" : "bg-black"}`}></div>;
+  return (
+    <StyledBarLine
+      style={{
+        backgroundColor: isFloating ? "transparent" : "#000",
+      }}
+    ></StyledBarLine>
+  );
 };
 
 export default BarLine;
