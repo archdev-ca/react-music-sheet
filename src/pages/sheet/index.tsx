@@ -1,9 +1,8 @@
-import React from 'react'
-
 type Props = {}
 
-const index = (props: Props) => {
+const SheetIndex = (props: Props) => {
   return (
-    <DefaultLayout></DefaultLayout>
+    <div>Sheet Music</div>
   )
 }
+export default SheetIndex
