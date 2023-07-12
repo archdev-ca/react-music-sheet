@@ -9,7 +9,14 @@ import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
 
 const SheetCreate = () => {
-  const appState = useContext(AppContext);
+  const { activeNote, setActiveNote } = useContext(AppContext);
+
+  const handleClickNote = (note) => {
+    setActiveNote(note);
+  };
+
+  console.log({ activeNote });
+
   return (
     <>
       <h2 className="text-2xl">Create Sheet Music</h2>
@@ -20,35 +27,60 @@ const SheetCreate = () => {
             gap: 1,
           }}
         >
-          <IconButton>
+          <IconButton
+            variant={activeNote === 1 ? "outlined" : "plain"}
+            onClick={() => {
+              handleClickNote(1);
+            }}
+          >
             <img
               src={wholeNote}
               alt=""
               style={{ width: "auto", height: " 10px" }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton
+            variant={activeNote === 2 ? "outlined" : "plain"}
+            onClick={() => {
+              handleClickNote(2);
+            }}
+          >
             <img
               src={halfNote}
               alt=""
               style={{ width: "auto", height: " 28px" }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton
+            variant={activeNote === 4 ? "outlined" : "plain"}
+            onClick={() => {
+              handleClickNote(4);
+            }}
+          >
             <img
               src={quarterNote}
               alt=""
               style={{ width: "auto", height: " 28px" }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton
+            variant={activeNote === 8 ? "outlined" : "plain"}
+            onClick={() => {
+              handleClickNote(8);
+            }}
+          >
             <img
               src={eightNote}
               alt=""
               style={{ width: "auto", height: " 28px" }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton
+            variant={activeNote === 16 ? "outlined" : "plain"}
+            onClick={() => {
+              handleClickNote(16);
+            }}
+          >
             <img
               src={sixteenthNote}
               alt=""
