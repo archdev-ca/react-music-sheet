@@ -1,5 +1,5 @@
 import Staff from "@/components/Staff";
-import { Box, Button, Card, IconButton } from "@mui/joy";
+import { Box, Button, Card, IconButton, Option, Select } from "@mui/joy";
 import wholeNote from "@/assets/notes/whole.png";
 import halfNote from "@/assets/notes/half.png";
 import quarterNote from "@/assets/notes/quarter.png";
@@ -11,7 +11,8 @@ import Add from "@mui/icons-material/Add";
 import { NoteCursorMap } from "@/interfaces/images";
 
 const SheetCreate = () => {
-  const { activeNote, setActiveNote } = useContext(AppContext);
+  const { activeNote, setActiveNote, signature, setSignature } =
+    useContext(AppContext);
 
   const handleClickNote = (note: number) => {
     if (activeNote === note) {
@@ -19,6 +20,10 @@ const SheetCreate = () => {
     } else {
       setActiveNote(note);
     }
+  };
+
+  const handleChangeSignature = (e, value: string | null) => {
+    setSignature(value);
   };
 
   const getCursor = (note: number) => {
@@ -127,6 +132,16 @@ const SheetCreate = () => {
               style={{ width: "auto", height: " 28px" }}
             />
           </IconButton>
+          <Select defaultValue={signature} onChange={handleChangeSignature}>
+            <Option value="4/4">4/4</Option>
+            <Option value="3/4">3/4</Option>
+            <Option value="3/8">3/8</Option>
+            <Option value="2/4">2/4</Option>
+            <Option value="2/2">2/2</Option>
+            <Option value="3/8">3/8</Option>
+            <Option value="6/8">6/8</Option>
+            <Option value="9/8">9/8</Option>
+          </Select>
         </Box>
       </Card>
       <Card

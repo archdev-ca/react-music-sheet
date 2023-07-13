@@ -8,8 +8,16 @@ const AppContext = createContext({});
 
 const AppContextProvider = ({ children }: Props) => {
   const [activeNote, setActiveNote] = useState(null);
+  const [signature, setSignature] = useState("4/4");
   return (
-    <AppContext.Provider value={{ activeNote, setActiveNote }}>
+    <AppContext.Provider
+      value={{
+        activeNote,
+        setActiveNote,
+        signature,
+        setSignature,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
