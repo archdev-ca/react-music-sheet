@@ -1,5 +1,4 @@
 import { styled } from "@mui/joy";
-import BarLine from "./BarLine";
 import BarSpace from "./BarSpace";
 
 const StyledBar = styled("div")`
@@ -11,7 +10,7 @@ const StyledBar = styled("div")`
     position: absolute;
     right: 0;
     top: 4px;
-    bottom: 54px;
+    bottom: 50px;
     width: 2px;
     background-color: #000;
   }
@@ -20,19 +19,19 @@ const StyledBar = styled("div")`
 const Bar = () => {
   return (
     <StyledBar>
-      <BarLine />
+      <BarSpace line />
       <BarSpace />
-      <BarLine />
+      <BarSpace line />
       <BarSpace />
-      <BarLine />
+      <BarSpace line />
       <BarSpace />
-      <BarLine />
+      <BarSpace line />
       <BarSpace />
-      <BarLine />
+      <BarSpace line />
       <BarSpace />
-      <BarLine isFloating />
+      <BarSpace line floating />
       <BarSpace />
-      <BarLine isFloating />
+      <BarSpace line floating />
       <BarSpace />
     </StyledBar>
   );

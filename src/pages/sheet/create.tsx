@@ -1,5 +1,5 @@
 import Staff from "@/components/Staff";
-import { Box, Card, IconButton } from "@mui/joy";
+import { Box, Button, Card, IconButton } from "@mui/joy";
 import wholeNote from "@/assets/notes/whole.png";
 import halfNote from "@/assets/notes/half.png";
 import quarterNote from "@/assets/notes/quarter.png";
@@ -7,7 +7,7 @@ import eightNote from "@/assets/notes/eighth.png";
 import sixteenthNote from "@/assets/notes/sixteenth.png";
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
-import Cursor from "@/components/Cursor";
+import Add from "@mui/icons-material/Add";
 import { NoteCursorMap } from "@/interfaces/images";
 
 const SheetCreate = () => {
@@ -60,7 +60,7 @@ const SheetCreate = () => {
   return (
     <>
       <h2 className="text-2xl">Create Sheet Music</h2>
-      <Card>
+      <Card sx={{ mb: 2 }}>
         <Box
           sx={{
             display: "flex",
@@ -137,6 +137,9 @@ const SheetCreate = () => {
         }}
       >
         <Staff />
+        <Button startDecorator={<Add />} variant="plain">
+          Add Staff
+        </Button>
       </Card>
     </>
   );
