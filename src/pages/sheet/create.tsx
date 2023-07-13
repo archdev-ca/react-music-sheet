@@ -11,8 +11,13 @@ import Add from "@mui/icons-material/Add";
 import { NoteCursorMap } from "@/interfaces/images";
 
 const SheetCreate = () => {
-  const { activeNote, setActiveNote, timeSignature, setTimeSignature } =
-    useContext(AppContext);
+  const {
+    noteData,
+    activeNote,
+    setActiveNote,
+    timeSignature,
+    setTimeSignature,
+  } = useContext(AppContext);
 
   const handleClickNote = (note: number) => {
     if (activeNote === note) {
@@ -22,11 +27,17 @@ const SheetCreate = () => {
     }
   };
 
-  const handleChangeSignature = (e, value: string | null) => {
+  const handleChangeSignature = (
+    e: React.SyntheticEvent | null,
+    value: string | null
+  ) => {
     setTimeSignature(value);
   };
 
-  const getCursor = (note: number) => {
+  const getCursor = (note: number | null) => {
+    if (!note) {
+      return null;
+    }
     const noteImageMap: NoteCursorMap = {
       1: {
         image: wholeNote,

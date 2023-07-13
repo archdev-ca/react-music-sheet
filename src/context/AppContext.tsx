@@ -1,7 +1,15 @@
-import { createContext, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useState } from "react";
 
 interface Props {
   children?: React.ReactNode;
+}
+
+interface Context {
+  noteData: string;
+  activeNote: number | null;
+  setActiveNote: Dispatch<SetStateAction<number | null>>;
+  timeSignature: string;
+  setTimeSignature: Dispatch<SetStateAction<string | null>>;
 }
 
 const INITIAL_STAFF_DATA = {
@@ -23,10 +31,10 @@ const INITIAL_STAFF_DATA = {
   },
 };
 
-const AppContext = createContext({});
+const AppContext = createContext<Context>({});
 
 const AppContextProvider = ({ children }: Props) => {
-  const [activeNote, setActiveNote] = useState(null);
+  const [activeNote, setActiveNote] = useState<number | null>(null);
   const [signature, setSignature] = useState({});
   const [timeSignature, setTimeSignature] = useState("4/4");
   const [noteData, setNoteData] = useState({

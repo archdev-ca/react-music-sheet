@@ -26,3 +26,5 @@ export interface INote {
 }
 
 export interface IBeat {}
+
+export interface INoteData {}
