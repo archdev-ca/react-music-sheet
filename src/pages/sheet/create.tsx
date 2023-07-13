@@ -11,7 +11,7 @@ import Add from "@mui/icons-material/Add";
 import { NoteCursorMap } from "@/interfaces/images";
 
 const SheetCreate = () => {
-  const { activeNote, setActiveNote, signature, setSignature } =
+  const { activeNote, setActiveNote, timeSignature, setTimeSignature } =
     useContext(AppContext);
 
   const handleClickNote = (note: number) => {
@@ -23,7 +23,7 @@ const SheetCreate = () => {
   };
 
   const handleChangeSignature = (e, value: string | null) => {
-    setSignature(value);
+    setTimeSignature(value);
   };
 
   const getCursor = (note: number) => {
@@ -132,7 +132,7 @@ const SheetCreate = () => {
               style={{ width: "auto", height: " 28px" }}
             />
           </IconButton>
-          <Select defaultValue={signature} onChange={handleChangeSignature}>
+          <Select defaultValue={timeSignature} onChange={handleChangeSignature}>
             <Option value="4/4">4/4</Option>
             <Option value="3/4">3/4</Option>
             <Option value="3/8">3/8</Option>
