@@ -22,7 +22,7 @@ const StyledBar = styled("div")<Props>(
     left: 0;
     top: ${clef === "treble" ? "185px" : "12px"};
     bottom: ${clef === "treble" ? "22px" : "120px"};
-    width: 2px;
+    width: 4px;
     background-color: #000;
   }
   &>img {
