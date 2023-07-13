@@ -6,15 +6,17 @@ const StyledClef = styled("div")`
   display: flex;
 `;
 
-type Props = {};
+interface Props {
+  clef: Clef;
+}
 
-const Clef = (props: Props) => {
+const Clef = ({ clef, className }: Props) => {
   return (
     <StyledClef>
-      <Bar />
-      <Bar />
-      <Bar />
-      <Bar />
+      <Bar clef={clef} />
+      <Bar clef={clef} />
+      <Bar clef={clef} />
+      <Bar clef={clef} />
     </StyledClef>
   );
 };

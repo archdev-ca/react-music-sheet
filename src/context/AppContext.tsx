@@ -1,3 +1,4 @@
+import { ITimeSignature } from "@/interfaces/common";
 import { Dispatch, SetStateAction, createContext, useState } from "react";
 
 interface Props {
@@ -8,8 +9,8 @@ interface Context {
   noteData: string;
   activeNote: number | null;
   setActiveNote: Dispatch<SetStateAction<number | null>>;
-  timeSignature: string | null;
-  setTimeSignature: Dispatch<SetStateAction<string | null>>;
+  timeSignature: ITimeSignature | null;
+  setTimeSignature: Dispatch<SetStateAction<ITimeSignature | null>>;
 }
 
 const INITIAL_STAFF_DATA = {
@@ -36,7 +37,10 @@ const AppContext = createContext<Context>({});
 const AppContextProvider = ({ children }: Props) => {
   const [activeNote, setActiveNote] = useState<number | null>(null);
   const [signature, setSignature] = useState({});
-  const [timeSignature, setTimeSignature] = useState<string | null>("4/4");
+  const [timeSignature, setTimeSignature] = useState<ITimeSignature | null>({
+    bpm: 4,
+    beat: 4,
+  });
   const [noteData, setNoteData] = useState({
     staves: [{ ...INITIAL_STAFF_DATA }],
   });

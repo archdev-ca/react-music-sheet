@@ -28,7 +28,7 @@ const BarSpace = ({ line, floating }: Props) => {
       {line ? (
         <Line
           style={{
-            backgroundColor: floating ? "transparent" : "#000",
+            backgroundColor: floating ? "rgba(0,0,0, .15)" : "#000",
           }}
         ></Line>
       ) : null}

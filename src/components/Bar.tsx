@@ -1,7 +1,16 @@
 import { styled } from "@mui/joy";
-import BarSpace from "./BarSpace";
+import { useContext } from "react";
+import { AppContext } from "@/context/AppContext";
+import BarColumn from "./BarColumn";
+import { Clef } from "@/interfaces/common";
 
-const StyledBar = styled("div")`
+interface Props {
+  clef: Clef;
+  className?: "string";
+}
+
+const StyledBar = styled("div")<Props>(
+  ({ clef }) => `
   position: relative;
   width: 25%;
   &:after {
@@ -9,30 +18,20 @@ const StyledBar = styled("div")`
     display: block;
     position: absolute;
     right: 0;
-    top: 4px;
-    bottom: 50px;
+    top: ${clef === "treble" ? "185px" : "12px"};
+    bottom: ${clef === "treble" ? "22px" : "120px"};
     width: 2px;
     background-color: #000;
   }
-`;
+`
+);
 
-const Bar = () => {
+const Bar = ({ clef }: Props) => {
+  const {} = useContext(AppContext);
+
   return (
-    <StyledBar>
-      <BarSpace line />
-      <BarSpace />
-      <BarSpace line />
-      <BarSpace />
-      <BarSpace line />
-      <BarSpace />
-      <BarSpace line />
-      <BarSpace />
-      <BarSpace line />
-      <BarSpace />
-      <BarSpace line floating />
-      <BarSpace />
-      <BarSpace line floating />
-      <BarSpace />
+    <StyledBar clef={clef}>
+      <BarColumn clef={clef} />
     </StyledBar>
   );
 };

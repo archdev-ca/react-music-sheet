@@ -31,7 +31,11 @@ const SheetCreate = () => {
     e: React.SyntheticEvent | null,
     value: string | null
   ) => {
-    setTimeSignature(value);
+    let sig = value?.split("/");
+    setTimeSignature({
+      bpm: Number(sig?.[0]),
+      beat: Number(sig?.[1]),
+    });
   };
 
   const getCursor = (note: number | null) => {
@@ -143,10 +147,12 @@ const SheetCreate = () => {
               style={{ width: "auto", height: " 28px" }}
             />
           </IconButton>
-          <Select defaultValue={timeSignature} onChange={handleChangeSignature}>
+          <Select
+            defaultValue={`${timeSignature?.bpm}/${timeSignature?.beat}`}
+            onChange={handleChangeSignature}
+          >
             <Option value="4/4">4/4</Option>
             <Option value="3/4">3/4</Option>
-            <Option value="3/8">3/8</Option>
             <Option value="2/4">2/4</Option>
             <Option value="2/2">2/2</Option>
             <Option value="3/8">3/8</Option>

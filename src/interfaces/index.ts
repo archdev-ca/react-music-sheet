@@ -28,3 +28,10 @@ export interface INote {
 export interface IBeat {}
 
 export interface INoteData {}
+
+export interface IBarSpace {
+  line?: boolean;
+  space?: boolean;
+  floating?: boolean;
+  note: string;
+}
