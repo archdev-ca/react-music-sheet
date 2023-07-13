@@ -1,10 +1,10 @@
-import Bar from "@/components/Bar";
+import Clef from "./Clef";
 
 const Staff = () => {
   return (
     <div>
-      <Bar />
-      <Bar />
+      <Clef />
+      <Clef />
     </div>
   );
 };
