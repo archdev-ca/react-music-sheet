@@ -73,7 +73,12 @@ const SPACES_CONFIG = {
 
 const BarColumn = ({ clef, className }: Props) => {
   return (
-    <div className={className}>
+    <div
+      className={className}
+      style={{
+        width: "100%",
+      }}
+    >
       {SPACES_CONFIG[clef].map((space, i) => {
         return (
           <BarSpace
