@@ -1,23 +1,20 @@
-export interface SheetData {
+export type SheetData = {
   staves: StaffData[];
-}
+};
 
 export interface StaffData {
-  bpm: number;
-  beat: number;
   treble: ClefData;
   bass: ClefData;
 }
 
 export interface ClefData {
-  type: ClefType;
   bars: BarData[];
 }
 
 export type ClefType = "treble" | "bass";
 
 export interface BarData {
-  notes: NoteData[];
+  beats: BeatData[];
 }
 
 export interface NoteData {
@@ -29,6 +26,7 @@ export interface BeatData {
   type: "note" | "rest";
   note: "a" | "b" | "c" | "d" | "e" | "f" | "g";
   pitch: number;
+  sharp?: boolean;
 }
 
 export interface NoteData {}

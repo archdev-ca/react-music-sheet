@@ -13,7 +13,7 @@ import SheetView from "@/components/SheetView";
 
 const SheetCreate = () => {
   const {
-    noteData,
+    sheetData: noteData,
     activeNote,
     setActiveNote,
     timeSignature,
