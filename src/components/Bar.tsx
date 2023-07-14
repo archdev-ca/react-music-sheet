@@ -8,6 +8,8 @@ interface Props {
   clef: ClefType;
   className?: "string";
   data: BarData;
+  staffID: number;
+  barID: number;
 }
 
 const StyledBar = styled("div")<Props>(
@@ -28,11 +30,16 @@ const StyledBar = styled("div")<Props>(
 `
 );
 
-const Bar = ({ clef, data }: Props) => {
+const Bar = ({ clef, data, staffID, barID }: Props) => {
   const { timeSignature } = useContext(AppContext);
   return (
-    <StyledBar data={data} clef={clef}>
-      <BarColumn data={data.beats} clef={clef} />
+    <StyledBar barID={barID} staffID={staffID} data={data} clef={clef}>
+      <BarColumn
+        barID={barID}
+        staffID={staffID}
+        data={data.beats}
+        clef={clef}
+      />
     </StyledBar>
   );
 };

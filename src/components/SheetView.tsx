@@ -11,8 +11,7 @@ const SheetView = ({ data }: Props) => {
     <>
       {staves && staves.length
         ? staves.map((staff, i) => {
-            console.log({ staff });
-            return <Staff data={staff} key={i} />;
+            return <Staff staffID={i} data={staff} key={i} />;
           })
         : null}
     </>

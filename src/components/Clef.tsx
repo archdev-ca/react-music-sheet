@@ -10,16 +10,18 @@ const StyledClef = styled("div")`
 interface Props {
   data: ClefData;
   clef: ClefType;
+  staffID: number;
 }
 
-const Clef = ({ clef, data }: Props) => {
-  console.log({ data });
+const Clef = ({ clef, data, staffID }: Props) => {
   const { bars } = data;
   return (
     <StyledClef>
       <BarSignature clef={clef} />
       {bars.map((bar, i) => {
-        return <Bar data={bar} key={i} clef={clef} />;
+        return (
+          <Bar staffID={staffID} barID={i} data={bar} key={i} clef={clef} />
+        );
       })}
     </StyledClef>
   );

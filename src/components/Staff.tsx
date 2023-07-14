@@ -4,18 +4,19 @@ import { StaffData } from "@/interfaces/index";
 
 interface Props {
   data: StaffData;
+  staffID: number;
 }
 
 const Spacer = styled("div")`
   margin-bottom: 1rem;
 `;
 
-const Staff = ({ data }: Props) => {
+const Staff = ({ data, staffID }: Props) => {
   return (
     <div>
-      <Clef clef="treble" data={data.treble} />
+      <Clef staffID={staffID} clef="treble" data={data.treble} />
       <Spacer />
-      <Clef clef="bass" data={data.bass} />
+      <Clef staffID={staffID} clef="bass" data={data.bass} />
     </div>
   );
 };

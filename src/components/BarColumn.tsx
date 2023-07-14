@@ -6,6 +6,8 @@ interface Props {
   passive?: boolean;
   className?: "string";
   data: BeatData[];
+  staffID: number;
+  barID: number;
 }
 
 const defaultProps = {
@@ -73,7 +75,14 @@ const SPACES_CONFIG = {
   ],
 };
 
-const BarColumn = ({ clef, className, passive, data }: Props) => {
+const BarColumn = ({
+  clef,
+  className,
+  passive,
+  data,
+  staffID,
+  barID,
+}: Props) => {
   return (
     <div
       className={className}
@@ -84,6 +93,8 @@ const BarColumn = ({ clef, className, passive, data }: Props) => {
       {SPACES_CONFIG[clef].map((space, i) => {
         return (
           <BarSpace
+            barID={barID}
+            staffID={staffID}
             beats={data}
             key={i}
             line={space.line}

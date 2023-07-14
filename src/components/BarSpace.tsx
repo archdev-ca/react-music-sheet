@@ -7,6 +7,8 @@ interface Props {
   floating?: boolean;
   passive?: boolean;
   beats: BeatData[];
+  staffID: number;
+  barID: number;
 }
 
 const defaultProps = {
@@ -30,9 +32,21 @@ const Line = styled("div")`
   height: 1px;
 `;
 
-const BarSpace = ({ line, floating, passive, beats = [] }: Props) => {
+const BarSpace = ({
+  line,
+  floating,
+  passive,
+  beats = [],
+  staffID,
+  barID,
+}: Props) => {
   return (
-    <StyledBarSpace beats={beats} passive={passive}>
+    <StyledBarSpace
+      beats={beats}
+      passive={passive}
+      staffID={staffID}
+      barID={barID}
+    >
       {beats.map((beat, i) => (
         <Beat {...beat} key={i} />
       ))}
