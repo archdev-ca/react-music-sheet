@@ -27,152 +27,6 @@ const DEFAULT_CLEF_DATA: StaffData = {
         beats: [
           {
             type: "note",
-            note: "a",
-            variation: 0,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "b",
-            variation: 0,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "c",
-            variation: 1,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "d",
-            variation: 1,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "e",
-            variation: 1,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "f",
-            variation: 1,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "g",
-            variation: 1,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "a",
-            variation: 1,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "b",
-            variation: 1,
-            length: 1,
-          },
-        ],
-      },
-      {
-        beats: [
-          {
-            type: "note",
-            note: "c",
-            variation: 2,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "d",
-            variation: 2,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "e",
-            variation: 2,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "f",
-            variation: 2,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "g",
-            variation: 2,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "a",
-            variation: 2,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "b",
-            variation: 2,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "c",
-            variation: 3,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "d",
-            variation: 3,
-            length: 1,
-          },
-        ],
-      },
-      {
-        beats: [
-          {
-            type: "note",
-            note: "e",
-            variation: 3,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "f",
-            variation: 3,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "g",
-            variation: 3,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "a",
-            variation: 3,
-            length: 1,
-          },
-          {
-            type: "note",
-            note: "b",
-            variation: 3,
-            length: 1,
-          },
-          {
-            type: "note",
             note: "c",
             variation: 4,
             length: 1,
@@ -195,10 +49,6 @@ const DEFAULT_CLEF_DATA: StaffData = {
             variation: 4,
             length: 1,
           },
-        ],
-      },
-      {
-        beats: [
           {
             type: "note",
             note: "g",
@@ -221,6 +71,144 @@ const DEFAULT_CLEF_DATA: StaffData = {
             type: "note",
             note: "c",
             variation: 5,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "d",
+            variation: 5,
+            length: 1,
+          },
+        ],
+      },
+      {
+        beats: [
+          {
+            type: "note",
+            note: "e",
+            variation: 5,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "f",
+            variation: 5,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "g",
+            variation: 5,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "a",
+            variation: 5,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "b",
+            variation: 5,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "c",
+            variation: 6,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "d",
+            variation: 6,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "e",
+            variation: 6,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "f",
+            variation: 6,
+            length: 1,
+          },
+        ],
+      },
+      {
+        beats: [
+          {
+            type: "note",
+            note: "g",
+            variation: 6,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "a",
+            variation: 6,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "b",
+            variation: 6,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "c",
+            variation: 7,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "d",
+            variation: 7,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "e",
+            variation: 7,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "f",
+            variation: 7,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "g",
+            variation: 7,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "a",
+            variation: 7,
+            length: 1,
+          },
+        ],
+      },
+      {
+        beats: [
+          {
+            type: "note",
+            note: "b",
+            variation: 7,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "c",
+            variation: 8,
             length: 1,
           },
         ],

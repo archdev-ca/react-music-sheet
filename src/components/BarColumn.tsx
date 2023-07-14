@@ -7,9 +7,9 @@ interface Props {
   clef: ClefType;
   passive?: boolean;
   className?: "string";
-  data: BeatData[] | undefined;
-  staffID: number;
-  barID: number;
+  data?: BeatData[] | undefined;
+  staffID?: number;
+  barID?: number;
 }
 
 const defaultProps = {
@@ -18,8 +18,6 @@ const defaultProps = {
 
 const SPACES_CONFIG: { treble: BarSpaceData[]; bass: BarSpaceData[] } = {
   treble: [
-    { variation: 8, line: true, floating: true, note: "e" },
-    { variation: 8, space: true, note: "d" },
     { variation: 7, line: true, floating: true, note: "c" },
     { variation: 7, space: true, note: "b" },
     { variation: 7, line: true, floating: true, note: "a" },
@@ -111,8 +109,8 @@ const BarColumn = ({
       {SPACES_CONFIG[clef].map((space, i) => {
         return (
           <BarSpace
-            barID={barID}
-            staffID={staffID}
+            barID={barID ? barID : 0}
+            staffID={staffID ? staffID : 0}
             key={i}
             line={space.line}
             passive={passive}

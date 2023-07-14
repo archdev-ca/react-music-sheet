@@ -33,114 +33,45 @@ const getBeatPosition = (
   variation: BeatData["variation"]
 ): BeatPos => {
   const beatPosMap: BeatPosMap = {
-    c: {
-      1: {
-        bottom: "15px",
-      },
-      2: {
-        bottom: "74px",
-      },
-      3: {
-        bottom: "134px",
-      },
-      4: {
-        bottom: "193px",
-      },
-      5: {
-        bottom: "253px",
-      },
-    },
-    d: {
-      1: {
-        bottom: "23px",
-      },
-      2: {
-        bottom: "83px",
-      },
-      3: {
-        bottom: "142px",
-      },
-      4: {
-        bottom: "202px",
-      },
-    },
-    e: {
-      1: {
-        bottom: "32px",
-      },
-      2: {
-        bottom: "91px",
-      },
-      3: {
-        bottom: "151px",
-      },
-      4: {
-        bottom: "210px",
-      },
-    },
-    f: {
-      1: {
-        bottom: "40px",
-      },
-      2: {
-        bottom: "100px",
-      },
-      3: {
-        bottom: "159px",
-      },
-      4: {
-        bottom: "219px",
-      },
-    },
-    g: {
-      1: {
-        bottom: "49px",
-      },
-      2: {
-        bottom: "108px",
-      },
-      3: {
-        bottom: "168px",
-      },
-      4: {
-        bottom: "228px",
-      },
-    },
-    a: {
-      0: {
-        bottom: "-2px",
-      },
-      1: {
-        bottom: "57px",
-      },
-      2: {
-        bottom: "117px",
-      },
-      3: {
-        bottom: "176px",
-      },
-      4: {
-        bottom: "236px",
-      },
-    },
-    b: {
-      0: {
-        bottom: "6px",
-      },
-      1: {
-        bottom: "66px",
-      },
-      2: {
-        bottom: "125px",
-      },
-      3: {
-        bottom: "185px",
-      },
-      4: {
-        bottom: "245px",
-      },
-    },
+    c: {},
+    d: {},
+    e: {},
+    f: {},
+    g: {},
+    a: {},
+    b: {},
   };
+
+  beatPosMap["c"]["4"] = { bottom: "-2px" };
+  beatPosMap["d"]["4"] = { bottom: "6px" };
+  beatPosMap["e"]["4"] = { bottom: "15px" };
+  beatPosMap["f"]["4"] = { bottom: "23px" };
+  beatPosMap["g"]["4"] = { bottom: "32px" };
+  beatPosMap["a"]["4"] = { bottom: "40px" };
+  beatPosMap["b"]["4"] = { bottom: "49px" };
+  beatPosMap["c"]["5"] = { bottom: "57px" };
+  beatPosMap["d"]["5"] = { bottom: "66px" };
+  beatPosMap["e"]["5"] = { bottom: "74px" };
+  beatPosMap["f"]["5"] = { bottom: "83px" };
+  beatPosMap["g"]["5"] = { bottom: "91px" };
+  beatPosMap["a"]["5"] = { bottom: "100px" };
+  beatPosMap["b"]["5"] = { bottom: "108px" };
+  beatPosMap["c"]["6"] = { bottom: "117px" };
+  beatPosMap["d"]["6"] = { bottom: "125px" };
+  beatPosMap["e"]["6"] = { bottom: "134px" };
+  beatPosMap["f"]["6"] = { bottom: "142px" };
+  beatPosMap["g"]["6"] = { bottom: "151px" };
+  beatPosMap["a"]["6"] = { bottom: "159px" };
+  beatPosMap["b"]["6"] = { bottom: "168px" };
+  beatPosMap["c"]["7"] = { bottom: "176px" };
+  beatPosMap["d"]["7"] = { bottom: "185px" };
+  beatPosMap["e"]["7"] = { bottom: "193px" };
+  beatPosMap["f"]["7"] = { bottom: "202px" };
+  beatPosMap["g"]["7"] = { bottom: "210px" };
+  beatPosMap["a"]["7"] = { bottom: "219px" };
+  beatPosMap["b"]["7"] = { bottom: "228px" };
+  beatPosMap["c"]["8"] = { bottom: "236px" };
+
   if (type === "rest") {
     return { bottom: 0 };
   }
