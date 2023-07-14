@@ -12,7 +12,7 @@ const SheetView = ({ data }: Props) => {
       {staves && staves.length
         ? staves.map((staff, i) => {
             console.log({ staff });
-            return <Staff data={staff.clefs} key={i} />;
+            return <Staff data={staff} key={i} />;
           })
         : null}
     </>

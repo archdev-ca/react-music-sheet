@@ -26,10 +26,28 @@ const DEFAULT_CLEF_DATA = {
       {
         beats: [],
       },
+      {
+        beats: [],
+      },
+      {
+        beats: [],
+      },
+      {
+        beats: [],
+      },
     ],
   },
   bass: {
     bars: [
+      {
+        beats: [],
+      },
+      {
+        beats: [],
+      },
+      {
+        beats: [],
+      },
       {
         beats: [],
       },

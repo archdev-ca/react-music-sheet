@@ -1,10 +1,11 @@
-import { ClefType } from "@/interfaces";
+import { ClefType, BeatData } from "@/interfaces";
 import BarSpace from "./BarSpace";
 
 interface Props {
   clef: ClefType;
   passive?: boolean;
   className?: "string";
+  data: BeatData[];
 }
 
 const defaultProps = {
@@ -72,7 +73,7 @@ const SPACES_CONFIG = {
   ],
 };
 
-const BarColumn = ({ clef, className, passive }: Props) => {
+const BarColumn = ({ clef, className, passive, data }: Props) => {
   return (
     <div
       className={className}
@@ -83,6 +84,7 @@ const BarColumn = ({ clef, className, passive }: Props) => {
       {SPACES_CONFIG[clef].map((space, i) => {
         return (
           <BarSpace
+            beats={data}
             key={i}
             line={space.line}
             passive={passive}

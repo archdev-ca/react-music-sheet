@@ -1,21 +1,21 @@
 import { styled } from "@mui/joy";
 import Clef from "./Clef";
-import { SheetData } from "@/interfaces/index";
+import { StaffData } from "@/interfaces/index";
 
 interface Props {
-  data: SheetData;
+  data: StaffData;
 }
 
 const Spacer = styled("div")`
   margin-bottom: 1rem;
 `;
 
-const Staff = ({}: Props) => {
+const Staff = ({ data }: Props) => {
   return (
     <div>
-      <Clef clef="treble" />
+      <Clef clef="treble" data={data.treble} />
       <Spacer />
-      <Clef clef="bass" />
+      <Clef clef="bass" data={data.bass} />
     </div>
   );
 };

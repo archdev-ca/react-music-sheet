@@ -29,8 +29,6 @@ export interface BeatData {
   sharp?: boolean;
 }
 
-export interface NoteData {}
-
 export interface BarSpaceData {
   line?: boolean;
   space?: boolean;

@@ -2,11 +2,12 @@ import { styled } from "@mui/joy";
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
 import BarColumn from "./BarColumn";
-import { ClefType } from "@/interfaces";
+import { BarData, ClefType } from "@/interfaces";
 
 interface Props {
   clef: ClefType;
   className?: "string";
+  data: BarData;
 }
 
 const StyledBar = styled("div")<Props>(
@@ -27,11 +28,11 @@ const StyledBar = styled("div")<Props>(
 `
 );
 
-const Bar = ({ clef }: Props) => {
+const Bar = ({ clef, data }: Props) => {
   const { timeSignature } = useContext(AppContext);
   return (
-    <StyledBar clef={clef}>
-      <BarColumn clef={clef} />
+    <StyledBar data={data} clef={clef}>
+      <BarColumn data={data.beats} clef={clef} />
     </StyledBar>
   );
 };
