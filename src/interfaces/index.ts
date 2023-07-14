@@ -25,7 +25,11 @@ export interface INote {
   accidental: boolean;
 }
 
-export interface IBeat {}
+export interface IBeat {
+  type: "note" | "rest";
+  note: "a" | "b" | "c" | "d" | "e" | "f" | "g";
+  pitch: number;
+}
 
 export interface INoteData {}
 

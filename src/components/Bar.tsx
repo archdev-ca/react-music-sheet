@@ -19,9 +19,9 @@ const StyledBar = styled("div")<Props>(
     display: block;
     position: absolute;
     right: 0;
-    top: ${clef === "treble" ? "185px" : "12px"};
-    bottom: ${clef === "treble" ? "22px" : "120px"};
-    width: 2px;
+    top: ${clef === "treble" ? "175px" : "12px"};
+    bottom: ${clef === "treble" ? "22px" : "115px"};
+    width: 1px;
     background-color: #000;
   }
 `

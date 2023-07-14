@@ -1,9 +1,12 @@
+import { IBeat } from "@/interfaces";
 import { styled } from "@mui/joy";
+import Beat from "@/components/Beat";
 
 interface Props {
   line?: boolean;
   floating?: boolean;
   passive?: boolean;
+  beats: IBeat[];
 }
 
 const defaultProps = {
@@ -24,12 +27,15 @@ const StyledBarSpace = styled("div")<Props>(({ theme, passive }) => ({
 }));
 
 const Line = styled("div")`
-  height: 2px;
+  height: 1px;
 `;
 
-const BarSpace = ({ line, floating, passive }: Props) => {
+const BarSpace = ({ line, floating, passive, beats = [] }: Props) => {
   return (
-    <StyledBarSpace passive={passive}>
+    <StyledBarSpace beats={beats} passive={passive}>
+      {beats.map((beat, i) => (
+        <Beat {...beat} key={i} />
+      ))}
       {line ? (
         <Line
           style={{

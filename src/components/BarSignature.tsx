@@ -21,8 +21,8 @@ const StyledBar = styled("div")<Props>(
     display: block;
     position: absolute;
     left: 0;
-    top: ${clef === "treble" ? "185px" : "12px"};
-    bottom: ${clef === "treble" ? "22px" : "120px"};
+    top: ${clef === "treble" ? "175px" : "12px"};
+    bottom: ${clef === "treble" ? "22px" : "115px"};
     width: 4px;
     background-color: #000;
   }
@@ -43,7 +43,7 @@ const BarSignature = ({ clef }: Props) => {
         src={clef === "treble" ? trebleSign : bassSign}
         alt=""
         style={{
-          bottom: clef === "treble" ? "15px" : "135px",
+          bottom: clef === "treble" ? "15px" : "127px",
         }}
       />
       <BarColumn passive clef={clef} />
