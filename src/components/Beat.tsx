@@ -20,6 +20,7 @@ const BeatImage = styled("img")`
   position: absolute;
   left: 0;
   right: 0;
+  z-index: 2;
 `;
 const BeatContainer = styled("div")`
   position: relative;

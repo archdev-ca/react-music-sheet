@@ -1,6 +1,5 @@
 import { BeatData } from "@/interfaces";
 import { styled } from "@mui/joy";
-import Beat from "@/components/Beat";
 
 interface Props {
   line?: boolean;
@@ -19,7 +18,8 @@ const defaultProps = {
 };
 
 const StyledBarSpace = styled("div")<Props>(({ theme, passive }) => ({
-  // height: "10px",
+  position: "relative",
+  zIndex: 1,
   padding: "4px 0",
   "&:hover": {
     backgroundColor: passive ? "inherit" : theme.palette.primary.plainHoverBg,

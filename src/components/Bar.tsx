@@ -26,6 +26,7 @@ const StyledBar = styled("div")<Props>(
     bottom: ${clef === "treble" ? "22px" : "115px"};
     width: 1px;
     background-color: #000;
+    z-index: 2;
   }
 `
 );
