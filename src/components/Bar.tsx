@@ -7,7 +7,7 @@ import { BarData, ClefType } from "@/interfaces";
 interface Props {
   clef: ClefType;
   className?: "string";
-  data: BarData;
+  data?: BarData;
   staffID: number;
   barID: number;
 }
@@ -33,11 +33,11 @@ const StyledBar = styled("div")<Props>(
 const Bar = ({ clef, data, staffID, barID }: Props) => {
   const { timeSignature } = useContext(AppContext);
   return (
-    <StyledBar barID={barID} staffID={staffID} data={data} clef={clef}>
+    <StyledBar barID={barID} staffID={staffID} clef={clef}>
       <BarColumn
         barID={barID}
         staffID={staffID}
-        data={data.beats}
+        data={data?.beats}
         clef={clef}
       />
     </StyledBar>

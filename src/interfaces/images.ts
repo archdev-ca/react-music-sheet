@@ -13,3 +13,16 @@ export interface NoteCursorMap {
     image: string;
   };
 }
+
+export interface BeatImage {
+  src: string;
+}
+
+export interface BeatImageMap {
+  rest: {
+    [key: number]: BeatImage;
+  };
+  note: {
+    [key: number]: BeatImage;
+  };
+}

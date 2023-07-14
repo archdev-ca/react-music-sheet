@@ -17,15 +17,11 @@ export interface BarData {
   beats: BeatData[];
 }
 
-export interface NoteData {
-  type: string;
-  accidental: boolean;
-}
-
 export interface BeatData {
   type: "note" | "rest";
   note: "a" | "b" | "c" | "d" | "e" | "f" | "g";
-  pitch: number;
+  length: number;
+  variation: number;
   sharp?: boolean;
 }
 
@@ -33,5 +29,6 @@ export interface BarSpaceData {
   line?: boolean;
   space?: boolean;
   floating?: boolean;
-  note: string;
+  note: BeatData["note"];
+  variation: BeatData["variation"];
 }

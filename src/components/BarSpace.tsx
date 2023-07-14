@@ -6,9 +6,10 @@ interface Props {
   line?: boolean;
   floating?: boolean;
   passive?: boolean;
-  beats: BeatData[];
   staffID: number;
   barID: number;
+  note: BeatData["note"];
+  variation: BeatData["variation"];
 }
 
 const defaultProps = {
@@ -36,20 +37,19 @@ const BarSpace = ({
   line,
   floating,
   passive,
-  beats = [],
   staffID,
   barID,
+  note,
+  variation,
 }: Props) => {
   return (
     <StyledBarSpace
-      beats={beats}
+      note={note}
+      variation={variation}
       passive={passive}
       staffID={staffID}
       barID={barID}
     >
-      {beats.map((beat, i) => (
-        <Beat {...beat} key={i} />
-      ))}
       {line ? (
         <Line
           style={{

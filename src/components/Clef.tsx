@@ -18,11 +18,13 @@ const Clef = ({ clef, data, staffID }: Props) => {
   return (
     <StyledClef>
       <BarSignature clef={clef} />
-      {bars.map((bar, i) => {
-        return (
-          <Bar staffID={staffID} barID={i} data={bar} key={i} clef={clef} />
-        );
-      })}
+      {bars && bars.length
+        ? bars.map((bar, i) => {
+            return (
+              <Bar staffID={staffID} barID={i} data={bar} key={i} clef={clef} />
+            );
+          })
+        : null}
     </StyledClef>
   );
 };

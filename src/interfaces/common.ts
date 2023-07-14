@@ -1,3 +1,5 @@
+import { BeatData } from ".";
+
 export type Clef = "bass" | "treble";
 
 export interface TimeSignatureInterface {
@@ -6,3 +8,12 @@ export interface TimeSignatureInterface {
 }
 
 export interface SignatureInterface {}
+
+export interface BeatPos {
+  bottom: string | number;
+}
+export interface BeatPosMap {
+  [key: string]: {
+    [key: string]: BeatPos;
+  };
+}

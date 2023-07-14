@@ -1,4 +1,4 @@
-import { SheetData } from "@/interfaces";
+import { SheetData, StaffData } from "@/interfaces";
 import {
   SignatureInterface,
   TimeSignatureInterface,
@@ -20,20 +20,210 @@ interface Context {
   setSignature: Dispatch<SetStateAction<SignatureInterface>>;
 }
 
-const DEFAULT_CLEF_DATA = {
+const DEFAULT_CLEF_DATA: StaffData = {
   treble: {
     bars: [
       {
-        beats: [],
+        beats: [
+          {
+            type: "note",
+            note: "a",
+            variation: 0,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "b",
+            variation: 0,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "c",
+            variation: 1,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "d",
+            variation: 1,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "e",
+            variation: 1,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "f",
+            variation: 1,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "g",
+            variation: 1,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "a",
+            variation: 1,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "b",
+            variation: 1,
+            length: 1,
+          },
+        ],
       },
       {
-        beats: [],
+        beats: [
+          {
+            type: "note",
+            note: "c",
+            variation: 2,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "d",
+            variation: 2,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "e",
+            variation: 2,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "f",
+            variation: 2,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "g",
+            variation: 2,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "a",
+            variation: 2,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "b",
+            variation: 2,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "c",
+            variation: 3,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "d",
+            variation: 3,
+            length: 1,
+          },
+        ],
       },
       {
-        beats: [],
+        beats: [
+          {
+            type: "note",
+            note: "e",
+            variation: 3,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "f",
+            variation: 3,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "g",
+            variation: 3,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "a",
+            variation: 3,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "b",
+            variation: 3,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "c",
+            variation: 4,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "d",
+            variation: 4,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "e",
+            variation: 4,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "f",
+            variation: 4,
+            length: 1,
+          },
+        ],
       },
       {
-        beats: [],
+        beats: [
+          {
+            type: "note",
+            note: "g",
+            variation: 4,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "a",
+            variation: 4,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "b",
+            variation: 4,
+            length: 1,
+          },
+          {
+            type: "note",
+            note: "c",
+            variation: 5,
+            length: 1,
+          },
+        ],
       },
     ],
   },
@@ -55,7 +245,7 @@ const DEFAULT_CLEF_DATA = {
   },
 };
 
-const INITIAL_SHEET_DATA = {
+const INITIAL_SHEET_DATA: SheetData = {
   staves: [DEFAULT_CLEF_DATA],
 };
 
