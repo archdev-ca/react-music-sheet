@@ -1,13 +1,14 @@
 import Bar from "@/components/Bar";
 import { styled } from "@mui/joy";
 import BarSignature from "./BarSignature";
+import { Clef as ClefType } from "@/interfaces/common";
 
 const StyledClef = styled("div")`
   display: flex;
 `;
 
 interface Props {
-  clef: Clef;
+  clef: ClefType;
 }
 
 const Clef = ({ clef }: Props) => {

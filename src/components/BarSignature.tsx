@@ -15,6 +15,7 @@ const StyledBar = styled("div")<Props>(
   ({ clef }) => `
   position: relative;
   display: flex;
+  min-width: 120px;
   &:after {
     content: " ";
     display: block;
@@ -29,6 +30,7 @@ const StyledBar = styled("div")<Props>(
     position: absolute;
     left: 10px;
     bottom: 15px;
+    z-index: 2;
   }
 `
 );
@@ -44,7 +46,7 @@ const BarSignature = ({ clef }: Props) => {
           bottom: clef === "treble" ? "15px" : "135px",
         }}
       />
-      <BarColumn clef={clef} />
+      <BarColumn passive clef={clef} />
     </StyledBar>
   );
 };

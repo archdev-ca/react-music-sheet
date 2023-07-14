@@ -1,14 +1,15 @@
-import React from "react";
-import { styled } from "@mui/joy";
 import BarSpace from "./BarSpace";
 import { Clef } from "@/interfaces/common";
 
 interface Props {
   clef: Clef;
+  passive?: boolean;
   className?: "string";
 }
 
-const defaultProps = {};
+const defaultProps = {
+  passive: false,
+};
 
 const SPACES_CONFIG = {
   treble: [
@@ -71,7 +72,7 @@ const SPACES_CONFIG = {
   ],
 };
 
-const BarColumn = ({ clef, className }: Props) => {
+const BarColumn = ({ clef, className, passive }: Props) => {
   return (
     <div
       className={className}
@@ -84,7 +85,7 @@ const BarColumn = ({ clef, className }: Props) => {
           <BarSpace
             key={i}
             line={space.line}
-            space={space.space}
+            passive={passive}
             floating={space.floating}
           />
         );
