@@ -1,39 +1,39 @@
-export interface ISheet {
-  staves: IStaff[];
+export interface SheetData {
+  staves: StaffData[];
 }
 
-export interface IStaff {
+export interface StaffData {
   bpm: number;
   beat: number;
-  treble: IClef;
-  bass: IClef;
+  treble: ClefData;
+  bass: ClefData;
 }
 
-export interface IClef {
-  type: IClefType;
-  bars: IBar[];
+export interface ClefData {
+  type: ClefType;
+  bars: BarData[];
 }
 
-export type IClefType = "treble" | "bass";
+export type ClefType = "treble" | "bass";
 
-export interface IBar {
-  notes: INote[];
+export interface BarData {
+  notes: NoteData[];
 }
 
-export interface INote {
+export interface NoteData {
   type: string;
   accidental: boolean;
 }
 
-export interface IBeat {
+export interface BeatData {
   type: "note" | "rest";
   note: "a" | "b" | "c" | "d" | "e" | "f" | "g";
   pitch: number;
 }
 
-export interface INoteData {}
+export interface NoteData {}
 
-export interface IBarSpace {
+export interface BarSpaceData {
   line?: boolean;
   space?: boolean;
   floating?: boolean;

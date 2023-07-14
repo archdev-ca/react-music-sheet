@@ -1,8 +1,8 @@
+import { ClefType } from "@/interfaces";
 import BarSpace from "./BarSpace";
-import { Clef } from "@/interfaces/common";
 
 interface Props {
-  clef: Clef;
+  clef: ClefType;
   passive?: boolean;
   className?: "string";
 }

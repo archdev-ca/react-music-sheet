@@ -1,4 +1,4 @@
-import { IBeat } from "@/interfaces";
+import { BeatData } from "@/interfaces";
 import { styled } from "@mui/joy";
 import Beat from "@/components/Beat";
 
@@ -6,7 +6,7 @@ interface Props {
   line?: boolean;
   floating?: boolean;
   passive?: boolean;
-  beats: IBeat[];
+  beats: BeatData[];
 }
 
 const defaultProps = {

@@ -1,7 +1,7 @@
 import Bar from "@/components/Bar";
 import { styled } from "@mui/joy";
 import BarSignature from "./BarSignature";
-import { Clef as ClefType } from "@/interfaces/common";
+import { ClefType } from "@/interfaces";
 
 const StyledClef = styled("div")`
   display: flex;

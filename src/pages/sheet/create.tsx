@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
 import Add from "@mui/icons-material/Add";
 import { NoteCursorMap } from "@/interfaces/images";
+import SheetView from "@/components/SheetView";
 
 const SheetCreate = () => {
   const {
@@ -168,7 +169,7 @@ const SheetCreate = () => {
             : "default",
         }}
       >
-        <Staff />
+        <SheetView data={noteData} />
         <Button startDecorator={<Add />} variant="plain">
           Add Staff
         </Button>

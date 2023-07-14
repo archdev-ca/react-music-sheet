@@ -2,10 +2,10 @@ import { styled } from "@mui/joy";
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
 import BarColumn from "./BarColumn";
-import { Clef } from "@/interfaces/common";
+import { ClefType } from "@/interfaces";
 
 interface Props {
-  clef: Clef;
+  clef: ClefType;
   className?: "string";
 }
 
