@@ -10,21 +10,26 @@ import { AppContext } from "@/context/AppContext";
 import Add from "@mui/icons-material/Add";
 import { NoteCursorMap } from "@/interfaces/images";
 import SheetView from "@/components/SheetView";
+import { BeatType } from "@/interfaces";
+import { ToolData } from "@/interfaces/common";
 
 const SheetCreate = () => {
   const {
-    sheetData: noteData,
-    activeNote,
-    setActiveNote,
+    sheetData,
+    activeTool,
+    setActiveTool,
     timeSignature,
     setTimeSignature,
   } = useContext(AppContext);
 
-  const handleClickNote = (note: number) => {
-    if (activeNote === note) {
-      setActiveNote(null);
+  const handleClickNote = (type: BeatType, length: number) => {
+    if (activeTool?.type === type && activeTool?.length === length) {
+      setActiveTool(null);
     } else {
-      setActiveNote(note);
+      setActiveTool({
+        type,
+        length,
+      });
     }
   };
 
@@ -39,8 +44,8 @@ const SheetCreate = () => {
     });
   };
 
-  const getCursor = (note: number | null) => {
-    if (!note) {
+  const getCursor = (toolData: ToolData | null) => {
+    if (!toolData) {
       return null;
     }
     const noteImageMap: NoteCursorMap = {
@@ -70,13 +75,13 @@ const SheetCreate = () => {
         y: "36",
       },
     };
-    if (noteImageMap[note]) {
-      return noteImageMap[note];
+    if (noteImageMap[toolData.length]) {
+      return noteImageMap[toolData.length];
     }
     return null;
   };
 
-  const cursor = getCursor(activeNote);
+  const cursor = getCursor(activeTool);
 
   return (
     <>
@@ -89,9 +94,13 @@ const SheetCreate = () => {
           }}
         >
           <IconButton
-            variant={activeNote === 1 ? "outlined" : "plain"}
+            variant={
+              activeTool?.type === "note" && activeTool?.length === 1
+                ? "outlined"
+                : "plain"
+            }
             onClick={() => {
-              handleClickNote(1);
+              handleClickNote("note", 1);
             }}
           >
             <img
@@ -101,9 +110,13 @@ const SheetCreate = () => {
             />
           </IconButton>
           <IconButton
-            variant={activeNote === 2 ? "outlined" : "plain"}
+            variant={
+              activeTool?.type === "note" && activeTool?.length === 2
+                ? "outlined"
+                : "plain"
+            }
             onClick={() => {
-              handleClickNote(2);
+              handleClickNote("note", 2);
             }}
           >
             <img
@@ -113,9 +126,13 @@ const SheetCreate = () => {
             />
           </IconButton>
           <IconButton
-            variant={activeNote === 4 ? "outlined" : "plain"}
+            variant={
+              activeTool?.type === "note" && activeTool?.length === 4
+                ? "outlined"
+                : "plain"
+            }
             onClick={() => {
-              handleClickNote(4);
+              handleClickNote("note", 4);
             }}
           >
             <img
@@ -125,9 +142,13 @@ const SheetCreate = () => {
             />
           </IconButton>
           <IconButton
-            variant={activeNote === 8 ? "outlined" : "plain"}
+            variant={
+              activeTool?.type === "note" && activeTool?.length === 8
+                ? "outlined"
+                : "plain"
+            }
             onClick={() => {
-              handleClickNote(8);
+              handleClickNote("note", 8);
             }}
           >
             <img
@@ -137,9 +158,13 @@ const SheetCreate = () => {
             />
           </IconButton>
           <IconButton
-            variant={activeNote === 16 ? "outlined" : "plain"}
+            variant={
+              activeTool?.type === "note" && activeTool?.length === 16
+                ? "outlined"
+                : "plain"
+            }
             onClick={() => {
-              handleClickNote(16);
+              handleClickNote("note", 16);
             }}
           >
             <img
@@ -164,12 +189,12 @@ const SheetCreate = () => {
       </Card>
       <Card
         sx={{
-          cursor: activeNote
+          cursor: activeTool
             ? `url(${cursor?.image}) ${cursor?.x} ${cursor?.y}, auto`
             : "default",
         }}
       >
-        <SheetView data={noteData} />
+        <SheetView data={sheetData} />
         <Button startDecorator={<Add />} variant="plain">
           Add Staff
         </Button>

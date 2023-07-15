@@ -1,4 +1,4 @@
-import { BeatData } from ".";
+import { BeatType } from ".";
 
 export type Clef = "bass" | "treble";
 
@@ -16,4 +16,9 @@ export interface BeatPosMap {
   [key: string]: {
     [key: string]: BeatPos;
   };
+}
+
+export interface ToolData {
+  type: BeatType;
+  length: number;
 }

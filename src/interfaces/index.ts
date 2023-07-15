@@ -17,8 +17,9 @@ export interface BarData {
   beats: BeatData[];
 }
 
+export type BeatType = "note" | "rest";
 export interface BeatData {
-  type: "note" | "rest";
+  type: BeatType;
   note: "a" | "b" | "c" | "d" | "e" | "f" | "g";
   length: number;
   variation: number;

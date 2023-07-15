@@ -112,6 +112,7 @@ const BarColumn = ({
             barID={barID ? barID : 0}
             staffID={staffID ? staffID : 0}
             key={i}
+            clef={clef}
             line={space.line}
             passive={passive}
             floating={space.floating}

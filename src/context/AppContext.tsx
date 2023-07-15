@@ -2,6 +2,7 @@ import { SheetData, StaffData } from "@/interfaces";
 import {
   SignatureInterface,
   TimeSignatureInterface,
+  ToolData,
 } from "@/interfaces/common";
 import { Dispatch, SetStateAction, createContext, useState } from "react";
 
@@ -12,8 +13,8 @@ interface Props {
 interface Context {
   sheetData: SheetData;
   setSheetData: Dispatch<SetStateAction<SheetData>>;
-  activeNote: number | null;
-  setActiveNote: Dispatch<SetStateAction<number | null>>;
+  activeTool: ToolData | null;
+  setActiveTool: Dispatch<SetStateAction<ToolData | null>>;
   timeSignature: TimeSignatureInterface | null;
   setTimeSignature: Dispatch<SetStateAction<TimeSignatureInterface | null>>;
   signature: SignatureInterface;
@@ -62,7 +63,7 @@ const INITIAL_SHEET_DATA: SheetData = {
 const AppContext = createContext<Context>({});
 
 const AppContextProvider = ({ children }: Props) => {
-  const [activeNote, setActiveNote] = useState<number | null>(null);
+  const [activeTool, setActiveTool] = useState<ToolData | null>(null);
   const [signature, setSignature] = useState<SignatureInterface>({});
   const [timeSignature, setTimeSignature] =
     useState<TimeSignatureInterface | null>({
@@ -74,8 +75,8 @@ const AppContextProvider = ({ children }: Props) => {
   return (
     <AppContext.Provider
       value={{
-        activeNote,
-        setActiveNote,
+        activeTool,
+        setActiveTool,
         signature,
         setSignature,
         sheetData,

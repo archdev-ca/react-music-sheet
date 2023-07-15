@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import { AppContext } from "@/context/AppContext";
 import { BeatData } from "@/interfaces";
 import { styled } from "@mui/joy";
+import { Clef } from "@/interfaces/common";
+import { produce } from "immer";
 
 interface Props {
   line?: boolean;
@@ -9,6 +13,7 @@ interface Props {
   barID: number;
   note: BeatData["note"];
   variation: BeatData["variation"];
+  clef?: Clef;
 }
 
 const defaultProps = {
@@ -34,6 +39,7 @@ const Line = styled("div")`
 `;
 
 const BarSpace = ({
+  clef,
   line,
   floating,
   passive,
@@ -42,6 +48,23 @@ const BarSpace = ({
   note,
   variation,
 }: Props) => {
+  const { activeTool, sheetData, setSheetData } = useContext(AppContext);
+  const handleAddBeat = () => {
+    if (staffID !== undefined && clef && barID !== undefined && activeTool) {
+      const nextState = produce(sheetData, (draft) => {
+        if (draft?.staves?.[staffID]?.[clef]?.bars?.[barID]) {
+          draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.push({
+            type: activeTool.type,
+            note,
+            variation,
+            length: activeTool.length,
+          });
+        }
+      });
+      setSheetData(nextState);
+    }
+  };
+
   return (
     <StyledBarSpace
       note={note}
@@ -49,6 +72,7 @@ const BarSpace = ({
       passive={passive}
       staffID={staffID}
       barID={barID}
+      onClick={handleAddBeat}
     >
       {line ? (
         <Line
