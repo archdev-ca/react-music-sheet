@@ -76,7 +76,7 @@ const SPACES_CONFIG: { treble: BarSpaceData[]; bass: BarSpaceData[] } = {
   ],
 };
 
-const BeatsLayer = styled("div")`
+const BeatLayer = styled("div")`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -101,13 +101,13 @@ const BarColumn = ({
         width: "100%",
       }}
     >
-      <BeatsLayer>
+      <BeatLayer>
         {data && data.length
           ? data.map((beat, i) => {
               return <Beat data={beat} key={i} />;
             })
           : null}
-      </BeatsLayer>
+      </BeatLayer>
       {SPACES_CONFIG[clef].map((space, i) => {
         return (
           <BarSpace

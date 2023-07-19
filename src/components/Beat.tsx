@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
-import { BeatData } from "@/interfaces";
+import { BeatData, BeatType, NoteType } from "@/interfaces";
 import { BeatImageMap } from "@/interfaces/images";
 
 import wholeNote from "@/assets/notes/whole.png";
@@ -29,9 +29,9 @@ const BeatContainer = styled("div")`
 `;
 
 const getBeatPosition = (
-  type: BeatData["type"],
-  note: BeatData["note"],
-  variation: BeatData["variation"]
+  type: BeatType,
+  note: NoteType,
+  variation: number
 ): BeatPos => {
   const beatPosMap: BeatPosMap = {
     c: {
@@ -163,11 +163,11 @@ const getBeatPosition = (
   return { bottom: 0 };
 };
 
-const getBeatImage = (
-  type: BeatData["type"],
+const getNoteImage = (
+  type: BeatType,
   length: number,
-  note: BeatData["note"],
-  variation: BeatData["variation"]
+  note?: NoteType,
+  variation?: number
 ) => {
   const imgMap: BeatImageMap = {
     rest: {
@@ -205,7 +205,7 @@ const getBeatImage = (
       },
     },
   };
-  if (imgMap?.[type]?.[length]) {
+  if (type === "rest" && note && variation && imgMap?.[type]?.[length]) {
     const beatPos = getBeatPosition(type, note, variation);
     return (
       <BeatImage
@@ -222,9 +222,16 @@ const getBeatImage = (
 
 const Beat = ({ data }: Props) => {
   const { sheetData } = useContext(AppContext);
-  const { length, type, note, variation } = data;
+  const { length, type, notes } = data;
   return (
-    <BeatContainer>{getBeatImage(type, length, note, variation)}</BeatContainer>
+    <BeatContainer>
+      {type === "rest" ? getNoteImage(type, length) : null}
+      {type === "note" && notes && notes.length
+        ? notes.map((note, i) => {
+            return getNoteImage(type, length, note.note, note.variation);
+          })
+        : null}
+    </BeatContainer>
   );
 };
 

@@ -31,8 +31,12 @@ const DEFAULT_CLEF_DATA: StaffData = {
             length: 1,
             notes: [
               {
+                note: "g",
+                variation: 4,
+              },
+              {
                 note: "a",
-                variation: 1,
+                variation: 4,
               },
             ],
           },
