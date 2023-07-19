@@ -12,6 +12,7 @@ import { NoteCursorMap } from "@/interfaces/images";
 import SheetView from "@/components/SheetView";
 import { BeatType } from "@/interfaces";
 import { ToolData } from "@/interfaces/common";
+import { PlayArrow } from "@mui/icons-material";
 
 const SheetCreate = () => {
   const {
@@ -86,10 +87,11 @@ const SheetCreate = () => {
   return (
     <>
       <h2 className="text-2xl">Create Sheet Music</h2>
-      <Card sx={{ mb: 2 }}>
+      <Card sx={{ mb: 2, p: 0, display: "flex", flexDirection: "row" }}>
         <Box
           sx={{
             display: "flex",
+            p: 1.5,
             gap: 1,
           }}
         >
@@ -185,6 +187,27 @@ const SheetCreate = () => {
             <Option value="6/8">6/8</Option>
             <Option value="9/8">9/8</Option>
           </Select>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            p: 1.5,
+            gap: 1,
+            borderLeft: "1px solid #ddd",
+          }}
+        >
+          <IconButton
+            variant={
+              activeTool?.type === "note" && activeTool?.length === 1
+                ? "outlined"
+                : "plain"
+            }
+            onClick={() => {
+              handleClickNote("note", 1);
+            }}
+          >
+            <PlayArrow />
+          </IconButton>
         </Box>
       </Card>
       <Card
