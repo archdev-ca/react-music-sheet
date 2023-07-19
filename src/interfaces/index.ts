@@ -20,16 +20,22 @@ export interface BarData {
 export type BeatType = "note" | "rest";
 export interface BeatData {
   type: BeatType;
-  note: "a" | "b" | "c" | "d" | "e" | "f" | "g";
   length: number;
-  variation: number;
-  sharp?: boolean;
+  notes: NoteData[];
 }
 
 export interface BarSpaceData {
   line?: boolean;
   space?: boolean;
   floating?: boolean;
-  note: BeatData["note"];
-  variation: BeatData["variation"];
+  note: NoteType;
+  variation: number;
 }
+
+export interface NoteData {
+  note: NoteType;
+  sharp?: boolean;
+  variation: number;
+}
+
+export type NoteType = "a" | "b" | "c" | "d" | "e" | "f" | "g";

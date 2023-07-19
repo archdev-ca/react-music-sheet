@@ -25,7 +25,18 @@ const DEFAULT_CLEF_DATA: StaffData = {
   treble: {
     bars: [
       {
-        beats: [],
+        beats: [
+          {
+            type: "note",
+            length: 1,
+            notes: [
+              {
+                note: "a",
+                variation: 1,
+              },
+            ],
+          },
+        ],
       },
       {
         beats: [],
@@ -60,7 +71,19 @@ const INITIAL_SHEET_DATA: SheetData = {
   staves: [DEFAULT_CLEF_DATA],
 };
 
-const AppContext = createContext<Context>({});
+const AppContext = createContext<Context>({
+  sheetData: INITIAL_SHEET_DATA,
+  setSheetData: () => {},
+  activeTool: null,
+  setActiveTool: () => {},
+  timeSignature: {
+    bpm: 4,
+    beat: 4,
+  },
+  setTimeSignature: () => {},
+  signature: {},
+  setSignature: () => {},
+});
 
 const AppContextProvider = ({ children }: Props) => {
   const [activeTool, setActiveTool] = useState<ToolData | null>(null);

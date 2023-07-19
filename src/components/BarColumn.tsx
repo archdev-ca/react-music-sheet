@@ -10,6 +10,7 @@ interface Props {
   data?: BeatData[] | undefined;
   staffID?: number;
   barID?: number;
+  locked?: boolean;
 }
 
 const defaultProps = {
@@ -91,6 +92,7 @@ const BarColumn = ({
   data,
   staffID,
   barID,
+  locked,
 }: Props) => {
   return (
     <div
@@ -118,6 +120,7 @@ const BarColumn = ({
             floating={space.floating}
             note={space.note}
             variation={space.variation}
+            locked={locked}
           />
         );
       })}

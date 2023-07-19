@@ -1,3 +1,4 @@
+import * as React from "react";
 import { styled } from "@mui/joy";
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
@@ -33,14 +34,47 @@ const StyledBar = styled("div")<Props>(
 
 const Bar = ({ clef, data, staffID, barID }: Props) => {
   const { timeSignature } = useContext(AppContext);
+  let orderIndex = 0;
   return (
     <StyledBar barID={barID} staffID={staffID} clef={clef}>
-      <BarColumn
-        barID={barID}
-        staffID={staffID}
-        data={data?.beats}
-        clef={clef}
-      />
+      {data && data.beats && data.beats.length ? (
+        data.beats.map((beat, i) => {
+          const columns = (
+            <React.Fragment key={i}>
+              <BarColumn
+                orderIndex={orderIndex}
+                barID={barID}
+                staffID={staffID}
+                clef={clef}
+              />
+              <BarColumn
+                barID={barID}
+                staffID={staffID}
+                data={data?.beats}
+                clef={clef}
+                orderIndex={orderIndex + 1}
+              />
+              {i === data.beats.length - 1 ? (
+                <BarColumn
+                  orderIndex={orderIndex + 2}
+                  barID={barID}
+                  staffID={staffID}
+                  clef={clef}
+                />
+              ) : null}
+            </React.Fragment>
+          );
+          orderIndex += 1;
+          return columns;
+        })
+      ) : (
+        <BarColumn
+          barID={barID}
+          staffID={staffID}
+          data={data?.beats}
+          clef={clef}
+        />
+      )}
     </StyledBar>
   );
 };

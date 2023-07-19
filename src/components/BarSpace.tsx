@@ -14,6 +14,7 @@ interface Props {
   note: BeatData["note"];
   variation: BeatData["variation"];
   clef?: Clef;
+  locked?: boolean;
 }
 
 const defaultProps = {
@@ -47,9 +48,13 @@ const BarSpace = ({
   barID,
   note,
   variation,
+  locked,
 }: Props) => {
   const { activeTool, sheetData, setSheetData } = useContext(AppContext);
   const handleAddBeat = () => {
+    if (locked) {
+      return false;
+    }
     if (staffID !== undefined && clef && barID !== undefined && activeTool) {
       const nextState = produce(sheetData, (draft) => {
         if (draft?.staves?.[staffID]?.[clef]?.bars?.[barID]) {
