@@ -154,18 +154,9 @@ const getNoteImage = (
     },
   };
   if (type === "note" && note && variation && imgMap?.[type]?.[length]) {
-    const beatPos = getBeatPosition(type, note, variation);
-    return (
-      <BeatImage
-        style={{
-          bottom: beatPos.bottom,
-        }}
-        src={imgMap?.[type]?.[length].src}
-        alt=""
-      />
-    );
+    return imgMap?.[type]?.[length].src;
   }
-  return null;
+  return "";
 };
 
 const Beat = ({ data }: Props) => {
@@ -176,7 +167,23 @@ const Beat = ({ data }: Props) => {
       {type === "rest" ? getNoteImage(type, length) : null}
       {type === "note" && notes && notes.length
         ? notes.map((note, i) => {
-            return getNoteImage(type, length, note.note, note.variation);
+            const beatPos = getBeatPosition(type, note.note, note.variation);
+            const beatImage = getNoteImage(
+              type,
+              length,
+              note.note,
+              note.variation
+            );
+            return (
+              <BeatImage
+                key={i}
+                style={{
+                  bottom: beatPos.bottom,
+                }}
+                src={beatImage}
+                alt=""
+              />
+            );
           })
         : null}
     </BeatContainer>
