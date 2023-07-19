@@ -4,13 +4,14 @@ import Beat from "./Beat";
 import { styled } from "@mui/joy";
 
 interface Props {
-  clef: ClefType;
-  passive?: boolean;
-  className?: "string";
-  data?: BeatData[] | undefined;
-  staffID?: number;
   barID?: number;
+  beatID?: number | "-1" | "+1";
+  className?: "string";
+  clef: ClefType;
+  data?: BeatData[] | undefined;
   locked?: boolean;
+  passive?: boolean;
+  staffID?: number;
 }
 
 const defaultProps = {
@@ -92,6 +93,7 @@ const BarColumn = ({
   data,
   staffID,
   barID,
+  beatID,
   locked,
 }: Props) => {
   return (
@@ -112,6 +114,7 @@ const BarColumn = ({
         return (
           <BarSpace
             barID={barID ? barID : 0}
+            beatID={beatID}
             staffID={staffID ? staffID : 0}
             key={i}
             clef={clef}

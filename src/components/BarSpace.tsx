@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
-import { BeatData } from "@/interfaces";
+import { NoteType } from "@/interfaces";
 import { styled } from "@mui/joy";
 import { Clef } from "@/interfaces/common";
 import { produce } from "immer";
@@ -11,8 +11,9 @@ interface Props {
   passive?: boolean;
   staffID: number;
   barID: number;
-  note: BeatData["note"];
-  variation: BeatData["variation"];
+  beatID?: number | "-1" | "+1";
+  note: NoteType;
+  variation: number;
   clef?: Clef;
   locked?: boolean;
 }
@@ -43,6 +44,7 @@ const BarSpace = ({
   clef,
   line,
   floating,
+  beatID,
   passive,
   staffID,
   barID,
@@ -51,19 +53,20 @@ const BarSpace = ({
   locked,
 }: Props) => {
   const { activeTool, sheetData, setSheetData } = useContext(AppContext);
+
   const handleAddBeat = () => {
     if (locked) {
       return false;
     }
-    if (staffID !== undefined && clef && barID !== undefined && activeTool) {
+    if (staffID !== undefined && clef && barID && beatID && activeTool) {
       const nextState = produce(sheetData, (draft) => {
-        if (draft?.staves?.[staffID]?.[clef]?.bars?.[barID]) {
-          draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.push({
-            type: activeTool.type,
-            note,
-            variation,
-            length: activeTool.length,
-          });
+        if (draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[beatID]) {
+          // draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.push({
+          //   type: activeTool.type,
+          //   note,
+          //   variation,
+          //   length: activeTool.length,
+          // });
         }
       });
       setSheetData(nextState);
@@ -72,6 +75,7 @@ const BarSpace = ({
 
   return (
     <StyledBarSpace
+      beatID={beatID}
       note={note}
       variation={variation}
       passive={passive}

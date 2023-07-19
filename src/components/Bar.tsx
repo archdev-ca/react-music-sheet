@@ -42,21 +42,21 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
           const columns = (
             <React.Fragment key={i}>
               <BarColumn
-                orderIndex={orderIndex}
+                beatID="-1"
                 barID={barID}
                 staffID={staffID}
                 clef={clef}
               />
               <BarColumn
                 barID={barID}
+                beatID={i}
                 staffID={staffID}
                 data={data?.beats}
                 clef={clef}
-                orderIndex={orderIndex + 1}
               />
               {i === data.beats.length - 1 ? (
                 <BarColumn
-                  orderIndex={orderIndex + 2}
+                  beatID="+1"
                   barID={barID}
                   staffID={staffID}
                   clef={clef}
@@ -70,6 +70,7 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
       ) : (
         <BarColumn
           barID={barID}
+          beatID={0}
           staffID={staffID}
           data={data?.beats}
           clef={clef}
