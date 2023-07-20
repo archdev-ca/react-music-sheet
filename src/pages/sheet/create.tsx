@@ -1,4 +1,3 @@
-import Staff from "@/components/Staff";
 import { Box, Button, Card, IconButton, Option, Select } from "@mui/joy";
 import wholeNote from "@/assets/notes/whole.png";
 import halfNote from "@/assets/notes/half.png";
@@ -43,6 +42,11 @@ const SheetCreate = () => {
       bpm: Number(sig?.[0]),
       beat: Number(sig?.[1]),
     });
+  };
+
+  const handlePreviewMusic = () => {
+    console.log(sheetData);
+    console.log(JSON.stringify(sheetData));
   };
 
   const getCursor = (toolData: ToolData | null) => {
@@ -202,9 +206,7 @@ const SheetCreate = () => {
                 ? "outlined"
                 : "plain"
             }
-            onClick={() => {
-              handleClickNote("note", 1);
-            }}
+            onClick={handlePreviewMusic}
           >
             <PlayArrow />
           </IconButton>

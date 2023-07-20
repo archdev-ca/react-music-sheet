@@ -28,39 +28,52 @@ const DEFAULT_CLEF_DATA: StaffData = {
         beats: [
           {
             type: "note",
-            length: 1,
-            notes: [
-              {
-                note: "g",
-                variation: 4,
-              },
-              {
-                note: "a",
-                variation: 4,
-              },
-            ],
+            length: 16,
+            notes: [{ note: "e", variation: 5 }],
           },
           {
             type: "note",
-            length: 1,
-            notes: [
-              {
-                note: "g",
-                variation: 4,
-              },
-            ],
+            length: 16,
+            notes: [{ note: "d", variation: 5 }],
           },
         ],
       },
       {
-        beats: [],
+        beats: [
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "e", variation: 5 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "d", variation: 5 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "e", variation: 5 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "b", variation: 4 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "d", variation: 5 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "c", variation: 5 }],
+          },
+        ],
       },
-      {
-        beats: [],
-      },
-      {
-        beats: [],
-      },
+      { beats: [] },
+      { beats: [] },
     ],
   },
   bass: {
