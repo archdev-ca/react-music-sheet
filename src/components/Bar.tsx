@@ -1,4 +1,3 @@
-import * as React from "react";
 import { styled } from "@mui/joy";
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
@@ -38,38 +37,44 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
   return (
     <StyledBar barID={barID} staffID={staffID} clef={clef}>
       {data && data.beats && data.beats.length ? (
+        <BarColumn
+          beatIndex={[0, null]}
+          barID={barID}
+          staffID={staffID}
+          clef={clef}
+        />
+      ) : null}
+      {data && data.beats && data.beats.length ? (
         data.beats.map((beat, i) => {
           const columns = (
-            <React.Fragment key={i}>
-              <BarColumn
-                beatID="-1"
-                barID={barID}
-                staffID={staffID}
-                clef={clef}
-              />
-              <BarColumn
-                barID={barID}
-                beatID={i}
-                staffID={staffID}
-                data={beat}
-                clef={clef}
-              />
-              {i === data.beats.length - 1 ? (
-                <BarColumn
-                  beatID="+1"
-                  barID={barID}
-                  staffID={staffID}
-                  clef={clef}
-                />
-              ) : null}
-            </React.Fragment>
+            <BarColumn
+              key={i}
+              barID={barID}
+              beatIndex={[i, 0]}
+              staffID={staffID}
+              data={beat}
+              clef={clef}
+            />
           );
           orderIndex += 1;
           return columns;
         })
       ) : (
-        <BarColumn barID={barID} beatID={0} staffID={staffID} clef={clef} />
+        <BarColumn
+          barID={barID}
+          beatIndex={[-1, 0]}
+          staffID={staffID}
+          clef={clef}
+        />
       )}
+      {data && data.beats && data.beats.length ? (
+        <BarColumn
+          beatIndex={[-1, 0]}
+          barID={barID}
+          staffID={staffID}
+          clef={clef}
+        />
+      ) : null}
     </StyledBar>
   );
 };

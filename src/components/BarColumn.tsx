@@ -5,7 +5,7 @@ import { styled } from "@mui/joy";
 
 interface Props {
   barID?: number;
-  beatID?: number | "-1" | "+1";
+  beatIndex: [number | null, number | null];
   className?: "string";
   clef: ClefType;
   data?: BeatData | undefined;
@@ -93,7 +93,7 @@ const BarColumn = ({
   data,
   staffID,
   barID,
-  beatID,
+  beatIndex,
   locked,
 }: Props) => {
   return (
@@ -113,7 +113,7 @@ const BarColumn = ({
         return (
           <BarSpace
             barID={barID ? barID : 0}
-            beatID={beatID}
+            beatIndex={beatIndex}
             staffID={staffID ? staffID : 0}
             key={i}
             clef={clef}

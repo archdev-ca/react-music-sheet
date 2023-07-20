@@ -11,7 +11,7 @@ interface Props {
   passive?: boolean;
   staffID: number;
   barID: number;
-  beatID?: number | "-1" | "+1";
+  beatIndex?: [number | null, number | null];
   note: NoteType;
   variation: number;
   clef?: Clef;
@@ -44,7 +44,7 @@ const BarSpace = ({
   clef,
   line,
   floating,
-  beatID,
+  beatIndex,
   passive,
   staffID,
   barID,
@@ -64,53 +64,57 @@ const BarSpace = ({
       variation,
     };
 
-    console.log({ staffID, clef, barID, beatID, note, variation });
-
     if (
       staffID !== undefined &&
       clef &&
       barID !== undefined &&
-      beatID !== undefined &&
+      beatIndex !== undefined &&
       activeTool
     ) {
       const nextState = produce(sheetData, (draft) => {
-        if (draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[beatID]) {
-          //   draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.push({
-          //     type: activeTool.type,
-          //     note,
-          //     variation,
-          //     length: activeTool.length,
-          //   });
-          if (beatID && beatID === "-1") {
-            // unshift
-          } else if (beatID && beatID === "+1") {
-            // push
-          } else if (beatID && beatID !== undefined) {
-            // add notes to specific beat index
+        if (beatIndex && beatIndex.toString() === "0,") {
+          // Add to beginning
+          draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.unshift({
+            type: activeTool.type,
+            length: activeTool.length,
+            notes: [noteData],
+          });
+        } else if (beatIndex && beatIndex.toString() === "-1,0") {
+          // Add to end
+          draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.push({
+            type: activeTool.type,
+            length: activeTool.length,
+            notes: [noteData],
+          });
+        } else if (beatIndex && beatIndex.length === 2) {
+          // Add in between
+          const realBeatID = beatIndex[0];
+          if (
+            realBeatID &&
+            draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[
+              realBeatID
+            ] &&
+            draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[realBeatID]
+              .notes &&
+            draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[realBeatID]
+              .notes.length
+          ) {
+            draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[
+              realBeatID
+            ].notes.push({
+              note,
+              variation,
+            });
           }
         }
       });
       setSheetData(nextState);
     }
-
-    // if (staffID !== undefined && clef && barID && beatID && activeTool) {
-    // const nextState = produce(sheetData, (draft) => {
-    // if (draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[beatID]) {
-    // draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.push({
-    //   type: activeTool.type,
-    //   note,
-    //   variation,
-    //   length: activeTool.length,
-    // });
-    // }
-    // });
-    // setSheetData(nextState);
-    // }
   };
 
   return (
     <StyledBarSpace
-      beatID={beatID}
+      beatIndex={beatIndex}
       note={note}
       variation={variation}
       passive={passive}
