@@ -58,19 +58,54 @@ const BarSpace = ({
     if (locked) {
       return false;
     }
-    if (staffID !== undefined && clef && barID && beatID && activeTool) {
+
+    const noteData = {
+      note,
+      variation,
+    };
+
+    console.log({ staffID, clef, barID, beatID, note, variation });
+
+    if (
+      staffID !== undefined &&
+      clef &&
+      barID !== undefined &&
+      beatID !== undefined &&
+      activeTool
+    ) {
       const nextState = produce(sheetData, (draft) => {
         if (draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[beatID]) {
-          // draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.push({
-          //   type: activeTool.type,
-          //   note,
-          //   variation,
-          //   length: activeTool.length,
-          // });
+          //   draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.push({
+          //     type: activeTool.type,
+          //     note,
+          //     variation,
+          //     length: activeTool.length,
+          //   });
+          if (beatID && beatID === "-1") {
+            // unshift
+          } else if (beatID && beatID === "+1") {
+            // push
+          } else if (beatID && beatID !== undefined) {
+            // add notes to specific beat index
+          }
         }
       });
       setSheetData(nextState);
     }
+
+    // if (staffID !== undefined && clef && barID && beatID && activeTool) {
+    // const nextState = produce(sheetData, (draft) => {
+    // if (draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[beatID]) {
+    // draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.push({
+    //   type: activeTool.type,
+    //   note,
+    //   variation,
+    //   length: activeTool.length,
+    // });
+    // }
+    // });
+    // setSheetData(nextState);
+    // }
   };
 
   return (

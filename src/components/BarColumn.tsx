@@ -8,7 +8,7 @@ interface Props {
   beatID?: number | "-1" | "+1";
   className?: "string";
   clef: ClefType;
-  data?: BeatData[] | undefined;
+  data?: BeatData | undefined;
   locked?: boolean;
   passive?: boolean;
   staffID?: number;
@@ -100,16 +100,15 @@ const BarColumn = ({
     <div
       className={className}
       style={{
+        position: "relative",
         width: "100%",
       }}
     >
-      <BeatLayer>
-        {data && data.length
-          ? data.map((beat, i) => {
-              return <Beat data={beat} key={i} />;
-            })
-          : null}
-      </BeatLayer>
+      {data && data.notes ? (
+        <BeatLayer className="beatLayer">
+          <Beat type={data.type} length={data.length} notes={data.notes} />
+        </BeatLayer>
+      ) : null}
       {SPACES_CONFIG[clef].map((space, i) => {
         return (
           <BarSpace

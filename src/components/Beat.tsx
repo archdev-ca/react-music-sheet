@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
-import { BeatData, BeatType, NoteType } from "@/interfaces";
+import { BeatData, BeatType, NoteData, NoteType } from "@/interfaces";
 import { BeatImageMap } from "@/interfaces/images";
 
 import wholeNote from "@/assets/notes/whole.png";
@@ -12,7 +12,9 @@ import { styled } from "@mui/joy";
 import { BeatPos, BeatPosMap } from "@/interfaces/common";
 
 type Props = {
-  data: BeatData;
+  notes: NoteData[];
+  type: BeatType;
+  length: number;
 };
 
 const BeatImage = styled("img")`
@@ -159,9 +161,8 @@ const getNoteImage = (
   return "";
 };
 
-const Beat = ({ data }: Props) => {
+const Beat = ({ notes, length, type }: Props) => {
   const { sheetData } = useContext(AppContext);
-  const { length, type, notes } = data;
   return (
     <BeatContainer>
       {type === "rest" ? getNoteImage(type, length) : null}

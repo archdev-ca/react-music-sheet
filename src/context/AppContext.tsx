@@ -40,6 +40,16 @@ const DEFAULT_CLEF_DATA: StaffData = {
               },
             ],
           },
+          {
+            type: "note",
+            length: 1,
+            notes: [
+              {
+                note: "g",
+                variation: 4,
+              },
+            ],
+          },
         ],
       },
       {

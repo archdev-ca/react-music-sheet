@@ -51,7 +51,7 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
                 barID={barID}
                 beatID={i}
                 staffID={staffID}
-                data={data?.beats}
+                data={beat}
                 clef={clef}
               />
               {i === data.beats.length - 1 ? (
@@ -68,13 +68,7 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
           return columns;
         })
       ) : (
-        <BarColumn
-          barID={barID}
-          beatID={0}
-          staffID={staffID}
-          data={data?.beats}
-          clef={clef}
-        />
+        <BarColumn barID={barID} beatID={0} staffID={staffID} clef={clef} />
       )}
     </StyledBar>
   );
