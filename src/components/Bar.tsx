@@ -42,6 +42,7 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
           barID={barID}
           staffID={staffID}
           clef={clef}
+          fullWidth
         />
       ) : null}
       {data && data.beats && data.beats.length ? (
@@ -65,6 +66,7 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
           beatIndex={[-1, 0]}
           staffID={staffID}
           clef={clef}
+          fullWidth
         />
       )}
       {data && data.beats && data.beats.length ? (
@@ -73,6 +75,7 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
           barID={barID}
           staffID={staffID}
           clef={clef}
+          fullWidth
         />
       ) : null}
     </StyledBar>

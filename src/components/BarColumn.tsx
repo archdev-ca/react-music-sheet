@@ -12,6 +12,7 @@ interface Props {
   locked?: boolean;
   passive?: boolean;
   staffID?: number;
+  fullWidth?: boolean;
 }
 
 const defaultProps = {
@@ -95,6 +96,7 @@ const BarColumn = ({
   barID,
   beatIndex,
   locked,
+  fullWidth,
 }: Props) => {
   return (
     <div
