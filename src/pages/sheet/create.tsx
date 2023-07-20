@@ -12,6 +12,7 @@ import SheetView from "@/components/SheetView";
 import { BeatType } from "@/interfaces";
 import { ToolData } from "@/interfaces/common";
 import { PlayArrow } from "@mui/icons-material";
+import { getToneSequence, playPreview, preloadAudio } from "@/utils";
 
 const SheetCreate = () => {
   const {
@@ -45,8 +46,10 @@ const SheetCreate = () => {
   };
 
   const handlePreviewMusic = () => {
-    console.log(sheetData);
-    console.log(JSON.stringify(sheetData));
+    const [toneSequence, audioMap] = getToneSequence(sheetData, timeSignature);
+    preloadAudio(audioMap, (audioMap) => {
+      playPreview(toneSequence, audioMap);
+    });
   };
 
   const getCursor = (toolData: ToolData | null) => {

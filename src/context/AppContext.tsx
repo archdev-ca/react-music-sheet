@@ -15,8 +15,8 @@ interface Context {
   setSheetData: Dispatch<SetStateAction<SheetData>>;
   activeTool: ToolData | null;
   setActiveTool: Dispatch<SetStateAction<ToolData | null>>;
-  timeSignature: TimeSignatureInterface | null;
-  setTimeSignature: Dispatch<SetStateAction<TimeSignatureInterface | null>>;
+  timeSignature: TimeSignatureInterface;
+  setTimeSignature: Dispatch<SetStateAction<TimeSignatureInterface>>;
   signature: SignatureInterface;
   setSignature: Dispatch<SetStateAction<SignatureInterface>>;
 }
@@ -34,7 +34,7 @@ const DEFAULT_CLEF_DATA: StaffData = {
           {
             type: "note",
             length: 16,
-            notes: [{ note: "d", variation: 5 }],
+            notes: [{ note: "d", variation: 5, sharp: true }],
           },
         ],
       },
@@ -48,7 +48,7 @@ const DEFAULT_CLEF_DATA: StaffData = {
           {
             type: "note",
             length: 16,
-            notes: [{ note: "d", variation: 5 }],
+            notes: [{ note: "d", variation: 5, sharp: true }],
           },
           {
             type: "note",
@@ -72,8 +72,18 @@ const DEFAULT_CLEF_DATA: StaffData = {
           },
         ],
       },
-      { beats: [] },
-      { beats: [] },
+      {
+        beats: [
+          {
+            type: "note",
+            length: 8,
+            notes: [{ note: "a", variation: 4 }],
+          },
+        ],
+      },
+      {
+        beats: [],
+      },
     ],
   },
   bass: {
@@ -115,11 +125,10 @@ const AppContext = createContext<Context>({
 const AppContextProvider = ({ children }: Props) => {
   const [activeTool, setActiveTool] = useState<ToolData | null>(null);
   const [signature, setSignature] = useState<SignatureInterface>({});
-  const [timeSignature, setTimeSignature] =
-    useState<TimeSignatureInterface | null>({
-      bpm: 4,
-      beat: 4,
-    });
+  const [timeSignature, setTimeSignature] = useState<TimeSignatureInterface>({
+    bpm: 4,
+    beat: 4,
+  });
   const [sheetData, setSheetData] = useState<SheetData>(INITIAL_SHEET_DATA);
 
   return (
