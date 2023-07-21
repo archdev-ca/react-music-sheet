@@ -106,12 +106,11 @@ const DEFAULT_CLEF_DATA: StaffData = {
           {
             type: "note",
             length: 8,
-            notes: [{ note: "c", variation: 5 }],
+            notes: [{ note: "b", variation: 4 }],
           },
           {
             type: "rest",
             length: 16,
-            notes: [{ note: "b", variation: 4, sharp: true }],
           },
           {
             type: "note",
@@ -121,7 +120,7 @@ const DEFAULT_CLEF_DATA: StaffData = {
           {
             type: "note",
             length: 16,
-            notes: [{ note: "g", variation: 4 }],
+            notes: [{ note: "g", variation: 4, sharp: true }],
           },
           {
             type: "note",
@@ -140,7 +139,6 @@ const DEFAULT_CLEF_DATA: StaffData = {
           {
             type: "rest",
             length: 1,
-            notes: [{ note: "d", variation: 3 }],
           },
         ],
       },
@@ -164,12 +162,10 @@ const DEFAULT_CLEF_DATA: StaffData = {
           {
             type: "rest",
             length: 16,
-            notes: [{ note: "c", variation: 3 }],
           },
           {
             type: "rest",
             length: 8,
-            notes: [{ note: "d", variation: 3 }],
           },
         ],
       },
@@ -193,12 +189,10 @@ const DEFAULT_CLEF_DATA: StaffData = {
           {
             type: "rest",
             length: 16,
-            notes: [{ note: "c", variation: 3 }],
           },
           {
             type: "rest",
             length: 8,
-            notes: [{ note: "d", variation: 3 }],
           },
         ],
       },
