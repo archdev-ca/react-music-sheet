@@ -29,9 +29,8 @@ const BeatImage = styled("img")`
   left: 0;
   right: 0;
   z-index: 2;
-  width: auto;
-  height: auto;
   max-width: 100%;
+  transform: translateY(2px);
 `;
 const BeatContainer = styled("div")`
   box-sizing: border-box;
@@ -133,9 +132,9 @@ const getRestPosition = (clef: ClefType, length: number) => {
   const restPosMap: Record<string, number> = {
     "1": 145,
     "2": 145,
-    "8": 125,
-    "4": 125,
-    "16": 125,
+    "8": 132,
+    "4": 132,
+    "16": 132,
   };
   if (length && restPosMap[length]) {
     return {
@@ -157,55 +156,80 @@ const getNoteImage = (
     rest: {
       1: {
         src: wholeRest,
+        width: "auto",
+        height: "auto",
       },
       2: {
         src: halfRest,
+        width: "auto",
+        height: "auto",
       },
       4: {
         src: quarterRest,
+        width: "auto",
+        height: "24px",
       },
       8: {
         src: eightRest,
+        width: "auto",
+        height: "24px",
       },
       16: {
         src: sixteenthRest,
+        width: "auto",
+        height: "24px",
       },
     },
     note: {
       1: {
         src: wholeNote,
+        width: "auto",
+        height: "10px",
       },
       2: {
         src: halfNote,
+        width: "auto",
+        height: "32px",
       },
       4: {
         src: quarterNote,
+        width: "auto",
+        height: "32px",
       },
       8: {
         src: eightNote,
+        width: "auto",
+        height: "32px",
       },
       16: {
         src: sixteenthNote,
+        width: "auto",
+        height: "32px",
       },
     },
   };
   // console.log({ type });
   if (type === "note" && note && variation && imgMap?.[type]?.[length]) {
-    return imgMap?.[type]?.[length].src;
+    return imgMap?.[type]?.[length];
   } else if (type === "rest" && imgMap?.[type]?.[length]) {
     // console.log(imgMap?.[type]?.[length]);
-    return imgMap?.[type]?.[length].src;
+    return imgMap?.[type]?.[length];
   }
-  return "";
+  return {
+    src: "",
+    width: "",
+    height: "",
+  };
 };
 
 const Beat = ({ data, clef, length, type }: Props) => {
   const { notes } = data;
   const { sheetData } = useContext(AppContext);
   let restPos = null;
+  let restImage = null;
   if (type === "rest" && length) {
     restPos = getRestPosition(clef, length);
-    console.log({ restPos });
+    restImage = getNoteImage(type, length);
   }
   return (
     <>
@@ -215,7 +239,12 @@ const Beat = ({ data, clef, length, type }: Props) => {
             bottom: restPos?.bottom,
           }}
         >
-          <BeatImage src={getNoteImage(type, length)} alt="" />
+          <BeatImage
+            width={restImage?.width}
+            height={restImage?.height}
+            src={restImage?.src}
+            alt=""
+          />
         </BeatContainer>
       ) : null}
       {type === "note" && notes && notes.length
@@ -239,7 +268,12 @@ const Beat = ({ data, clef, length, type }: Props) => {
                   bottom: beatPos.bottom,
                 }}
               >
-                <BeatImage src={beatImage} alt="" />
+                <BeatImage
+                  width={beatImage.width}
+                  height={beatImage.height}
+                  src={beatImage.src}
+                  alt=""
+                />
               </BeatContainer>
             );
           })

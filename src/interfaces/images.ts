@@ -16,6 +16,8 @@ export interface NoteCursorMap {
 
 export interface BeatImage {
   src: string;
+  width: string;
+  height: string;
 }
 
 export interface BeatImageMap {
