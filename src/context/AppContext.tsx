@@ -79,26 +79,128 @@ const DEFAULT_CLEF_DATA: StaffData = {
             length: 8,
             notes: [{ note: "a", variation: 4 }],
           },
+          {
+            type: "rest",
+            length: 16,
+            notes: [{ note: "b", variation: 4 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "c", variation: 4 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "e", variation: 4 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "a", variation: 4 }],
+          },
         ],
       },
       {
-        beats: [],
+        beats: [
+          {
+            type: "note",
+            length: 8,
+            notes: [{ note: "c", variation: 5 }],
+          },
+          {
+            type: "rest",
+            length: 16,
+            notes: [{ note: "b", variation: 4, sharp: true }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "e", variation: 4 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "g", variation: 4 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "b", variation: 4 }],
+          },
+        ],
       },
     ],
   },
   bass: {
     bars: [
+      { beats: [{ type: "rest", length: 1 }] },
       {
-        beats: [],
+        beats: [
+          {
+            type: "rest",
+            length: 1,
+            notes: [{ note: "d", variation: 3 }],
+          },
+        ],
       },
       {
-        beats: [],
+        beats: [
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "a", variation: 2 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "e", variation: 3 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "a", variation: 3 }],
+          },
+          {
+            type: "rest",
+            length: 16,
+            notes: [{ note: "c", variation: 3 }],
+          },
+          {
+            type: "rest",
+            length: 8,
+            notes: [{ note: "d", variation: 3 }],
+          },
+        ],
       },
       {
-        beats: [],
-      },
-      {
-        beats: [],
+        beats: [
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "e", variation: 2 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "e", variation: 3 }],
+          },
+          {
+            type: "note",
+            length: 16,
+            notes: [{ note: "g", variation: 3, sharp: true }],
+          },
+          {
+            type: "rest",
+            length: 16,
+            notes: [{ note: "c", variation: 3 }],
+          },
+          {
+            type: "rest",
+            length: 8,
+            notes: [{ note: "d", variation: 3 }],
+          },
+        ],
       },
     ],
   },
