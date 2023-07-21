@@ -13,6 +13,7 @@ import halfRest from "@/assets/rest/halfRest.png";
 import quarterRest from "@/assets/rest/quarterRest.png";
 import eightRest from "@/assets/rest/eightRest.png";
 import sixteenthRest from "@/assets/rest/sixteenthRest.png";
+import sharp from "@/assets/sharp.png";
 import { styled } from "@mui/joy";
 import { BeatPos, BeatPosMap } from "@/interfaces/common";
 
@@ -41,6 +42,11 @@ const BeatContainer = styled("div")`
   z-index: 2;
   padding: 4px;
   width: 34px;
+`;
+
+const Accidental = styled("span")`
+  position: absolute;
+  bottom: 5px;
 `;
 
 const getBeatPosition = (
@@ -268,6 +274,11 @@ const Beat = ({ data, clef, length, type }: Props) => {
                   bottom: beatPos.bottom,
                 }}
               >
+                {note.sharp ? (
+                  <Accidental>
+                    <img src={sharp} alt="" height="14" />
+                  </Accidental>
+                ) : null}
                 <BeatImage
                   width={beatImage.width}
                   height={beatImage.height}
