@@ -39,3 +39,8 @@ export interface NoteData {
 }
 
 export type NoteType = "a" | "b" | "c" | "d" | "e" | "f" | "g";
+
+export interface ToneData {
+  toneID: number;
+  timeout: number;
+}
