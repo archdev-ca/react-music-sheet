@@ -20,6 +20,7 @@ export const getToneSequence = (
       staff.treble.bars.forEach((bar) => {
         if (bar && bar.beats) {
           bar.beats.forEach((beat) => {
+            // Notes
             if (beat && beat.type === "note" && beat.notes) {
               let beatNotes: ToneData[] = [];
               beat.notes.forEach((note) => {
@@ -35,6 +36,10 @@ export const getToneSequence = (
               });
               layer1.push(beatNotes);
               toneID += 1;
+            }
+
+            if (beat && beat.type === "rest") {
+              runningTimeout += (timeout / beat.length) * 7;
             }
           });
         }
