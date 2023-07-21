@@ -12,7 +12,6 @@ interface Props {
   locked?: boolean;
   passive?: boolean;
   staffID?: number;
-  fullWidth?: boolean;
 }
 
 const defaultProps = {
@@ -96,7 +95,6 @@ const BarColumn = ({
   barID,
   beatIndex,
   locked,
-  fullWidth,
 }: Props) => {
   return (
     <div
@@ -106,9 +104,9 @@ const BarColumn = ({
         width: "100%",
       }}
     >
-      {data && data.notes ? (
+      {data ? (
         <BeatLayer className="beatLayer">
-          <Beat type={data.type} length={data.length} notes={data.notes} />
+          <Beat type={data.type} clef={clef} length={data.length} data={data} />
         </BeatLayer>
       ) : null}
       {SPACES_CONFIG[clef].map((space, i) => {

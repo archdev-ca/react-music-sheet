@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
-import { BeatData, BeatType, NoteData, NoteType } from "@/interfaces";
+import { BeatData, BeatType, ClefType, NoteData, NoteType } from "@/interfaces";
 import { BeatImageMap } from "@/interfaces/images";
 
 import wholeNote from "@/assets/notes/whole.png";
@@ -8,32 +8,47 @@ import halfNote from "@/assets/notes/half.png";
 import quarterNote from "@/assets/notes/quarter.png";
 import eightNote from "@/assets/notes/eighth.png";
 import sixteenthNote from "@/assets/notes/sixteenth.png";
+import wholeRest from "@/assets/rest/wholeRest.png";
+import halfRest from "@/assets/rest/halfRest.png";
+import quarterRest from "@/assets/rest/quarterRest.png";
+import eightRest from "@/assets/rest/eightRest.png";
+import sixteenthRest from "@/assets/rest/sixteenthRest.png";
 import { styled } from "@mui/joy";
 import { BeatPos, BeatPosMap } from "@/interfaces/common";
 
 type Props = {
-  notes: NoteData[];
+  data: BeatData;
   type: BeatType;
   length: number;
+  clef: ClefType;
 };
 
 const BeatImage = styled("img")`
+  display: block;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+`;
+const BeatContainer = styled("div")`
+  box-sizing: border-box;
   margin: 0 auto;
   position: absolute;
   left: 0;
   right: 0;
   z-index: 2;
-`;
-const BeatContainer = styled("div")`
-  position: relative;
-  height: 100%;
-  flex-grow: 1;
+  padding: 4px;
+  width: 34px;
 `;
 
 const getBeatPosition = (
   type: BeatType,
-  note: NoteType,
-  variation: number
+  clef?: ClefType,
+  note?: NoteType,
+  variation?: number
 ): BeatPos => {
   const beatPosMap: BeatPosMap = {
     c: {
@@ -105,12 +120,31 @@ const getBeatPosition = (
   };
 
   if (type === "rest") {
-    return { bottom: 0 };
+    return { bottom: clef === "treble" ? 0 : "145px" };
   }
-  if (type === "note" && beatPosMap?.[note]?.[variation]) {
+  if (type === "note" && note && variation && beatPosMap?.[note]?.[variation]) {
     return beatPosMap?.[note]?.[variation];
   }
   return { bottom: 0 };
+};
+
+const getRestPosition = (clef: ClefType, length: number) => {
+  const offset = clef === "treble" ? 95 : 0;
+  const restPosMap: Record<string, number> = {
+    "1": 145,
+    "2": 145,
+    "8": 125,
+    "4": 125,
+    "16": 125,
+  };
+  if (length && restPosMap[length]) {
+    return {
+      bottom: `${restPosMap[length] - offset}px`,
+    };
+  }
+  return {
+    bottom: 0,
+  };
 };
 
 const getNoteImage = (
@@ -122,19 +156,19 @@ const getNoteImage = (
   const imgMap: BeatImageMap = {
     rest: {
       1: {
-        src: "",
+        src: wholeRest,
       },
       2: {
-        src: "",
+        src: halfRest,
       },
       4: {
-        src: "",
+        src: quarterRest,
       },
       8: {
-        src: "",
+        src: eightRest,
       },
       16: {
-        src: "",
+        src: sixteenthRest,
       },
     },
     note: {
@@ -155,20 +189,43 @@ const getNoteImage = (
       },
     },
   };
+  // console.log({ type });
   if (type === "note" && note && variation && imgMap?.[type]?.[length]) {
+    return imgMap?.[type]?.[length].src;
+  } else if (type === "rest" && imgMap?.[type]?.[length]) {
+    // console.log(imgMap?.[type]?.[length]);
     return imgMap?.[type]?.[length].src;
   }
   return "";
 };
 
-const Beat = ({ notes, length, type }: Props) => {
+const Beat = ({ data, clef, length, type }: Props) => {
+  const { notes } = data;
   const { sheetData } = useContext(AppContext);
+  let restPos = null;
+  if (type === "rest" && length) {
+    restPos = getRestPosition(clef, length);
+    console.log({ restPos });
+  }
   return (
-    <BeatContainer>
-      {type === "rest" ? getNoteImage(type, length) : null}
+    <>
+      {type === "rest" ? (
+        <BeatContainer
+          style={{
+            bottom: restPos?.bottom,
+          }}
+        >
+          <BeatImage src={getNoteImage(type, length)} alt="" />
+        </BeatContainer>
+      ) : null}
       {type === "note" && notes && notes.length
         ? notes.map((note, i) => {
-            const beatPos = getBeatPosition(type, note.note, note.variation);
+            const beatPos = getBeatPosition(
+              type,
+              clef,
+              note.note,
+              note.variation
+            );
             const beatImage = getNoteImage(
               type,
               length,
@@ -176,18 +233,18 @@ const Beat = ({ notes, length, type }: Props) => {
               note.variation
             );
             return (
-              <BeatImage
+              <BeatContainer
                 key={i}
                 style={{
                   bottom: beatPos.bottom,
                 }}
-                src={beatImage}
-                alt=""
-              />
+              >
+                <BeatImage src={beatImage} alt="" />
+              </BeatContainer>
             );
           })
         : null}
-    </BeatContainer>
+    </>
   );
 };
 

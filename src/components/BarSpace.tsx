@@ -97,11 +97,11 @@ const BarSpace = ({
             draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[realBeatID]
               .notes &&
             draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[realBeatID]
-              .notes.length
+              .notes?.length
           ) {
             draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[
               realBeatID
-            ].notes.push({
+            ].notes?.push({
               note,
               variation,
             });

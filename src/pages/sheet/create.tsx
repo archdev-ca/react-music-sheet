@@ -51,6 +51,7 @@ const SheetCreate = () => {
   };
 
   const handlePreviewMusic = () => {
+    console.log(JSON.stringify(sheetData));
     const [toneSequence, audioMap] = getToneSequence(sheetData, timeSignature);
     preloadAudio(audioMap, (audioMap) => {
       playPreview(toneSequence, audioMap);

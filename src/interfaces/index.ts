@@ -21,7 +21,7 @@ export type BeatType = "note" | "rest";
 export interface BeatData {
   type: BeatType;
   length: number;
-  notes: NoteData[];
+  notes?: NoteData[];
 }
 
 export interface BarSpaceData {
