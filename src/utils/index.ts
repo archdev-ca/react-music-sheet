@@ -1,29 +1,52 @@
-import { ToneData, SheetData } from "@/interfaces";
+import { ToneData, SheetData, StaffData, ClefType } from "@/interfaces";
 import { TimeSignatureInterface } from "@/interfaces/common";
 
 export const getToneSequence = (
   data: SheetData,
   timeSignature: TimeSignatureInterface
 ) => {
-  const layers = [];
-  const layer1: ToneData[][] = [];
-  const layer2 = [];
-  const bpm = 125;
-  const timeout = 60_000 / bpm;
-  const audioMap: Record<number, string> = {};
-  let runningTimeout = 0;
-  let toneID = 0;
+  const [trebleTones, trebleMap] = getLayerTones(
+    data.staves,
+    timeSignature,
+    "treble"
+  );
+  const [bassTones, bassMap] = getLayerTones(
+    data.staves,
+    timeSignature,
+    "bass"
+  );
+  const layers = [trebleTones, bassTones];
+  const audioMap: Record<string, string> = { ...trebleMap, ...bassMap };
 
-  data.staves.forEach((staff) => {
+  console.log(layers);
+  console.log(audioMap);
+
+  return [layers, audioMap];
+};
+
+export const getLayerTones = (
+  staves: StaffData[],
+  timeSignature: TimeSignatureInterface,
+  layer: ClefType
+): [ToneData[][], Record<string, string>] => {
+  const tones: ToneData[][] = [];
+  const bpm = 136;
+  const timeout = 60_000 / bpm;
+  const audioMap: Record<string, string> = {};
+  let toneCount = 0;
+  let runningTimeout = 0;
+
+  staves.forEach((staff) => {
     // Get treble layer
-    if (staff.treble && staff.treble.bars) {
-      staff.treble.bars.forEach((bar) => {
+    if (staff[layer] && staff[layer].bars) {
+      staff[layer].bars.forEach((bar) => {
         if (bar && bar.beats) {
           bar.beats.forEach((beat) => {
             // Notes
             if (beat && beat.type === "note" && beat.notes) {
               let beatNotes: ToneData[] = [];
               beat.notes.forEach((note) => {
+                const toneID = `${layer}-${toneCount}`;
                 const audioPath = `/public/audio/${note.note}${note.variation}${
                   note.sharp ? "s" : ""
                 }.mp3`;
@@ -32,23 +55,21 @@ export const getToneSequence = (
                   toneID,
                   timeout: runningTimeout,
                 });
-                runningTimeout += (timeout / beat.length) * 7;
+                runningTimeout += timeout * (timeSignature.beat / beat.length);
               });
-              layer1.push(beatNotes);
-              toneID += 1;
+              tones.push(beatNotes);
+              toneCount += 1;
             }
 
             if (beat && beat.type === "rest") {
-              runningTimeout += (timeout / beat.length) * 7;
+              runningTimeout += timeout * (timeSignature.beat / beat.length);
             }
           });
         }
       });
     }
   });
-  layers.push(layer1);
-
-  return [layers, audioMap];
+  return [tones, audioMap];
 };
 
 export const preloadAudio = (

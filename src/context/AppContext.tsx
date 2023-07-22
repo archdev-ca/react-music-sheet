@@ -133,12 +133,12 @@ const DEFAULT_CLEF_DATA: StaffData = {
   },
   bass: {
     bars: [
-      { beats: [{ type: "rest", length: 1 }] },
+      { beats: [{ type: "rest", length: 8 }] },
       {
         beats: [
           {
             type: "rest",
-            length: 1,
+            length: 2,
           },
         ],
       },
@@ -210,8 +210,8 @@ const AppContext = createContext<Context>({
   activeTool: null,
   setActiveTool: () => {},
   timeSignature: {
-    bpm: 4,
-    beat: 4,
+    bpm: 3,
+    beat: 8,
   },
   setTimeSignature: () => {},
   signature: {},
@@ -222,8 +222,8 @@ const AppContextProvider = ({ children }: Props) => {
   const [activeTool, setActiveTool] = useState<ToolData | null>(null);
   const [signature, setSignature] = useState<SignatureInterface>({});
   const [timeSignature, setTimeSignature] = useState<TimeSignatureInterface>({
-    bpm: 4,
-    beat: 4,
+    bpm: 3,
+    beat: 8,
   });
   const [sheetData, setSheetData] = useState<SheetData>(INITIAL_SHEET_DATA);
 
