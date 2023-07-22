@@ -210,7 +210,7 @@ const AppContext = createContext<Context>({
   activeTool: null,
   setActiveTool: () => {},
   timeSignature: {
-    bpm: 3,
+    beatsPerBar: 3,
     beat: 8,
   },
   setTimeSignature: () => {},
@@ -222,7 +222,7 @@ const AppContextProvider = ({ children }: Props) => {
   const [activeTool, setActiveTool] = useState<ToolData | null>(null);
   const [signature, setSignature] = useState<SignatureInterface>({});
   const [timeSignature, setTimeSignature] = useState<TimeSignatureInterface>({
-    bpm: 3,
+    beatsPerBar: 3,
     beat: 8,
   });
   const [sheetData, setSheetData] = useState<SheetData>(INITIAL_SHEET_DATA);

@@ -45,7 +45,7 @@ const SheetCreate = () => {
   ) => {
     let sig = value?.split("/");
     setTimeSignature({
-      bpm: Number(sig?.[0]),
+      beatsPerBar: Number(sig?.[0]),
       beat: Number(sig?.[1]),
     });
   };
@@ -219,7 +219,7 @@ const SheetCreate = () => {
             />
           </IconButton>
           <Select
-            defaultValue={`${timeSignature?.bpm}/${timeSignature?.beat}`}
+            defaultValue={`${timeSignature?.beatsPerBar}/${timeSignature?.beat}`}
             onChange={handleChangeSignature}
           >
             <Option value="4/4">4/4</Option>

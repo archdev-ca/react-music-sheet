@@ -3,7 +3,7 @@ import { BeatType } from ".";
 export type Clef = "bass" | "treble";
 
 export interface TimeSignatureInterface {
-  bpm: number;
+  beatsPerBar: number;
   beat: number;
 }
 

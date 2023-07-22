@@ -33,6 +33,7 @@ export const getLayerTones = (
   const bpm = 136;
   const timeout = 60_000 / bpm;
   const audioMap: Record<string, string> = {};
+  const barDuration = timeout * timeSignature.beatsPerBar;
   let toneCount = 0;
   let runningTimeout = 0;
 
@@ -62,7 +63,12 @@ export const getLayerTones = (
             }
 
             if (beat && beat.type === "rest") {
-              runningTimeout += timeout * (timeSignature.beat / beat.length);
+              const restDuration = timeout * (timeSignature.beat / beat.length);
+              if (restDuration > barDuration) {
+                runningTimeout += barDuration;
+              } else {
+                runningTimeout += restDuration;
+              }
             }
           });
         }
