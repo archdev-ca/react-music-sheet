@@ -4,7 +4,7 @@ import { TimeSignatureInterface } from "@/interfaces/common";
 export const getToneSequence = (
   data: SheetData,
   timeSignature: TimeSignatureInterface
-) => {
+): [ToneData[][], Record<string, string>] => {
   const [trebleTones, trebleMap] = getLayerTones(
     data.staves,
     timeSignature,
@@ -15,11 +15,8 @@ export const getToneSequence = (
     timeSignature,
     "bass"
   );
-  const layers = [trebleTones, bassTones];
+  const layers = trebleTones.concat(bassTones);
   const audioMap: Record<string, string> = { ...trebleMap, ...bassMap };
-
-  console.log(layers);
-  console.log(audioMap);
 
   return [layers, audioMap];
 };
@@ -56,8 +53,8 @@ export const getLayerTones = (
                   toneID,
                   timeout: runningTimeout,
                 });
-                runningTimeout += timeout * (timeSignature.beat / beat.length);
               });
+              runningTimeout += timeout * (timeSignature.beat / beat.length);
               tones.push(beatNotes);
               toneCount += 1;
             }
@@ -102,10 +99,10 @@ export const preloadAudio = (
 };
 
 export const playPreview = (
-  toneSequence: ToneData[][][],
+  toneSequence: ToneData[][],
   audioMap: Record<string, HTMLAudioElement>
 ) => {
-  toneSequence[0].forEach((beat) => {
+  toneSequence.forEach((beat) => {
     beat.forEach((tone) => {
       setTimeout(() => {
         audioMap[tone.toneID].play();
