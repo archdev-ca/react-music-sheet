@@ -9,8 +9,7 @@ interface Props {
   className?: "string";
 }
 
-const StyledBar = styled("div")<Props>(
-  ({ clef }) => `
+const StyledBar = styled("div")`
   position: relative;
   display: flex;
   min-width: 120px;
@@ -24,18 +23,17 @@ const StyledBar = styled("div")<Props>(
     width: 2px;
     background-color: #000;
   }
-  &>img {
+  & > img {
     position: absolute;
     left: 10px;
     bottom: 15px;
     z-index: 2;
   }
-`
-);
+`;
 
 const BarSignature = ({ clef }: Props) => {
   return (
-    <StyledBar clef={clef}>
+    <StyledBar>
       <img
         src={clef === "treble" ? trebleSign : bassSign}
         alt=""

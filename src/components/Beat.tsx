@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
-import { BeatData, BeatType, ClefType, NoteData, NoteType } from "@/interfaces";
+import { BeatData, BeatType, ClefType, NoteType } from "@/interfaces";
 import { BeatImageMap } from "@/interfaces/images";
 
 import wholeNote from "@/assets/notes/whole.png";
@@ -125,7 +125,7 @@ const getBeatPosition = (
   };
 
   if (type === "rest") {
-    return { bottom: clef === "treble" ? 0 : "145px" };
+    return { bottom: clef === "treble" ? 0 : 145 };
   }
   if (type === "note" && note && variation && beatPosMap?.[note]?.[variation]) {
     return beatPosMap?.[note]?.[variation];
