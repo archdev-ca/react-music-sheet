@@ -1,23 +1,61 @@
-import { Grid, Sheet } from "@mui/joy";
+import {
+  Card,
+  CardContent,
+  Grid,
+  IconButton,
+  Sheet,
+  Stack,
+  Typography,
+} from "@mui/joy";
 import { Outlet } from "react-router-dom";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const DefaultLayout = () => {
   return (
-    <Sheet
-      sx={{
-        maxWidth: 1200,
-        mx: "auto",
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "transparent",
-      }}
-    >
-      <Grid container spacing={2}>
-        <Grid xs={12}>
-          <Outlet />
+    <>
+      <Card
+        sx={{
+          borderRadius: 0,
+        }}
+      >
+        <CardContent>
+          <Sheet
+            sx={{
+              maxWidth: 1200,
+              width: "100%",
+              mx: "auto",
+            }}
+          >
+            <Stack direction="row" justifyContent="space-between">
+              <Typography level="h4">Sheet Music</Typography>
+              <IconButton
+                variant="plain"
+                href="https://github.com/archdev-ca/react-music-sheet"
+                component="a"
+                target="_blank"
+              >
+                <GitHubIcon />
+              </IconButton>
+            </Stack>
+          </Sheet>
+        </CardContent>
+      </Card>
+      <Sheet
+        sx={{
+          maxWidth: 1200,
+          mx: "auto",
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "transparent",
+        }}
+      >
+        <Grid container spacing={2}>
+          <Grid xs={12}>
+            <Outlet />
+          </Grid>
         </Grid>
-      </Grid>
-    </Sheet>
+      </Sheet>
+    </>
   );
 };
 
