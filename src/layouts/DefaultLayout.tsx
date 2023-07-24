@@ -7,8 +7,9 @@ import {
   Stack,
   Typography,
 } from "@mui/joy";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import logo from "@/assets/images/logo.svg";
 
 const DefaultLayout = () => {
   return (
@@ -27,7 +28,16 @@ const DefaultLayout = () => {
             }}
           >
             <Stack direction="row" justifyContent="space-between">
-              <Typography level="h4">Sheet Music</Typography>
+              <Typography level="h4">
+                <Link to="/">
+                  <img
+                    src={logo}
+                    style={{
+                      marginBottom: "-20px",
+                    }}
+                  />
+                </Link>
+              </Typography>
               <IconButton
                 variant="plain"
                 href="https://github.com/archdev-ca/react-music-sheet"
