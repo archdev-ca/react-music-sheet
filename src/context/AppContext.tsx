@@ -19,9 +19,44 @@ interface Context {
   setTimeSignature: Dispatch<SetStateAction<TimeSignatureInterface>>;
   signature: SignatureInterface;
   setSignature: Dispatch<SetStateAction<SignatureInterface>>;
+  DEFAULT_CLEF_DATA: StaffData;
 }
 
 const DEFAULT_CLEF_DATA: StaffData = {
+  treble: {
+    bars: [
+      {
+        beats: [],
+      },
+      {
+        beats: [],
+      },
+      {
+        beats: [],
+      },
+      {
+        beats: [],
+      },
+    ],
+  },
+  bass: {
+    bars: [
+      {
+        beats: [],
+      },
+      {
+        beats: [],
+      },
+      {
+        beats: [],
+      },
+      {
+        beats: [],
+      },
+    ],
+  },
+};
+const PLACEHOLDER_CLEF_DATA: StaffData = {
   treble: {
     bars: [
       {
@@ -199,9 +234,8 @@ const DEFAULT_CLEF_DATA: StaffData = {
     ],
   },
 };
-
 const INITIAL_SHEET_DATA: SheetData = {
-  staves: [DEFAULT_CLEF_DATA],
+  staves: [PLACEHOLDER_CLEF_DATA],
 };
 
 const AppContext = createContext<Context>({
@@ -216,6 +250,7 @@ const AppContext = createContext<Context>({
   setTimeSignature: () => {},
   signature: {},
   setSignature: () => {},
+  DEFAULT_CLEF_DATA,
 });
 
 const AppContextProvider = ({ children }: Props) => {
@@ -238,6 +273,7 @@ const AppContextProvider = ({ children }: Props) => {
         setSheetData,
         timeSignature,
         setTimeSignature,
+        DEFAULT_CLEF_DATA,
       }}
     >
       {children}
