@@ -57,76 +57,153 @@ const getBeatPosition = (
 ): BeatPos => {
   const beatPosMap: BeatPosMap = {
     c: {
-      "1": { bottom: 15 },
-      "2": { bottom: 74 },
-      "3": { bottom: 134 },
-      "4": { bottom: -6 },
-      "5": { bottom: 57 },
-      "6": { bottom: 117 },
-      "7": { bottom: 176 },
-      "8": { bottom: 236 },
+      // "1": { bottom: 15 },
+      // "2": { bottom: 74 },
+      // "3": { bottom: 134 },
+      // "4": { bottom: -6 },
+      // "5": { bottom: 57 },
+      // "6": { bottom: 117 },
+      // "7": { bottom: 176 },
+      // "8": { bottom: 236 },
     },
     d: {
-      "1": { bottom: 23 },
-      "2": { bottom: 83 },
-      "3": { bottom: 142 },
-      "4": { bottom: 6 },
-      "5": { bottom: 66 },
-      "6": { bottom: 125 },
-      "7": { bottom: 185 },
+      // "1": { bottom: 23 },
+      // "2": { bottom: 83 },
+      // "3": { bottom: 142 },
+      // "4": { bottom: 6 },
+      // "5": { bottom: 66 },
+      // "6": { bottom: 125 },
+      // "7": { bottom: 185 },
     },
     e: {
-      "1": { bottom: 32 },
-      "2": { bottom: 91 },
-      "3": { bottom: 151 },
-      "4": { bottom: 15 },
-      "5": { bottom: 74 },
-      "6": { bottom: 134 },
-      "7": { bottom: 193 },
+      // "1": { bottom: 32 },
+      // "2": { bottom: 91 },
+      // "3": { bottom: 151 },
+      // "4": { bottom: 15 },
+      // "5": { bottom: 74 },
+      // "6": { bottom: 134 },
+      // "7": { bottom: 193 },
     },
     f: {
-      "1": { bottom: 40 },
-      "2": { bottom: 100 },
-      "3": { bottom: 159 },
-      "4": { bottom: 23 },
-      "5": { bottom: 83 },
-      "6": { bottom: 142 },
-      "7": { bottom: 202 },
+      // "1": { bottom: 40 },
+      // "2": { bottom: 100 },
+      // "3": { bottom: 159 },
+      // "4": { bottom: 23 },
+      // "5": { bottom: 83 },
+      // "6": { bottom: 142 },
+      // "7": { bottom: 202 },
     },
     g: {
-      "1": { bottom: 49 },
-      "2": { bottom: 108 },
-      "3": { bottom: 168 },
-      "4": { bottom: 32 },
-      "5": { bottom: 91 },
-      "6": { bottom: 151 },
-      "7": { bottom: 210 },
+      // "1": { bottom: 49 },
+      // "2": { bottom: 108 },
+      // "3": { bottom: 168 },
+      // "4": { bottom: 32 },
+      // "5": { bottom: 91 },
+      // "6": { bottom: 151 },
+      // "7": { bottom: 210 },
     },
     a: {
-      "0": { bottom: -2 },
-      "1": { bottom: 57 },
-      "2": { bottom: 117 },
-      "3": { bottom: 176 },
-      "4": { bottom: 40 },
-      "5": { bottom: 100 },
-      "6": { bottom: 159 },
-      "7": { bottom: 219 },
+      // "0": { bottom: -2 },
+      // "1": { bottom: 57 },
+      // "2": { bottom: 117 },
+      // "3": { bottom: 176 },
+      // "4": { bottom: 40 },
+      // "5": { bottom: 100 },
+      // "6": { bottom: 159 },
+      // "7": { bottom: 219 },
     },
     b: {
-      "0": { bottom: 6 },
-      "1": { bottom: 66 },
-      "2": { bottom: 125 },
-      "3": { bottom: 185 },
-      "4": { bottom: 49 },
-      "5": { bottom: 108 },
-      "6": { bottom: 168 },
-      "7": { bottom: 228 },
+      // "0": { bottom: 6 },
+      // "1": { bottom: 66 },
+      // "2": { bottom: 125 },
+      // "3": { bottom: 185 },
+      // "4": { bottom: 49 },
+      // "5": { bottom: 108 },
+      // "6": { bottom: 168 },
+      // "7": { bottom: 228 },
     },
   };
 
-  if (type === "rest") {
-    return { bottom: clef === "treble" ? 0 : 145 };
-  }
+  beatPosMap["c"]["4"] = {
+    bottom: -24,
+  };
+  beatPosMap["d"]["4"] = {
+    bottom: -16,
+  };
+  beatPosMap["e"]["4"] = {
+    bottom: -7,
+  };
+  beatPosMap["f"]["4"] = {
+    bottom: 2,
+  };
+  beatPosMap["g"]["4"] = {
+    bottom: 12,
+  };
+  beatPosMap["a"]["4"] = {
+    bottom: 20,
+  };
+  beatPosMap["b"]["4"] = {
+    bottom: 29,
+  };
+  beatPosMap["c"]["5"] = {
+    bottom: 38,
+  };
+  beatPosMap["d"]["5"] = {
+    bottom: 47,
+  };
+  beatPosMap["e"]["5"] = {
+    bottom: 56,
+  };
+  beatPosMap["f"]["5"] = {
+    bottom: 65,
+  };
+  beatPosMap["g"]["5"] = {
+    bottom: 74,
+  };
+  beatPosMap["a"]["5"] = {
+    bottom: 83,
+  };
+
+  beatPosMap["e"]["2"] = {
+    bottom: -24,
+  };
+  beatPosMap["f"]["2"] = {
+    bottom: -16,
+  };
+  beatPosMap["g"]["2"] = {
+    bottom: -7,
+  };
+  beatPosMap["a"]["2"] = {
+    bottom: 2,
+  };
+  beatPosMap["b"]["2"] = {
+    bottom: 12,
+  };
+  beatPosMap["c"]["3"] = {
+    bottom: 20,
+  };
+  beatPosMap["d"]["3"] = {
+    bottom: 29,
+  };
+  beatPosMap["e"]["3"] = {
+    bottom: 38,
+  };
+  beatPosMap["f"]["3"] = {
+    bottom: 47,
+  };
+  beatPosMap["g"]["3"] = {
+    bottom: 56,
+  };
+  beatPosMap["a"]["3"] = {
+    bottom: 65,
+  };
+  beatPosMap["b"]["3"] = {
+    bottom: 74,
+  };
+  // beatPosMap["c"]["4"] = {
+  //   bottom: 83,
+  // };
+
   if (type === "note" && note && variation && beatPosMap?.[note]?.[variation]) {
     return beatPosMap?.[note]?.[variation];
   }
@@ -134,13 +211,13 @@ const getBeatPosition = (
 };
 
 const getRestPosition = (clef: ClefType, length: number) => {
-  const offset = clef === "treble" ? 95 : 0;
+  const offset = clef === "treble" ? 0 : 0;
   const restPosMap: Record<string, number> = {
-    "1": 145,
-    "2": 145,
-    "8": 132,
-    "4": 132,
-    "16": 132,
+    "1": 31,
+    "2": 31,
+    "8": 26,
+    "4": 26,
+    "16": 26,
   };
   if (length && restPosMap[length]) {
     return {
@@ -231,7 +308,7 @@ const getNoteImage = (
 const Beat = ({ data, clef, length, type }: Props) => {
   const { notes } = data;
   const { sheetData } = useContext(AppContext);
-  const offset = clef === "treble" ? 4 : -74;
+  const offset = 4;
   let restPos = null;
   let restImage = null;
   if (type === "rest" && length) {
@@ -281,6 +358,7 @@ const Beat = ({ data, clef, length, type }: Props) => {
                   </Accidental>
                 ) : null}
                 <BeatImage
+                  data-note={`${note.note}-${note.variation}`}
                   width={beatImage.width}
                   height={beatImage.height}
                   src={beatImage.src}
