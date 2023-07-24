@@ -340,6 +340,11 @@ const INITIAL_SHEET_DATA: SheetData = {
                 notes: [{ note: "b", variation: 4 }],
               },
               {
+                type: "rest",
+                length: 16,
+                notes: [{ note: "a", variation: 4 }],
+              },
+              {
                 type: "note",
                 length: 16,
                 notes: [{ note: "d", variation: 4 }],
@@ -428,7 +433,33 @@ const INITIAL_SHEET_DATA: SheetData = {
             ],
           },
           {
-            beats: [],
+            beats: [
+              {
+                type: "note",
+                length: 16,
+                notes: [{ note: "e", variation: 2 }],
+              },
+              {
+                type: "note",
+                length: 16,
+                notes: [{ note: "e", variation: 3 }],
+              },
+              {
+                type: "note",
+                length: 16,
+                notes: [{ note: "g", variation: 3, sharp: true }],
+              },
+              {
+                type: "rest",
+                length: 16,
+                notes: [{ note: "e", variation: 3 }],
+              },
+              {
+                type: "rest",
+                length: 8,
+                notes: [{ note: "d", variation: 3 }],
+              },
+            ],
           },
         ],
       },
@@ -442,26 +473,6 @@ const INITIAL_SHEET_DATA: SheetData = {
                 type: "note",
                 length: 4,
                 notes: [{ note: "a", variation: 4 }],
-              },
-              {
-                type: "rest",
-                length: 16,
-                notes: [{ note: "b", variation: 4 }],
-              },
-              {
-                type: "note",
-                length: 16,
-                notes: [{ note: "d", variation: 4 }],
-              },
-              {
-                type: "note",
-                length: 16,
-                notes: [{ note: "c", variation: 5 }],
-              },
-              {
-                type: "note",
-                length: 16,
-                notes: [{ note: "b", variation: 4 }],
               },
             ],
           },
@@ -493,11 +504,6 @@ const INITIAL_SHEET_DATA: SheetData = {
                 type: "rest",
                 length: 16,
                 notes: [{ note: "d", variation: 3 }],
-              },
-              {
-                type: "rest",
-                length: 8,
-                notes: [{ note: "e", variation: 3 }],
               },
             ],
           },
