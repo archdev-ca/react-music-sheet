@@ -72,7 +72,7 @@ const BarSpace = ({
       activeTool
     ) {
       const nextState = produce(sheetData, (draft) => {
-        if (beatIndex && beatIndex.toString() === "0,") {
+        if (beatIndex && beatIndex.toString() === "0,0") {
           // Add to beginning
           draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.unshift({
             type: activeTool.type,
@@ -87,9 +87,10 @@ const BarSpace = ({
             notes: [noteData],
           });
         } else if (beatIndex && beatIndex.length === 2) {
-          // Add in between
-          const realBeatID = beatIndex[0];
+          const [realBeatID, nudge] = beatIndex;
+          // Add note to beat
           if (
+            !nudge &&
             realBeatID &&
             draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[
               realBeatID
@@ -105,6 +106,22 @@ const BarSpace = ({
               note,
               variation,
             });
+          }
+          // Add note in between two beats
+          if (
+            nudge &&
+            realBeatID &&
+            draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.[realBeatID]
+          ) {
+            draft?.staves?.[staffID]?.[clef]?.bars?.[barID]?.beats?.splice(
+              realBeatID,
+              0,
+              {
+                type: activeTool.type,
+                length: activeTool.length,
+                notes: [noteData],
+              }
+            );
           }
         }
       });
