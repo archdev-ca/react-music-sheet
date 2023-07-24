@@ -1,6 +1,4 @@
 import { styled } from "@mui/joy";
-import { useContext } from "react";
-import { AppContext } from "@/context/AppContext";
 import BarColumn from "./BarColumn";
 import trebleSign from "@/assets/images/treble.png";
 import bassSign from "@/assets/images/bass.png";
@@ -21,9 +19,9 @@ const StyledBar = styled("div")<Props>(
     display: block;
     position: absolute;
     left: 0;
-    top: ${clef === "treble" ? "158px" : "12px"};
-    bottom: ${clef === "treble" ? "22px" : "115px"};
-    width: 4px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
     background-color: #000;
   }
   &>img {
@@ -36,14 +34,13 @@ const StyledBar = styled("div")<Props>(
 );
 
 const BarSignature = ({ clef }: Props) => {
-  const { timeSignature } = useContext(AppContext);
   return (
     <StyledBar clef={clef}>
       <img
         src={clef === "treble" ? trebleSign : bassSign}
         alt=""
         style={{
-          bottom: clef === "treble" ? "15px" : "127px",
+          bottom: clef === "treble" ? "-2px" : "18px",
         }}
       />
       <BarColumn passive clef={clef} />

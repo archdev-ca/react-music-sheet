@@ -8,15 +8,25 @@ interface Props {
 }
 
 const Spacer = styled("div")`
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 `;
 
 const Staff = ({ data, staffID }: Props) => {
   return (
     <div>
-      <Clef staffID={staffID} clef="treble" data={data.treble} />
+      <Clef
+        style={{ paddingTop: 36, paddingBottom: 18 }}
+        staffID={staffID}
+        clef="treble"
+        data={data.treble}
+      />
       <Spacer />
-      <Clef staffID={staffID} clef="bass" data={data.bass} />
+      <Clef
+        style={{ paddingTop: 18, paddingBottom: 18 }}
+        staffID={staffID}
+        clef="bass"
+        data={data.bass}
+      />
     </div>
   );
 };

@@ -10,7 +10,7 @@ export interface TimeSignatureInterface {
 export interface SignatureInterface {}
 
 export interface BeatPos {
-  bottom: string | number;
+  bottom: number;
 }
 export interface BeatPosMap {
   [key: string]: {

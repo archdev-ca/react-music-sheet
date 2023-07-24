@@ -30,6 +30,7 @@ export interface BarSpaceData {
   floating?: boolean;
   note: NoteType;
   variation: number;
+  bottom: number;
 }
 
 export interface NoteData {

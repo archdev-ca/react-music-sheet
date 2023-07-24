@@ -16,6 +16,7 @@ interface Props {
   variation: number;
   clef?: Clef;
   locked?: boolean;
+  bottom?: number;
 }
 
 const defaultProps = {
@@ -25,7 +26,9 @@ const defaultProps = {
 };
 
 const StyledBarSpace = styled("div")<Props>(({ theme, passive }) => ({
-  position: "relative",
+  position: "absolute",
+  left: 0,
+  right: 0,
   zIndex: 1,
   padding: "4px 0",
   "&:hover": {
@@ -51,6 +54,7 @@ const BarSpace = ({
   note,
   variation,
   locked,
+  bottom,
 }: Props) => {
   const { activeTool, sheetData, setSheetData } = useContext(AppContext);
 
@@ -138,14 +142,20 @@ const BarSpace = ({
       staffID={staffID}
       barID={barID}
       onClick={handleAddBeat}
+      style={{
+        bottom,
+      }}
+      data-note={`${note}-${variation}`}
     >
-      {line ? (
-        <Line
-          style={{
-            backgroundColor: floating ? "rgba(0,0,0, .15)" : "#000",
-          }}
-        ></Line>
-      ) : null}
+      <Line
+        style={{
+          backgroundColor: line
+            ? floating
+              ? "rgba(0,0,0, .05)"
+              : "#000"
+            : "transparent",
+        }}
+      ></Line>
     </StyledBarSpace>
   );
 };
