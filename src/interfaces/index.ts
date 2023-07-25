@@ -45,3 +45,13 @@ export interface ToneData {
   toneID: string;
   timeout: number;
 }
+
+export interface SelectedSymbolInterface {
+  id: string;
+  type: "rest" | "note";
+  staffID: number | undefined;
+  clef: ClefType;
+  barID: number | undefined;
+  beatIndex: number | undefined;
+  noteID?: number;
+}

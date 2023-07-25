@@ -7,6 +7,7 @@ import CssBaseline from "@mui/joy/CssBaseline";
 import GlobalStyles from "@mui/joy/GlobalStyles";
 import "@fontsource/public-sans";
 import App from "./App";
+import { SelectionContextProvider } from "./context/SelectionContext";
 
 const inputGlobalStyes = (
   <GlobalStyles
@@ -27,7 +28,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <CssBaseline />
         {inputGlobalStyes}
         <AppContextProvider>
-          <App />
+          <SelectionContextProvider>
+            <App />
+          </SelectionContextProvider>
         </AppContextProvider>
       </CssVarsProvider>
     </BrowserRouter>

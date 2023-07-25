@@ -13,8 +13,7 @@ interface Props {
   barID: number;
 }
 
-const StyledBar = styled("div")<Props>(
-  ({ clef }) => `
+const StyledBar = styled("div")`
   position: relative;
   width: 25%;
   display: flex;
@@ -27,19 +26,16 @@ const StyledBar = styled("div")<Props>(
     bottom: 5px;
     width: 2px;
     background-color: #000;
-    z-index: 2;
-  }
-`
-);
+`;
 
 const Bar = ({ clef, data, staffID, barID }: Props) => {
   const { timeSignature } = useContext(AppContext);
   let orderIndex = 0;
   return (
-    <StyledBar barID={barID} staffID={staffID} clef={clef}>
+    <StyledBar>
       {data && data.beats && data.beats.length ? (
         <BarColumn
-          beatIndex={[0, 0]}
+          beatIndex={[0, null]}
           barID={barID}
           staffID={staffID}
           clef={clef}
@@ -79,7 +75,7 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
       )}
       {data && data.beats && data.beats.length ? (
         <BarColumn
-          beatIndex={[-1, 0]}
+          beatIndex={[-1, null]}
           barID={barID}
           staffID={staffID}
           clef={clef}

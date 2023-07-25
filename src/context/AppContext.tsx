@@ -1,4 +1,4 @@
-import { SheetData, StaffData } from "@/interfaces";
+import { SelectedSymbolInterface, SheetData, StaffData } from "@/interfaces";
 import {
   SignatureInterface,
   TimeSignatureInterface,

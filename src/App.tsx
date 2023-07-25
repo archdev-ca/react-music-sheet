@@ -2,15 +2,22 @@ import { Route, Routes } from "react-router-dom";
 import DefaultLayout from "@/layouts/DefaultLayout";
 import SheetIndex from "@/pages/sheet";
 import SheetCreate from "@/pages/sheet/create";
+import { SelectionContext } from "./context/SelectionContext";
+import { useContext } from "react";
+import PopupToolbar from "./components/PopupToolbar";
 
 function App() {
+  const { selectedSymbol } = useContext(SelectionContext);
   return (
-    <Routes>
-      <Route path="/" element={<DefaultLayout />}>
-        <Route index element={<SheetIndex />} />
-        <Route path="create" element={<SheetCreate />} />
-      </Route>
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<DefaultLayout />}>
+          <Route index element={<SheetIndex />} />
+          <Route path="create" element={<SheetCreate />} />
+        </Route>
+      </Routes>
+      {selectedSymbol ? <PopupToolbar /> : null}
+    </>
   );
 }
 

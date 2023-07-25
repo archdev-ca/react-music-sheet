@@ -76,14 +76,14 @@ const BarSpace = ({
       activeTool
     ) {
       const nextState = produce(sheetData, (draft) => {
-        if (beatIndex && beatIndex.toString() === "0,0") {
+        if (beatIndex && beatIndex.toString() === "0,") {
           // Add to beginning
           draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.unshift({
             type: activeTool.type,
             length: activeTool.length,
             notes: [noteData],
           });
-        } else if (beatIndex && beatIndex.toString() === "-1,0") {
+        } else if (beatIndex && beatIndex.toString() === "-1,") {
           // Add to end
           draft?.staves?.[staffID]?.[clef]?.bars?.[barID].beats.push({
             type: activeTool.type,

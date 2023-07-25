@@ -1,6 +1,11 @@
 import { useContext } from "react";
-import { AppContext } from "@/context/AppContext";
-import { BeatData, BeatType, ClefType, NoteType } from "@/interfaces";
+import {
+  BeatData,
+  BeatType,
+  ClefType,
+  NoteType,
+  SelectedSymbolInterface,
+} from "@/interfaces";
 import { BeatImageMap } from "@/interfaces/images";
 
 import wholeNote from "@/assets/notes/whole.png";
@@ -14,14 +19,19 @@ import quarterRest from "@/assets/rest/quarterRest.png";
 import eightRest from "@/assets/rest/eightRest.png";
 import sixteenthRest from "@/assets/rest/sixteenthRest.png";
 import sharp from "@/assets/sharp.png";
-import { styled } from "@mui/joy";
+import { styled, useTheme } from "@mui/joy";
 import { BeatPos, BeatPosMap } from "@/interfaces/common";
+import { SelectionContext } from "@/context/SelectionContext";
+import PopupToolbar from "./PopupToolbar";
 
 type Props = {
   data: BeatData;
   type: BeatType;
   length: number;
   clef: ClefType;
+  staffID: number | undefined;
+  barID: number | undefined;
+  beatIndex: [number, number | null] | undefined;
 };
 
 const BeatImage = styled("img")`
@@ -29,7 +39,8 @@ const BeatImage = styled("img")`
   margin: 0 auto;
   left: 0;
   right: 0;
-  z-index: 2;
+  position: relative;
+  z-index: -1;
   max-width: 100%;
   transform: translateY(2px);
 `;
@@ -305,9 +316,60 @@ const getNoteImage = (
   };
 };
 
-const Beat = ({ data, clef, length, type }: Props) => {
+const generateBeatID = (
+  type: SelectedSymbolInterface["type"],
+  staffID: SelectedSymbolInterface["staffID"],
+  clef: ClefType,
+  barID: SelectedSymbolInterface["barID"],
+  beatIndex: SelectedSymbolInterface["beatIndex"]
+) => {
+  // return `${type}.staves:${staffID}.clef:${clef}.bars:${barID}.beats:${beatIndex}`;
+  return `staves:${staffID}.${clef}.bars:${barID}.beats:${beatIndex}`;
+};
+
+const getNoteID = (beatID: string, noteID: number) => {
+  return `${beatID}.notes:${noteID}`;
+};
+
+const isBeatSelected = (
+  selectedSymbol: SelectedSymbolInterface | null,
+  beatID: string,
+  noteID?: number
+) => {
+  const selectedSymbolID = selectedSymbol
+    ? generateBeatID(
+        selectedSymbol?.type,
+        selectedSymbol?.staffID,
+        selectedSymbol?.clef,
+        selectedSymbol?.barID,
+        selectedSymbol?.beatIndex
+      )
+    : "";
+  if (noteID !== undefined) {
+    if (getNoteID(selectedSymbolID, noteID) === getNoteID(beatID, noteID)) {
+      return true;
+    }
+  } else {
+    if (selectedSymbol && beatID === selectedSymbolID) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const Beat = ({
+  staffID,
+  barID,
+  beatIndex,
+  data,
+  clef,
+  length,
+  type,
+}: Props) => {
   const { notes } = data;
-  const { sheetData } = useContext(AppContext);
+
+  const { selectedSymbol, setSelectedSymbol } = useContext(SelectionContext);
+
   const offset = 4;
   let restPos = null;
   let restImage = null;
@@ -315,12 +377,40 @@ const Beat = ({ data, clef, length, type }: Props) => {
     restPos = getRestPosition(clef, length);
     restImage = getNoteImage(type, length);
   }
+  const beatID = generateBeatID(
+    type,
+    staffID,
+    clef,
+    barID,
+    beatIndex ? beatIndex[0] : undefined
+  );
+
+  const handleSelectSymbol = (symbolData: SelectedSymbolInterface) => {
+    if (selectedSymbol && selectedSymbol.id === symbolData.id) {
+      setSelectedSymbol(null);
+      return;
+    }
+    setSelectedSymbol(symbolData);
+  };
+
   return (
     <>
       {type === "rest" ? (
         <BeatContainer
           style={{
             bottom: restPos?.bottom,
+          }}
+          id={beatID}
+          onClick={() => {
+            handleSelectSymbol({
+              id: beatID,
+              type: "rest",
+              staffID,
+              barID,
+              beatIndex:
+                beatIndex && beatIndex[1] !== null ? beatIndex[0] : undefined,
+              clef,
+            });
           }}
         >
           <BeatImage
@@ -345,11 +435,27 @@ const Beat = ({ data, clef, length, type }: Props) => {
               note.note,
               note.variation
             );
+            const identifier = getNoteID(beatID, i);
             return (
               <BeatContainer
                 key={i}
+                id={identifier}
                 style={{
                   bottom: `${beatPos.bottom + offset}px`,
+                  // boxShadow: `inset 0 0 1px 1px ${theme.palette.primary[400]}`,
+                }}
+                onClick={() => {
+                  handleSelectSymbol({
+                    id: identifier,
+                    type: "note",
+                    staffID,
+                    barID,
+                    beatIndex:
+                      beatIndex && beatIndex[1] !== null
+                        ? beatIndex[0]
+                        : undefined,
+                    clef,
+                  });
                 }}
               >
                 {note.sharp ? (

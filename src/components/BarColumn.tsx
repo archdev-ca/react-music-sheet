@@ -5,7 +5,7 @@ import { styled } from "@mui/joy";
 
 interface Props {
   barID?: number;
-  beatIndex?: [number | null, number | null];
+  beatIndex?: [number, number | null];
   className?: "string";
   clef: ClefType;
   data?: BeatData | undefined;
@@ -276,8 +276,16 @@ const BarColumn = ({
       }}
     >
       {data ? (
-        <BeatLayer className="beatLayer">
-          <Beat type={data.type} clef={clef} length={data.length} data={data} />
+        <BeatLayer>
+          <Beat
+            staffID={staffID}
+            barID={barID}
+            beatIndex={beatIndex}
+            type={data.type}
+            clef={clef}
+            length={data.length}
+            data={data}
+          />
         </BeatLayer>
       ) : null}
       {SPACES_CONFIG[clef].map((space, i) => {
