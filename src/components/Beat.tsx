@@ -455,6 +455,7 @@ const Beat = ({
                         ? beatIndex[0]
                         : undefined,
                     clef,
+                    noteID: i,
                   });
                 }}
               >
