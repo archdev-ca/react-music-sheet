@@ -7,15 +7,32 @@ type Props = {};
 
 const ToolbarWrapper = styled("div")`
   position: absolute;
-  bottom: 0;
   left: 0;
   z-index: 4;
 `;
 
 const PopupToolbar = (props: Props) => {
   const { selectedSymbol } = useContext(SelectionContext);
+
+  const target =
+    selectedSymbol && selectedSymbol.id
+      ? document.getElementById(selectedSymbol.id)
+      : null;
+  const coords = { x: 0, y: 0 };
+  if (target) {
+    const targetCoords = target.getBoundingClientRect();
+    console.log(targetCoords);
+    coords["x"] = targetCoords.x + targetCoords.width;
+    coords["y"] = targetCoords.y - 56;
+  }
+
   return (
-    <ToolbarWrapper>
+    <ToolbarWrapper
+      style={{
+        left: coords.x,
+        top: coords.y,
+      }}
+    >
       <Card
         sx={{
           boxShadow: "0 0 10px 0 rgba(0,0,0, .25)",
