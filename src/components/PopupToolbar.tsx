@@ -1,13 +1,11 @@
-import { Card, CardContent, IconButton, Sheet, Stack, styled } from "@mui/joy";
+import { Card, CardContent, IconButton, Stack, styled } from "@mui/joy";
 import ClearIcon from "@mui/icons-material/Clear";
-import React, { useContext } from "react";
+import * as React from "react";
 import { SelectionContext } from "@/context/SelectionContext";
 import sharpImage from "@/assets/sharp.png";
 import { AppContext } from "@/context/AppContext";
 import { produce } from "immer";
 import { BeatData, NoteData } from "@/interfaces";
-
-type Props = {};
 
 const ToolbarWrapper = styled("div")`
   position: absolute;
@@ -15,9 +13,9 @@ const ToolbarWrapper = styled("div")`
   z-index: 4;
 `;
 
-const PopupToolbar = (props: Props) => {
-  const { selectedSymbol } = useContext(SelectionContext);
-  const { sheetData, setSheetData } = useContext(AppContext);
+const PopupToolbar = () => {
+  const { selectedSymbol } = React.useContext(SelectionContext);
+  const { sheetData, setSheetData } = React.useContext(AppContext);
 
   const target =
     selectedSymbol && selectedSymbol.id
@@ -85,6 +83,10 @@ const PopupToolbar = (props: Props) => {
     setSheetData(newState);
   };
 
+  const handleClickDelete = () => {
+    console.log("test");
+  };
+
   return (
     <ToolbarWrapper
       style={{
@@ -103,21 +105,26 @@ const PopupToolbar = (props: Props) => {
           <Stack
             direction="row"
             sx={{
-              whiteSpace: "nowrap",
               p: 0,
+              whiteSpace: "nowrap",
             }}
           >
             {selectedSymbol && selectedSymbol.type === "note" ? (
               <IconButton
-                size="sm"
-                variant={noteData?.sharp ? "solid" : "plain"}
                 color="primary"
                 onClick={handleClickSharp}
+                size="sm"
+                variant={noteData?.sharp ? "solid" : "plain"}
               >
-                <img src={sharpImage} alt="" height="14" />
+                <img alt="" height="14" src={sharpImage} />
               </IconButton>
             ) : null}
-            <IconButton size="sm" variant="plain" color="danger">
+            <IconButton
+              color="danger"
+              onClick={handleClickDelete}
+              size="sm"
+              variant="plain"
+            >
               <ClearIcon />
             </IconButton>
           </Stack>

@@ -1,3 +1,4 @@
+import * as React from "react";
 import { SelectedSymbolInterface, SheetData, StaffData } from "@/interfaces";
 import {
   SignatureInterface,
@@ -519,16 +520,16 @@ const INITIAL_SHEET_DATA: SheetData = {
 
 const AppContext = createContext<Context>({
   sheetData: INITIAL_SHEET_DATA,
-  setSheetData: () => {},
+  setSheetData: () => undefined,
   activeTool: null,
-  setActiveTool: () => {},
+  setActiveTool: () => undefined,
   timeSignature: {
     beatsPerBar: 3,
     beat: 8,
   },
-  setTimeSignature: () => {},
+  setTimeSignature: () => undefined,
   signature: {},
-  setSignature: () => {},
+  setSignature: () => undefined,
   DEFAULT_CLEF_DATA,
 });
 

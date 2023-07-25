@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import {
   BeatData,
   BeatType,
@@ -397,9 +397,6 @@ const Beat = ({
     <>
       {type === "rest" ? (
         <BeatContainer
-          style={{
-            bottom: restPos?.bottom,
-          }}
           id={beatID}
           onClick={() => {
             handleSelectSymbol({
@@ -412,12 +409,15 @@ const Beat = ({
               clef,
             });
           }}
+          style={{
+            bottom: restPos?.bottom,
+          }}
         >
           <BeatImage
-            width={restImage?.width}
+            alt=""
             height={restImage?.height}
             src={restImage?.src}
-            alt=""
+            width={restImage?.width}
           />
         </BeatContainer>
       ) : null}
@@ -438,12 +438,8 @@ const Beat = ({
             const identifier = getNoteID(beatID, i);
             return (
               <BeatContainer
-                key={i}
                 id={identifier}
-                style={{
-                  bottom: `${beatPos.bottom + offset}px`,
-                  // boxShadow: `inset 0 0 1px 1px ${theme.palette.primary[400]}`,
-                }}
+                key={i}
                 onClick={() => {
                   handleSelectSymbol({
                     id: identifier,
@@ -458,18 +454,22 @@ const Beat = ({
                     noteID: i,
                   });
                 }}
+                style={{
+                  bottom: `${beatPos.bottom + offset}px`,
+                  // boxShadow: `inset 0 0 1px 1px ${theme.palette.primary[400]}`,
+                }}
               >
                 {note.sharp ? (
                   <Accidental>
-                    <img src={sharp} alt="" height="14" />
+                    <img alt="" height="14" src={sharp} />
                   </Accidental>
                 ) : null}
                 <BeatImage
+                  alt=""
                   data-note={`${note.note}-${note.variation}`}
-                  width={beatImage.width}
                   height={beatImage.height}
                   src={beatImage.src}
-                  alt=""
+                  width={beatImage.width}
                 />
               </BeatContainer>
             );

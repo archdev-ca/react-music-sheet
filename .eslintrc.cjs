@@ -1,5 +1,4 @@
 /* eslint-env node */
-
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
@@ -14,19 +13,17 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
-    // project: true,
+    project: true,
     tsconfigRootDir: __dirname,
   },
   plugins: ["react-refresh", "sort-keys"],
   rules: {
-    "sort-keys": 0,
-    "sort-keys/sort-keys-fix": 1,
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },
     ],
     "react/jsx-sort-props": [
-      true,
+      1,
       {
         noSortAlphabetically: false,
       },
