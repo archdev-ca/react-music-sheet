@@ -35,10 +35,10 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
     <StyledBar>
       {data && data.beats && data.beats.length ? (
         <BarColumn
-          beatIndex={[0, null]}
           barID={barID}
-          staffID={staffID}
+          beatIndex={[0, null]}
           clef={clef}
+          staffID={staffID}
         />
       ) : null}
       {data && data.beats && data.beats.length ? (
@@ -48,16 +48,16 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
               <BarColumn
                 barID={barID}
                 beatIndex={[i, 0]}
-                staffID={staffID}
-                data={beat}
                 clef={clef}
+                data={beat}
+                staffID={staffID}
               />
               {i !== data.beats.length - 1 ? (
                 <BarColumn
                   barID={barID}
                   beatIndex={[i + 1, 1]}
-                  staffID={staffID}
                   clef={clef}
+                  staffID={staffID}
                 />
               ) : null}
             </React.Fragment>
@@ -69,16 +69,16 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
         <BarColumn
           barID={barID}
           beatIndex={[-1, 0]}
-          staffID={staffID}
           clef={clef}
+          staffID={staffID}
         />
       )}
       {data && data.beats && data.beats.length ? (
         <BarColumn
-          beatIndex={[-1, null]}
           barID={barID}
-          staffID={staffID}
+          beatIndex={[-1, null]}
           clef={clef}
+          staffID={staffID}
         />
       ) : null}
     </StyledBar>

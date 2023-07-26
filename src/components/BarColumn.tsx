@@ -2,6 +2,7 @@ import { ClefType, BeatData, BarSpaceData } from "@/interfaces";
 import BarSpace from "./BarSpace";
 import Beat from "./Beat";
 import { styled } from "@mui/joy";
+import * as React from "react";
 
 interface Props {
   barID?: number;
@@ -278,31 +279,31 @@ const BarColumn = ({
       {data ? (
         <BeatLayer>
           <Beat
-            staffID={staffID}
             barID={barID}
             beatIndex={beatIndex}
-            type={data.type}
             clef={clef}
-            length={data.length}
             data={data}
+            length={data.length}
+            staffID={staffID}
+            type={data.type}
           />
         </BeatLayer>
       ) : null}
       {SPACES_CONFIG[clef].map((space, i) => {
         return (
           <BarSpace
-            bottom={space.bottom}
             barID={barID ? barID : 0}
             beatIndex={beatIndex}
-            staffID={staffID ? staffID : 0}
-            key={i}
+            bottom={space.bottom}
             clef={clef}
-            line={space.line}
-            passive={passive}
             floating={space.floating}
-            note={space.note}
-            variation={space.variation}
+            key={i}
+            line={space.line}
             locked={locked}
+            note={space.note}
+            passive={passive}
+            staffID={staffID ? staffID : 0}
+            variation={space.variation}
           ></BarSpace>
         );
       })}
