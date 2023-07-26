@@ -3,17 +3,1405 @@ import DefaultLayout from "@/layouts/DefaultLayout";
 import SheetIndex from "@/pages/sheet";
 import SheetCreate from "@/pages/sheet/create";
 import { SelectionContext } from "./context/SelectionContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import PopupToolbar from "./components/PopupToolbar";
 
 function App() {
   const { selectedSymbol } = useContext(SelectionContext);
+  useEffect(() => {
+    const sheets = localStorage.getItem("sheets");
+    if (!sheets) {
+      const sheetsJSON = [
+        {
+          title: "Fur Elise",
+          author: "Ludwiig Von Beethoven",
+          staves: [
+            {
+              treble: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "g", variation: 4, sharp: true }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                    ],
+                  },
+                ],
+              },
+              bass: {
+                bars: [
+                  { beats: [{ type: "rest", length: 8 }] },
+                  {
+                    beats: [
+                      {
+                        type: "rest",
+                        length: 2,
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "g", variation: 3, sharp: true }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+            {
+              treble: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                    ],
+                  },
+                ],
+              },
+              bass: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                        notes: [{ note: "c", variation: 3 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "rest",
+                        length: 2,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                        notes: [{ note: "c", variation: 3 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "g", variation: 3, sharp: true }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+            {
+              treble: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 4,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                    ],
+                  },
+                  { beats: [] },
+                  { beats: [] },
+                  { beats: [] },
+                ],
+              },
+              bass: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                    ],
+                  },
+                  { beats: [] },
+                  { beats: [] },
+                  { beats: [] },
+                ],
+              },
+            },
+          ],
+        },
+        {
+          title: "Kiss the Rain",
+          author: "Yiruma",
+          staves: [
+            {
+              treble: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "g", variation: 4, sharp: true }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                    ],
+                  },
+                ],
+              },
+              bass: {
+                bars: [
+                  { beats: [{ type: "rest", length: 8 }] },
+                  {
+                    beats: [
+                      {
+                        type: "rest",
+                        length: 2,
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "g", variation: 3, sharp: true }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+            {
+              treble: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                    ],
+                  },
+                ],
+              },
+              bass: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                        notes: [{ note: "c", variation: 3 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "rest",
+                        length: 2,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                        notes: [{ note: "c", variation: 3 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "g", variation: 3, sharp: true }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+            {
+              treble: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 4,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                    ],
+                  },
+                  { beats: [] },
+                  { beats: [] },
+                  { beats: [] },
+                ],
+              },
+              bass: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                    ],
+                  },
+                  { beats: [] },
+                  { beats: [] },
+                  { beats: [] },
+                ],
+              },
+            },
+          ],
+        },
+        {
+          title: "Jesu, Joy of Man's Desiring",
+          author: "J.S. Bach",
+          staves: [
+            {
+              treble: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "g", variation: 4, sharp: true }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                    ],
+                  },
+                ],
+              },
+              bass: {
+                bars: [
+                  { beats: [{ type: "rest", length: 8 }] },
+                  {
+                    beats: [
+                      {
+                        type: "rest",
+                        length: 2,
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "g", variation: 3, sharp: true }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+            {
+              treble: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5, sharp: true }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 8,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "d", variation: 4 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "c", variation: 5 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "b", variation: 4 }],
+                      },
+                    ],
+                  },
+                ],
+              },
+              bass: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                        notes: [{ note: "c", variation: 3 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "rest",
+                        length: 2,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                        notes: [{ note: "c", variation: 3 }],
+                      },
+                    ],
+                  },
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "g", variation: 3, sharp: true }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 8,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+            {
+              treble: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 4,
+                        notes: [{ note: "a", variation: 4 }],
+                      },
+                    ],
+                  },
+                  { beats: [] },
+                  { beats: [] },
+                  { beats: [] },
+                ],
+              },
+              bass: {
+                bars: [
+                  {
+                    beats: [
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 2 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "e", variation: 3 }],
+                      },
+                      {
+                        type: "note",
+                        length: 16,
+                        notes: [{ note: "a", variation: 3 }],
+                      },
+                      {
+                        type: "rest",
+                        length: 16,
+                        notes: [{ note: "d", variation: 3 }],
+                      },
+                    ],
+                  },
+                  { beats: [] },
+                  { beats: [] },
+                  { beats: [] },
+                ],
+              },
+            },
+          ],
+        },
+      ];
+      localStorage.setItem("sheets", JSON.stringify(sheetsJSON));
+    }
+  }, []);
   return (
     <>
       <Routes>
-        <Route path="/" element={<DefaultLayout />}>
-          <Route index element={<SheetIndex />} />
-          <Route path="create" element={<SheetCreate />} />
+        <Route element={<DefaultLayout />} path="/">
+          <Route element={<SheetIndex />} index />
+          <Route element={<SheetCreate />} path="create" />
         </Route>
       </Routes>
       {selectedSymbol ? <PopupToolbar /> : null}
