@@ -1,6 +1,6 @@
 import usePersistedData from "@/hooks/usePersistedData";
-import { SheetData, SheetRowInterface } from "@/interfaces";
-import { Add, Edit, Home, Save, Visibility } from "@mui/icons-material";
+import { SheetRowInterface } from "@/interfaces";
+import { Clear, Edit, Home, Save } from "@mui/icons-material";
 import {
   Breadcrumbs,
   Button,
@@ -8,20 +8,24 @@ import {
   CardContent,
   Link,
   Stack,
-  Table,
   Typography,
 } from "@mui/joy";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const SheetView = () => {
-  const navigate = useNavigate();
   const { id } = useParams<"id">();
-  const { sheets, setSheets } = usePersistedData();
+  const { sheets } = usePersistedData();
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
 
   const handleClickEdit = () => {
     setIsEditMode(true);
+  };
+  const handleClickCancel = () => {
+    /**
+     * @todo: Add warning if there were changes
+     */
+    setIsEditMode(false);
   };
 
   const handleClickSave = () => {};
@@ -60,16 +64,29 @@ const SheetView = () => {
           </Button>
         ) : null}
         {isEditMode ? (
-          <Button
-            onClick={handleClickSave}
-            sx={{
-              alignSelf: "center",
-            }}
-            color="success"
-          >
-            <Save sx={{ mr: 0.5 }} fontSize="inherit" />
-            Save Changes
-          </Button>
+          <Stack direction="row" spacing={1}>
+            <Button
+              onClick={handleClickSave}
+              sx={{
+                alignSelf: "center",
+              }}
+              color="success"
+            >
+              <Save sx={{ mr: 0.5 }} fontSize="inherit" />
+              Save Changes
+            </Button>
+            <Button
+              onClick={handleClickCancel}
+              sx={{
+                alignSelf: "center",
+              }}
+              variant="plain"
+              color="neutral"
+            >
+              <Clear sx={{ mr: 0.5 }} fontSize="inherit" />
+              Cancel
+            </Button>
+          </Stack>
         ) : null}
       </Stack>
       <Card>
