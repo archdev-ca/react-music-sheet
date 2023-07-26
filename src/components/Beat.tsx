@@ -22,7 +22,7 @@ import sharp from "@/assets/sharp.png";
 import { styled, useTheme } from "@mui/joy";
 import { BeatPos, BeatPosMap } from "@/interfaces/common";
 import { SelectionContext } from "@/context/SelectionContext";
-import PopupToolbar from "./PopupToolbar";
+import SymbolImage from "./SymbolImage";
 
 type Props = {
   data: BeatData;
@@ -34,16 +34,6 @@ type Props = {
   beatIndex: [number, number | null] | undefined;
 };
 
-const BeatImage = styled("img")`
-  display: block;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  position: relative;
-  z-index: -1;
-  max-width: 100%;
-  transform: translateY(2px);
-`;
 const BeatContainer = styled("div")`
   box-sizing: border-box;
   margin: 0 auto;
@@ -250,54 +240,54 @@ const getNoteImage = (
     rest: {
       1: {
         src: wholeRest,
-        width: "auto",
-        height: "auto",
+        width: "100%",
+        height: "100%",
       },
       2: {
         src: halfRest,
-        width: "auto",
-        height: "auto",
+        width: "100%",
+        height: "100%",
       },
       4: {
         src: quarterRest,
-        width: "auto",
+        width: "100%",
         height: "24px",
       },
       8: {
         src: eightRest,
-        width: "auto",
+        width: "100%",
         height: "24px",
       },
       16: {
         src: sixteenthRest,
-        width: "auto",
+        width: "100%",
         height: "24px",
       },
     },
     note: {
       1: {
         src: wholeNote,
-        width: "auto",
+        width: "100%",
         height: "10px",
       },
       2: {
         src: halfNote,
-        width: "auto",
+        width: "100%",
         height: "32px",
       },
       4: {
         src: quarterNote,
-        width: "auto",
+        width: "100%",
         height: "32px",
       },
       8: {
         src: eightNote,
-        width: "auto",
+        width: "100%",
         height: "32px",
       },
       16: {
         src: sixteenthNote,
-        width: "auto",
+        width: "100%",
         height: "32px",
       },
     },
@@ -316,29 +306,28 @@ const getNoteImage = (
   };
 };
 
-const generateBeatID = (
-  type: SelectedSymbolInterface["type"],
+const generateBeatIdentifier = (
   staffID: SelectedSymbolInterface["staffID"],
   clef: ClefType,
   barID: SelectedSymbolInterface["barID"],
   beatIndex: SelectedSymbolInterface["beatIndex"]
 ) => {
-  // return `${type}.staves:${staffID}.clef:${clef}.bars:${barID}.beats:${beatIndex}`;
-  return `staves:${staffID}.${clef}.bars:${barID}.beats:${beatIndex}`;
+  return `staves:${staffID || ""}.${clef || ""}.bars:${barID || ""}.beats:${
+    beatIndex || ""
+  }`;
 };
 
-const getNoteID = (beatID: string, noteID: number) => {
-  return `${beatID}.notes:${noteID}`;
+const getNoteID = (beatIdentifier: string, noteID: number) => {
+  return `${beatIdentifier}.notes:${noteID}`;
 };
 
 const isBeatSelected = (
   selectedSymbol: SelectedSymbolInterface | null,
-  beatID: string,
+  beatIdentifier: string,
   noteID?: number
 ) => {
   const selectedSymbolID = selectedSymbol
-    ? generateBeatID(
-        selectedSymbol?.type,
+    ? generateBeatIdentifier(
         selectedSymbol?.staffID,
         selectedSymbol?.clef,
         selectedSymbol?.barID,
@@ -346,11 +335,13 @@ const isBeatSelected = (
       )
     : "";
   if (noteID !== undefined) {
-    if (getNoteID(selectedSymbolID, noteID) === getNoteID(beatID, noteID)) {
+    if (
+      getNoteID(selectedSymbolID, noteID) === getNoteID(beatIdentifier, noteID)
+    ) {
       return true;
     }
   } else {
-    if (selectedSymbol && beatID === selectedSymbolID) {
+    if (selectedSymbol && beatIdentifier === selectedSymbolID) {
       return true;
     }
   }
@@ -367,7 +358,7 @@ const Beat = ({
   type,
 }: Props) => {
   const { notes } = data;
-
+  const theme = useTheme();
   const { selectedSymbol, setSelectedSymbol } = useContext(SelectionContext);
 
   const offset = 4;
@@ -377,8 +368,7 @@ const Beat = ({
     restPos = getRestPosition(clef, length);
     restImage = getNoteImage(type, length);
   }
-  const beatID = generateBeatID(
-    type,
+  const beatIdentifier = generateBeatIdentifier(
     staffID,
     clef,
     barID,
@@ -397,10 +387,10 @@ const Beat = ({
     <>
       {type === "rest" ? (
         <BeatContainer
-          id={beatID}
+          id={beatIdentifier}
           onClick={() => {
             handleSelectSymbol({
-              id: beatID,
+              id: beatIdentifier,
               type: "rest",
               staffID,
               barID,
@@ -413,10 +403,15 @@ const Beat = ({
             bottom: restPos?.bottom,
           }}
         >
-          <BeatImage
-            alt=""
+          <SymbolImage
+            color={
+              isBeatSelected(selectedSymbol, beatIdentifier)
+                ? theme.palette.primary[500]
+                : "#000"
+            }
             height={restImage?.height}
-            src={restImage?.src}
+            length={length}
+            type="rest"
             width={restImage?.width}
           />
         </BeatContainer>
@@ -435,7 +430,7 @@ const Beat = ({
               note.note,
               note.variation
             );
-            const identifier = getNoteID(beatID, i);
+            const identifier = getNoteID(beatIdentifier, i);
             return (
               <BeatContainer
                 id={identifier}
@@ -464,11 +459,15 @@ const Beat = ({
                     <img alt="" height="14" src={sharp} />
                   </Accidental>
                 ) : null}
-                <BeatImage
-                  alt=""
-                  data-note={`${note.note}-${note.variation}`}
+                <SymbolImage
+                  color={
+                    isBeatSelected(selectedSymbol, beatIdentifier, i)
+                      ? theme.palette.primary[500]
+                      : "#000"
+                  }
                   height={beatImage.height}
-                  src={beatImage.src}
+                  length={length}
+                  type="note"
                   width={beatImage.width}
                 />
               </BeatContainer>
