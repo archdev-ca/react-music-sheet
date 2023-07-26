@@ -14,7 +14,8 @@ const ToolbarWrapper = styled("div")`
 `;
 
 const PopupToolbar = () => {
-  const { selectedSymbol } = React.useContext(SelectionContext);
+  const { selectedSymbol, setSelectedSymbol } =
+    React.useContext(SelectionContext);
   const { sheetData, setSheetData } = React.useContext(AppContext);
 
   const target =
@@ -84,7 +85,38 @@ const PopupToolbar = () => {
   };
 
   const handleClickDelete = () => {
-    console.log("test");
+    const newState = produce(sheetData, (draft) => {
+      if (
+        selectedSymbol &&
+        selectedSymbol.staffID !== undefined &&
+        selectedSymbol.barID !== undefined &&
+        selectedSymbol.beatIndex !== undefined
+      ) {
+        // Delete rest
+        if (selectedSymbol.type === "rest") {
+          draft?.staves?.[selectedSymbol?.staffID]?.[
+            selectedSymbol?.clef
+          ]?.bars[selectedSymbol?.barID]?.beats?.splice(
+            selectedSymbol?.beatIndex,
+            1
+          );
+        }
+
+        // Delete note
+        if (
+          selectedSymbol.type === "note" &&
+          selectedSymbol.noteID !== undefined
+        ) {
+          draft?.staves?.[selectedSymbol?.staffID]?.[
+            selectedSymbol?.clef
+          ]?.bars[selectedSymbol?.barID]?.beats?.[
+            selectedSymbol?.beatIndex
+          ].notes?.splice(selectedSymbol.noteID, 1);
+        }
+      }
+    });
+    setSheetData(newState);
+    setSelectedSymbol(null);
   };
 
   return (
