@@ -55,3 +55,9 @@ export interface SelectedSymbolInterface {
   beatIndex: number | undefined;
   noteID?: number;
 }
+
+export interface SheetRowInterface {
+  title: string;
+  author: string;
+  sheetData: SheetData;
+}
