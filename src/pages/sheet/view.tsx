@@ -1,6 +1,8 @@
+import Toolbar from "@/components/Toolbar";
 import usePersistedData from "@/hooks/usePersistedData";
 import { SheetRowInterface } from "@/interfaces";
 import { Clear, Edit, Home, Save } from "@mui/icons-material";
+import StickyBox from "react-sticky-box";
 import {
   Breadcrumbs,
   Button,
@@ -10,10 +12,11 @@ import {
   Stack,
   Typography,
 } from "@mui/joy";
+import SheetView from "@/components/SheetView";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const SheetView = () => {
+const SheetViewPage = () => {
   const { id } = useParams<"id">();
   const { sheets } = usePersistedData();
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
@@ -34,6 +37,8 @@ const SheetView = () => {
   if (id !== undefined) {
     currentSheet = sheets[Number(id)];
   }
+  console.log({ currentSheet });
+  console.log({ sheets });
 
   return (
     <>
@@ -89,10 +94,15 @@ const SheetView = () => {
           </Stack>
         ) : null}
       </Stack>
+      <StickyBox offsetTop={16} style={{ zIndex: 5 }}>
+        <Toolbar />
+      </StickyBox>
       <Card>
-        <CardContent></CardContent>
+        <CardContent>
+          <SheetView data={currentSheet?.sheetData} />
+        </CardContent>
       </Card>
     </>
   );
 };
-export default SheetView;
+export default SheetViewPage;
