@@ -2,7 +2,6 @@ import { ClefType, BeatData, BarSpaceData } from "@/interfaces";
 import BarSpace from "./BarSpace";
 import Beat from "./Beat";
 import { styled } from "@mui/joy";
-import * as React from "react";
 
 interface Props {
   barID?: number;
@@ -15,6 +14,12 @@ interface Props {
   staffID?: number;
   width?: string;
 }
+
+const Wrapper = styled("div")(({ theme }) => ({
+  "&:hover": {
+    backgroundColor: theme.palette.primary[200],
+  },
+}));
 
 const defaultProps = {
   passive: false,
@@ -268,7 +273,7 @@ const BarColumn = ({
   width,
 }: Props) => {
   return (
-    <div
+    <Wrapper
       className={className}
       data-component-name="BarColumn"
       style={{
@@ -308,7 +313,7 @@ const BarColumn = ({
           ></BarSpace>
         );
       })}
-    </div>
+    </Wrapper>
   );
 };
 

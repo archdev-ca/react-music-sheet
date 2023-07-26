@@ -961,162 +961,29 @@ function App() {
                       ],
                     },
                     {
-                      beats: [
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "e", variation: 5 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "d", variation: 5, sharp: true }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "e", variation: 5 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "b", variation: 4 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "d", variation: 5 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "c", variation: 5 }],
-                        },
-                      ],
+                      beats: [],
                     },
                     {
-                      beats: [
-                        {
-                          type: "note",
-                          length: 8,
-                          notes: [{ note: "a", variation: 4 }],
-                        },
-                        {
-                          type: "rest",
-                          length: 16,
-                          notes: [{ note: "b", variation: 4 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "c", variation: 4 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "e", variation: 4 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "a", variation: 4 }],
-                        },
-                      ],
+                      beats: [],
                     },
                     {
-                      beats: [
-                        {
-                          type: "note",
-                          length: 8,
-                          notes: [{ note: "b", variation: 4 }],
-                        },
-                        {
-                          type: "rest",
-                          length: 16,
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "e", variation: 4 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "g", variation: 4, sharp: true }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "b", variation: 4 }],
-                        },
-                      ],
+                      beats: [],
                     },
                   ],
                 },
                 bass: {
                   bars: [
-                    { beats: [{ type: "rest", length: 8 }] },
                     {
-                      beats: [
-                        {
-                          type: "rest",
-                          length: 2,
-                        },
-                      ],
+                      beats: [],
                     },
                     {
-                      beats: [
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "a", variation: 2 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "e", variation: 3 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "a", variation: 3 }],
-                        },
-                        {
-                          type: "rest",
-                          length: 16,
-                        },
-                        {
-                          type: "rest",
-                          length: 8,
-                        },
-                      ],
+                      beats: [],
                     },
                     {
-                      beats: [
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "e", variation: 2 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "e", variation: 3 }],
-                        },
-                        {
-                          type: "note",
-                          length: 16,
-                          notes: [{ note: "g", variation: 3, sharp: true }],
-                        },
-                        {
-                          type: "rest",
-                          length: 16,
-                        },
-                        {
-                          type: "rest",
-                          length: 8,
-                        },
-                      ],
+                      beats: [],
+                    },
+                    {
+                      beats: [],
                     },
                   ],
                 },

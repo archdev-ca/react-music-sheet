@@ -25,18 +25,12 @@ const defaultProps = {
   passive: false,
 };
 
-const StyledBarSpace = styled("div")<Props>(({ theme, passive }) => ({
+const StyledBarSpace = styled("div")<Props>(() => ({
   position: "absolute",
   left: 0,
   right: 0,
   zIndex: 1,
   padding: "4px 0",
-  "&:hover": {
-    backgroundColor: passive ? "inherit" : theme.palette.primary.plainHoverBg,
-  },
-  "&:hover > div": {
-    backgroundColor: passive ? "inherit" : "#000 !important",
-  },
 }));
 
 const Line = styled("div")`
@@ -135,6 +129,7 @@ const BarSpace = ({
 
   return (
     <StyledBarSpace
+      className="bar-space"
       beatIndex={beatIndex}
       note={note}
       variation={variation}
@@ -148,6 +143,7 @@ const BarSpace = ({
       data-note={`${note}-${variation}`}
     >
       <Line
+        className="bar-line"
         style={{
           backgroundColor: line
             ? floating
