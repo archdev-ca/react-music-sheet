@@ -30,7 +30,7 @@ const StyledBar = styled("div")`
 
 const Bar = ({ clef, data, staffID, barID }: Props) => {
   const { timeSignature } = useContext(AppContext);
-  let orderIndex = 0;
+  const singleBeatWidth = (1 / timeSignature.beatsPerBar) * 100;
   return (
     <StyledBar>
       {data && data.beats && data.beats.length ? (
@@ -43,6 +43,7 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
       ) : null}
       {data && data.beats && data.beats.length ? (
         data.beats.map((beat, i) => {
+          const colWidth = singleBeatWidth * (timeSignature.beat / beat.length);
           const columns = (
             <React.Fragment key={i}>
               <BarColumn
@@ -51,6 +52,7 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
                 clef={clef}
                 data={beat}
                 staffID={staffID}
+                width={`${colWidth}%`}
               />
               {i !== data.beats.length - 1 ? (
                 <BarColumn
@@ -62,7 +64,6 @@ const Bar = ({ clef, data, staffID, barID }: Props) => {
               ) : null}
             </React.Fragment>
           );
-          orderIndex += 1;
           return columns;
         })
       ) : (

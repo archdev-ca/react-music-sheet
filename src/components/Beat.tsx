@@ -42,7 +42,7 @@ const BeatContainer = styled("div")`
   right: 0;
   z-index: 2;
   padding: 4px;
-  width: 34px;
+  width: 36px;
 `;
 
 const Accidental = styled("span")`

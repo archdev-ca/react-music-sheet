@@ -270,6 +270,7 @@ const BarColumn = ({
   return (
     <div
       className={className}
+      data-component-name="BarColumn"
       style={{
         position: "relative",
         width: width ? width : "100%",

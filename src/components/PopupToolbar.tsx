@@ -17,7 +17,7 @@ const PopupToolbar = () => {
   const { selectedSymbol, setSelectedSymbol } =
     React.useContext(SelectionContext);
   const { sheetData, setSheetData } = React.useContext(AppContext);
-
+  const thisToolbarHeight = 56;
   const target =
     selectedSymbol && selectedSymbol.id
       ? document.getElementById(selectedSymbol.id)
@@ -26,7 +26,7 @@ const PopupToolbar = () => {
   if (target) {
     const targetCoords = target.getBoundingClientRect();
     coords["x"] = targetCoords.x + targetCoords.width;
-    coords["y"] = targetCoords.y - 56;
+    coords["y"] = targetCoords.y - thisToolbarHeight + window.scrollY;
   }
 
   let beatData: BeatData | undefined = undefined;
