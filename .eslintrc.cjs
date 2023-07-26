@@ -16,6 +16,7 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
+  ignorePatterns: ["tsconfig.json"],
   plugins: ["react-refresh", "sort-keys"],
   rules: {
     "react-refresh/only-export-components": [
@@ -28,6 +29,7 @@ module.exports = {
         noSortAlphabetically: false,
       },
     ],
+    "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
   },
 };

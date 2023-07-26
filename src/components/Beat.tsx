@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import * as React from "react";
 import {
   BeatData,
   BeatType,
@@ -359,7 +359,8 @@ const Beat = ({
 }: Props) => {
   const { notes } = data;
   const theme = useTheme();
-  const { selectedSymbol, setSelectedSymbol } = useContext(SelectionContext);
+  const { selectedSymbol, setSelectedSymbol } =
+    React.useContext(SelectionContext);
 
   const offset = 4;
   let restPos = null;
