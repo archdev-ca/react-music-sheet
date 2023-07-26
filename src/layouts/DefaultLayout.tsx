@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   Card,
   CardContent,
@@ -39,10 +40,10 @@ const DefaultLayout = () => {
                 </Link>
               </Typography>
               <IconButton
-                variant="plain"
-                href="https://github.com/archdev-ca/react-music-sheet"
                 component="a"
+                href="https://github.com/archdev-ca/react-music-sheet"
                 target="_blank"
+                variant="plain"
               >
                 <GitHubIcon />
               </IconButton>
