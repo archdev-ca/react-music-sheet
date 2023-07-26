@@ -1,4 +1,4 @@
-import { SheetRowInterface } from "@/interfaces";
+import usePersistedData from "@/hooks/usePersistedData";
 import { Add, Home, Visibility } from "@mui/icons-material";
 import {
   Breadcrumbs,
@@ -10,12 +10,11 @@ import {
   Table,
   Typography,
 } from "@mui/joy";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SheetIndex = () => {
   const navigate = useNavigate();
-  const [sheets, setSheets] = useState<SheetRowInterface[]>([]);
+  const { sheets } = usePersistedData();
 
   const handleClickCreate = () => {
     navigate("/create");
@@ -24,19 +23,6 @@ const SheetIndex = () => {
   const handleClickView = (id: number) => {
     navigate(`/view/${id}`);
   };
-
-  useEffect(() => {
-    const sheets = localStorage.getItem("sheets");
-    let payload: unknown = [];
-    if (sheets) {
-      try {
-        payload = JSON.parse(sheets);
-        setSheets(payload as SheetRowInterface[]);
-      } catch (e) {
-        payload = [];
-      }
-    }
-  }, []);
 
   return (
     <>
@@ -60,7 +46,7 @@ const SheetIndex = () => {
             alignSelf: "center",
           }}
         >
-          <Add sx={{ mr: 0.5 }} />
+          <Add sx={{ mr: 0.5 }} fontSize="inherit" />
           Create New Sheet
         </Button>
       </Stack>
@@ -89,7 +75,7 @@ const SheetIndex = () => {
                             size="sm"
                             variant="soft"
                           >
-                            <Visibility sx={{ mr: 0.5 }} />
+                            <Visibility sx={{ mr: 1 }} fontSize="inherit" />
                             View
                           </Button>
                         </td>

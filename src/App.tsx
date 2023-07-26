@@ -5,6 +5,7 @@ import SheetCreate from "@/pages/sheet/create";
 import { SelectionContext } from "./context/SelectionContext";
 import { useContext, useEffect } from "react";
 import PopupToolbar from "./components/PopupToolbar";
+import SheetView from "@/pages/sheet/view";
 
 function App() {
   const { selectedSymbol } = useContext(SelectionContext);
@@ -1402,6 +1403,7 @@ function App() {
         <Route element={<DefaultLayout />} path="/">
           <Route element={<SheetIndex />} index />
           <Route element={<SheetCreate />} path="create" />
+          <Route element={<SheetView />} path="view/:id" />
         </Route>
       </Routes>
       {selectedSymbol ? <PopupToolbar /> : null}
