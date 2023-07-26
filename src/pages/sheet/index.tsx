@@ -1,7 +1,6 @@
 import usePersistedData from "@/hooks/usePersistedData";
 import { Add, Home, Visibility } from "@mui/icons-material";
 import {
-  Breadcrumbs,
   Button,
   Card,
   CardContent,
@@ -10,6 +9,7 @@ import {
   Table,
   Typography,
 } from "@mui/joy";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { useNavigate } from "react-router-dom";
 
 const SheetIndex = () => {
@@ -26,7 +26,7 @@ const SheetIndex = () => {
 
   return (
     <>
-      <Breadcrumbs aria-label="breadcrumbs" separator="›">
+      <Breadcrumbs>
         <Link href="/">
           <Home fontSize="inherit" sx={{ mr: 0.5 }} />
           Music Sheets

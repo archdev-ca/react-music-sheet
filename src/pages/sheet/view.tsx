@@ -3,18 +3,11 @@ import usePersistedData from "@/hooks/usePersistedData";
 import { SheetRowInterface } from "@/interfaces";
 import { Clear, Edit, Home, Save } from "@mui/icons-material";
 import StickyBox from "react-sticky-box";
-import {
-  Breadcrumbs,
-  Button,
-  Card,
-  CardContent,
-  Link,
-  Stack,
-  Typography,
-} from "@mui/joy";
+import { Button, Card, CardContent, Link, Stack, Typography } from "@mui/joy";
 import SheetView from "@/components/SheetView";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const SheetViewPage = () => {
   const { id } = useParams<"id">();
@@ -42,7 +35,7 @@ const SheetViewPage = () => {
 
   return (
     <>
-      <Breadcrumbs aria-label="breadcrumbs" separator="›">
+      <Breadcrumbs>
         <Link href="/">
           <Home fontSize="inherit" sx={{ mr: 0.5 }} />
           Music Sheets
