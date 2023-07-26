@@ -28,6 +28,8 @@ const StyledBar = styled("div")`
     background-color: #000;
 `;
 
+const BEAT_WIDTH = 36;
+
 const Bar = ({ clef, data, staffID, barID }: Props) => {
   const { timeSignature } = useContext(AppContext);
   const singleBeatWidth = (1 / timeSignature.beatsPerBar) * 100;
