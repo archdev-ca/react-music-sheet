@@ -17,7 +17,7 @@ interface Props {
 
 const Wrapper = styled("div")(({ theme }) => ({
   "&:hover": {
-    backgroundColor: theme.palette.primary[200],
+    backgroundColor: theme.palette.primary[100],
   },
 }));
 

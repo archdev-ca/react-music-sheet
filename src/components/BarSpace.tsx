@@ -25,12 +25,18 @@ const defaultProps = {
   passive: false,
 };
 
-const StyledBarSpace = styled("div")<Props>(() => ({
+const StyledBarSpace = styled("div")<Props>(({ theme, line }) => ({
   position: "absolute",
   left: 0,
   right: 0,
   zIndex: 1,
   padding: "4px 0",
+  "&:hover": {
+    backgroundColor: theme.palette.primary[200],
+    "&>.bar-line": {
+      backgroundColor: line ? "#000 !important" : "inherit",
+    },
+  },
 }));
 
 const Line = styled("div")`
@@ -140,6 +146,7 @@ const BarSpace = ({
       style={{
         bottom,
       }}
+      line={line}
       data-note={`${note}-${variation}`}
     >
       <Line

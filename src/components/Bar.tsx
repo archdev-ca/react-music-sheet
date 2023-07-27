@@ -31,10 +31,11 @@ const StyledBar = styled("div")`
 const BEAT_WIDTH = 36;
 
 const Bar = ({ clef, data, staffID, barID }: Props) => {
-  const { timeSignature } = useContext(AppContext);
+  const { timeSignature, activeTool } = useContext(AppContext);
   const singleBeatWidth = (1 / timeSignature.beatsPerBar) * 100;
+
   return (
-    <StyledBar>
+    <StyledBar data-component-name="bar">
       {data && data.beats && data.beats.length ? (
         <BarColumn
           barID={barID}
