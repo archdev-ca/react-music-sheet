@@ -92,7 +92,7 @@ const SheetViewPage = () => {
       <Card>
         <CardContent>
           <SheetContextProvider>
-            <SheetView data={currentSheet?.sheetData} />
+            <SheetView data={currentSheet} />
           </SheetContextProvider>
         </CardContent>
       </Card>

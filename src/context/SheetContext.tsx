@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SheetData, StaffData } from "@/interfaces";
+import { SheetData, SheetRowInterface, StaffData } from "@/interfaces";
 import {
   SignatureInterface,
   TimeSignatureInterface,
@@ -11,8 +11,8 @@ interface Props {
 }
 
 interface Context {
-  sheetData: SheetData;
-  setSheetData: Dispatch<SetStateAction<SheetData>>;
+  sheetData: SheetRowInterface;
+  setSheetData: Dispatch<SetStateAction<SheetRowInterface>>;
   timeSignature: TimeSignatureInterface;
   setTimeSignature: Dispatch<SetStateAction<TimeSignatureInterface>>;
   signature: SignatureInterface;
@@ -60,7 +60,11 @@ const INITIAL_SHEET_DATA: SheetData = {
 };
 
 const SheetContext = createContext<Context>({
-  sheetData: INITIAL_SHEET_DATA,
+  sheetData: {
+    title: "",
+    author: "",
+    sheetData: INITIAL_SHEET_DATA,
+  },
   setSheetData: () => undefined,
   timeSignature: {
     beatsPerBar: 3,
@@ -78,7 +82,11 @@ const SheetContextProvider = ({ children }: Props) => {
     beatsPerBar: 3,
     beat: 8,
   });
-  const [sheetData, setSheetData] = useState<SheetData>(INITIAL_SHEET_DATA);
+  const [sheetData, setSheetData] = useState<SheetRowInterface>({
+    title: "",
+    author: "",
+    sheetData: INITIAL_SHEET_DATA,
+  });
 
   return (
     <SheetContext.Provider
