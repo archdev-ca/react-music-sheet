@@ -1,6 +1,6 @@
 import { SheetData } from "@/interfaces";
 import Staff from "./Staff";
-import { SheetContextProvider } from "@/context/SheetContext";
+import { SheetContext, SheetContextProvider } from "@/context/SheetContext";
 import {
   Box,
   FormControl,
@@ -9,14 +9,23 @@ import {
   Grid,
   Input,
 } from "@mui/joy";
+import { useContext, useEffect } from "react";
 
 type Props = {
   data: SheetData | undefined;
 };
 
 const SheetView = ({ data }: Props) => {
+  const { sheetData, setSheetData } = useContext(SheetContext);
+
+  useEffect(() => {
+    if (data != undefined) {
+      setSheetData(data);
+    }
+  }, [data]);
+
   return (
-    <SheetContextProvider>
+    <>
       <Box sx={{ mb: 4 }}>
         <Grid container spacing={2}>
           <Grid xs={6}>
@@ -35,12 +44,12 @@ const SheetView = ({ data }: Props) => {
           </Grid>
         </Grid>
       </Box>
-      {data?.staves && data?.staves.length
-        ? data?.staves.map((staff, i) => {
+      {sheetData?.staves && sheetData?.staves.length
+        ? sheetData?.staves.map((staff, i) => {
             return <Staff staffID={i} data={staff} key={i} />;
           })
         : null}
-    </SheetContextProvider>
+    </>
   );
 };
 

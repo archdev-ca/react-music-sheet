@@ -8,6 +8,7 @@ import SheetView from "@/components/SheetView";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { SheetContextProvider } from "@/context/SheetContext";
 
 const SheetViewPage = () => {
   const { id } = useParams<"id">();
@@ -30,8 +31,6 @@ const SheetViewPage = () => {
   if (id !== undefined) {
     currentSheet = sheets[Number(id)];
   }
-  console.log({ currentSheet });
-  console.log({ sheets });
 
   return (
     <>
@@ -92,7 +91,9 @@ const SheetViewPage = () => {
       </StickyBox>
       <Card>
         <CardContent>
-          <SheetView data={currentSheet?.sheetData} />
+          <SheetContextProvider>
+            <SheetView data={currentSheet?.sheetData} />
+          </SheetContextProvider>
         </CardContent>
       </Card>
     </>
