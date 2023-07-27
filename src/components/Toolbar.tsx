@@ -1,4 +1,4 @@
-import { Box, Button, Card, IconButton, Option, Select } from "@mui/joy";
+import { Box, Card, IconButton, Option, Select } from "@mui/joy";
 import wholeNote from "@/assets/notes/whole.png";
 import halfNote from "@/assets/notes/half.png";
 import quarterNote from "@/assets/notes/quarter.png";
@@ -9,29 +9,21 @@ import halfRest from "@/assets/rest/halfRest.png";
 import quarterRest from "@/assets/rest/quarterRest.png";
 import eightRest from "@/assets/rest/eightRest.png";
 import sixteenthRest from "@/assets/rest/sixteenthRest.png";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "@/context/AppContext";
-import Add from "@mui/icons-material/Add";
-import { NoteCursorMap } from "@/interfaces/images";
-import SheetView from "@/components/SheetView";
 import { BeatType } from "@/interfaces";
-import { ToolData } from "@/interfaces/common";
 import { PlayArrow } from "@mui/icons-material";
 import { getToneSequence, playPreview, preloadAudio } from "@/utils";
-import { produce } from "immer";
-import StickyBox from "react-sticky-box";
 
 type Props = {};
 
 const Toolbar = (props: Props) => {
   const {
     sheetData,
-    setSheetData,
     activeTool,
     setActiveTool,
     timeSignature,
     setTimeSignature,
-    DEFAULT_CLEF_DATA,
   } = useContext(AppContext);
 
   const handleClickNote = (type: BeatType, length: number) => {
@@ -63,6 +55,19 @@ const Toolbar = (props: Props) => {
       playPreview(toneSequence, audioMap);
     });
   };
+
+  const handleDocumentKeyPress = (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setActiveTool(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleDocumentKeyPress, false);
+    return () => {
+      document.removeEventListener("keydown", handleDocumentKeyPress);
+    };
+  }, []);
 
   return (
     <Card
