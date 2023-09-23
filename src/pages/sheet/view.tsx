@@ -5,7 +5,7 @@ import { Clear, Edit, Home, Save } from "@mui/icons-material";
 import StickyBox from "react-sticky-box";
 import { Button, Card, CardContent, Link, Stack, Typography } from "@mui/joy";
 import SheetView from "@/components/SheetView";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { SheetContext, SheetContextProvider } from "@/context/SheetContext";
@@ -31,10 +31,13 @@ const SheetViewPage = () => {
   let currentSheet: SheetRowInterface | undefined;
   if (id !== undefined) {
     currentSheet = sheets[Number(id)];
-    // setSheetData(currentSheet);
   }
 
-  // console.log({ sheetData });
+  useEffect(() => {
+    if (currentSheet) {
+      setSheetData(currentSheet);
+    }
+  }, [currentSheet]);
 
   return (
     <>
