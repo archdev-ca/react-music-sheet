@@ -6,7 +6,7 @@ import StickyBox from "react-sticky-box";
 import { Button, Card, CardContent, Link, Stack, Typography } from "@mui/joy";
 import SheetView from "@/components/SheetView";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link as RouterLink } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { SheetContext, SheetContextProvider } from "@/context/SheetContext";
 
@@ -42,7 +42,7 @@ const SheetViewPage = () => {
   return (
     <>
       <Breadcrumbs>
-        <Link href="/">
+        <Link component={RouterLink} to="/">
           <Home fontSize="inherit" sx={{ mr: 0.5 }} />
           Music Sheets
         </Link>
