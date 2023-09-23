@@ -1,8 +1,7 @@
-import { SheetData, SheetRowInterface } from "@/interfaces";
+import { SheetRowInterface } from "@/interfaces";
 import Staff from "./Staff";
-import { SheetContext } from "@/context/SheetContext";
 import { Box, FormControl, FormLabel, Grid, Input } from "@mui/joy";
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 type Props = {
   data: SheetRowInterface | undefined;
@@ -11,7 +10,6 @@ type Props = {
 const SheetView = ({ data }: Props) => {
   const [title, setTitle] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
-  const { sheetData, setSheetData } = useContext(SheetContext);
 
   const fieldSetters: Record<
     string,
@@ -28,15 +26,11 @@ const SheetView = ({ data }: Props) => {
   };
 
   useEffect(() => {
-    if (data != undefined) {
-      setSheetData(data);
+    if (data) {
+      setTitle(data.title);
+      setAuthor(data.author);
     }
   }, [data]);
-
-  useEffect(() => {
-    setTitle(sheetData.title);
-    setAuthor(sheetData.author);
-  }, [sheetData]);
 
   return (
     <>
@@ -68,8 +62,8 @@ const SheetView = ({ data }: Props) => {
           </Grid>
         </Grid>
       </Box>
-      {sheetData.sheetData?.staves && sheetData.sheetData?.staves.length
-        ? sheetData.sheetData?.staves.map((staff, i) => {
+      {data?.sheetData?.staves && data?.sheetData?.staves.length
+        ? data?.sheetData?.staves.map((staff, i) => {
             return <Staff staffID={i} data={staff} key={i} />;
           })
         : null}
