@@ -5,15 +5,16 @@ import { Clear, Edit, Home, Save } from "@mui/icons-material";
 import StickyBox from "react-sticky-box";
 import { Button, Card, CardContent, Link, Stack, Typography } from "@mui/joy";
 import SheetView from "@/components/SheetView";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { SheetContextProvider } from "@/context/SheetContext";
+import { SheetContext, SheetContextProvider } from "@/context/SheetContext";
 
 const SheetViewPage = () => {
   const { id } = useParams<"id">();
   const { sheets } = usePersistedData();
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
+  const { sheetData, setSheetData } = useContext(SheetContext);
 
   const handleClickEdit = () => {
     setIsEditMode(true);
@@ -30,7 +31,10 @@ const SheetViewPage = () => {
   let currentSheet: SheetRowInterface | undefined;
   if (id !== undefined) {
     currentSheet = sheets[Number(id)];
+    // setSheetData(currentSheet);
   }
+
+  // console.log({ sheetData });
 
   return (
     <>
@@ -91,9 +95,7 @@ const SheetViewPage = () => {
       </StickyBox>
       <Card>
         <CardContent>
-          <SheetContextProvider>
-            <SheetView data={currentSheet} />
-          </SheetContextProvider>
+          <SheetView data={currentSheet} />
         </CardContent>
       </Card>
     </>

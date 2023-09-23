@@ -8,6 +8,7 @@ import GlobalStyles from "@mui/joy/GlobalStyles";
 import "@fontsource/public-sans";
 import App from "./App";
 import { SelectionContextProvider } from "./context/SelectionContext";
+import { SheetContextProvider } from "./context/SheetContext";
 
 const inputGlobalStyes = (
   <GlobalStyles
@@ -28,9 +29,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <CssBaseline />
         {inputGlobalStyes}
         <AppContextProvider>
-          <SelectionContextProvider>
-            <App />
-          </SelectionContextProvider>
+          <SheetContextProvider>
+            <SelectionContextProvider>
+              <App />
+            </SelectionContextProvider>
+          </SheetContextProvider>
         </AppContextProvider>
       </CssVarsProvider>
     </BrowserRouter>

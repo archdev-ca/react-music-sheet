@@ -14,17 +14,17 @@ import { AppContext } from "@/context/AppContext";
 import { BeatType } from "@/interfaces";
 import { PlayArrow } from "@mui/icons-material";
 import { getToneSequence, playPreview, preloadAudio } from "@/utils";
+import { SheetContext } from "@/context/SheetContext";
 
 type Props = {};
 
 const Toolbar = (props: Props) => {
-  const {
-    sheetData,
-    activeTool,
-    setActiveTool,
-    timeSignature,
-    setTimeSignature,
-  } = useContext(AppContext);
+  const { activeTool, setActiveTool, setTimeSignature } =
+    useContext(AppContext);
+
+  const { sheetData, timeSignature } = useContext(SheetContext);
+
+  console.log({ sheetData });
 
   const handleClickNote = (type: BeatType, length: number) => {
     if (activeTool?.type === type && activeTool?.length === length) {
@@ -49,8 +49,12 @@ const Toolbar = (props: Props) => {
   };
 
   const handlePreviewMusic = () => {
-    console.log(JSON.stringify(sheetData));
-    const [toneSequence, audioMap] = getToneSequence(sheetData, timeSignature);
+    console.log({ sheetData });
+    return;
+    const [toneSequence, audioMap] = getToneSequence(
+      sheetData.sheetData,
+      timeSignature
+    );
     preloadAudio(audioMap, (audioMap) => {
       playPreview(toneSequence, audioMap);
     });
