@@ -1,5 +1,6 @@
 import { Add, Home, Visibility } from "@mui/icons-material";
 import {
+  Box,
   Button,
   Card,
   CardContent,
@@ -32,61 +33,63 @@ const SheetIndex = () => {
           Music Sheets
         </Link>
       </Breadcrumbs>
-      <Stack
-        alignContent="center"
-        alignItems="center"
-        direction="row"
-        justifyContent="space-between"
-        marginBottom={2}
-      >
-        <Typography level="h4">Sheet Music</Typography>
-        <Button
-          onClick={handleClickCreate}
-          sx={{
-            alignSelf: "center",
-          }}
+      <Box sx={{ px: 2 }}>
+        <Stack
+          alignContent="center"
+          alignItems="center"
+          direction="row"
+          justifyContent="space-between"
+          marginBottom={2}
         >
-          <Add sx={{ mr: 0.5 }} fontSize="inherit" />
-          Create New Sheet
-        </Button>
-      </Stack>
-      <Card>
-        <CardContent>
-          <Table variant="plain">
-            <thead>
-              <tr>
-                <th style={{ width: "50%" }}>Title</th>
-                <th>Author</th>
-                <th style={{ width: "10%", textAlign: "center" }}>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {titles && titles.length
-                ? titles.map((sheet, i) => {
-                    return (
-                      <tr key={i}>
-                        <td>{sheet.title}</td>
-                        <td>{sheet.author}</td>
-                        <td align="center">
-                          <Button
-                            onClick={() => {
-                              handleClickView(i);
-                            }}
-                            size="sm"
-                            variant="soft"
-                          >
-                            <Visibility sx={{ mr: 1 }} fontSize="inherit" />
-                            View
-                          </Button>
-                        </td>
-                      </tr>
-                    );
-                  })
-                : null}
-            </tbody>
-          </Table>
-        </CardContent>
-      </Card>
+          <Typography level="h4">Sheet Music</Typography>
+          <Button
+            onClick={handleClickCreate}
+            sx={{
+              alignSelf: "center",
+            }}
+          >
+            <Add sx={{ mr: 0.5 }} fontSize="inherit" />
+            Create New Sheet
+          </Button>
+        </Stack>
+        <Card>
+          <CardContent>
+            <Table variant="plain">
+              <thead>
+                <tr>
+                  <th style={{ width: "50%" }}>Title</th>
+                  <th>Author</th>
+                  <th style={{ width: "10%", textAlign: "center" }}>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {titles && titles.length
+                  ? titles.map((sheet, i) => {
+                      return (
+                        <tr key={i}>
+                          <td>{sheet.title}</td>
+                          <td>{sheet.author}</td>
+                          <td align="center">
+                            <Button
+                              onClick={() => {
+                                handleClickView(i);
+                              }}
+                              size="sm"
+                              variant="soft"
+                            >
+                              <Visibility sx={{ mr: 1 }} fontSize="inherit" />
+                              View
+                            </Button>
+                          </td>
+                        </tr>
+                      );
+                    })
+                  : null}
+              </tbody>
+            </Table>
+          </CardContent>
+        </Card>
+      </Box>
     </>
   );
 };

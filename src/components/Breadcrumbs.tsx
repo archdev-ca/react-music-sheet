@@ -6,7 +6,11 @@ type Props = {
 
 const Breadcrumbs = ({ children }: Props) => {
   return (
-    <JoyBreadcrumbs aria-label="breadcrumbs" separator="›" sx={{ mb: 2 }}>
+    <JoyBreadcrumbs
+      aria-label="breadcrumbs"
+      separator="›"
+      sx={{ px: 2, mb: 2 }}
+    >
       {children}
     </JoyBreadcrumbs>
   );
