@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { SheetRowInterface } from "@/interfaces";
 import { createContext } from "react";
 
@@ -8,6 +8,7 @@ interface Props {
 
 interface Context {
   titles: SheetRowInterface[];
+  setTitles: Dispatch<SetStateAction<SheetRowInterface[]>>;
 }
 
 const INITIAL_SHEET_DATA: SheetRowInterface[] = [
@@ -992,13 +993,17 @@ const INITIAL_SHEET_DATA: SheetRowInterface[] = [
 
 const StorageContext = createContext<Context>({
   titles: INITIAL_SHEET_DATA,
+  setTitles: () => {},
 });
 
 const StorageContextProvider = ({ children }: Props) => {
+  const [titles, setTitles] = useState<SheetRowInterface[]>(INITIAL_SHEET_DATA);
+
   return (
     <StorageContext.Provider
       value={{
-        titles: INITIAL_SHEET_DATA,
+        titles,
+        setTitles,
       }}
     >
       {children}
