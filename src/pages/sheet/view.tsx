@@ -8,17 +8,18 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, Link as RouterLink } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { SheetContext } from "@/context/SheetContext";
-import { StorageContext } from "@/context/StorageContext";
+import useStorage from "@/hooks/useStorage";
 
 const SheetViewPage = () => {
   const { id } = useParams<"id">();
-  const { titles } = useContext(StorageContext);
+  const { titles } = useStorage();
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const { setSheetData } = useContext(SheetContext);
 
   const handleClickEdit = () => {
     setIsEditMode(true);
   };
+
   const handleClickCancel = () => {
     /**
      * @todo: Add warning if there were changes
