@@ -14,23 +14,28 @@ import { AppContext } from "@/context/AppContext";
 import Add from "@mui/icons-material/Add";
 import { NoteCursorMap } from "@/interfaces/images";
 import SheetView from "@/components/SheetView";
-import { BeatType } from "@/interfaces";
+import { BeatType, SheetRowInterface } from "@/interfaces";
 import { ToolData } from "@/interfaces/common";
 import { PlayArrow } from "@mui/icons-material";
 import { getToneSequence, playPreview, preloadAudio } from "@/utils";
 import { produce } from "immer";
 import StickyBox from "react-sticky-box";
+import { SheetContext } from "@/context/SheetContext";
 
-const SheetCreate = () => {
+interface Props {
+  sheetData: SheetRowInterface;
+}
+
+const SheetCreate = ({ sheetData }: Props) => {
   const {
-    sheetData,
-    setSheetData,
     activeTool,
     setActiveTool,
     timeSignature,
     setTimeSignature,
     DEFAULT_CLEF_DATA,
   } = useContext(AppContext);
+
+  const { setSheetData } = useContext(SheetContext);
 
   const getCursor = (toolData: ToolData | null) => {
     if (!toolData) {
@@ -123,7 +128,10 @@ const SheetCreate = () => {
   };
 
   const handlePreviewMusic = () => {
-    const [toneSequence, audioMap] = getToneSequence(sheetData, timeSignature);
+    const [toneSequence, audioMap] = getToneSequence(
+      sheetData.sheetData,
+      timeSignature
+    );
     preloadAudio(audioMap, (audioMap) => {
       playPreview(toneSequence, audioMap);
     });
@@ -131,7 +139,7 @@ const SheetCreate = () => {
 
   const handleClickAddStaff = () => {
     const newState = produce(sheetData, (draft) => {
-      draft.staves.push(DEFAULT_CLEF_DATA);
+      draft.sheetData.staves.push(DEFAULT_CLEF_DATA);
     });
     setSheetData(newState);
   };
