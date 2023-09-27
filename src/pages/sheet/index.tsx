@@ -1,4 +1,3 @@
-import usePersistedData from "@/hooks/usePersistedData";
 import { Add, Home, Visibility } from "@mui/icons-material";
 import {
   Button,
@@ -11,10 +10,12 @@ import {
 } from "@mui/joy";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { useNavigate } from "react-router-dom";
+import { StorageContext } from "@/context/StorageContext";
+import { useContext } from "react";
 
 const SheetIndex = () => {
   const navigate = useNavigate();
-  const { sheets } = usePersistedData();
+  const { titles } = useContext(StorageContext);
 
   const handleClickCreate = () => {
     navigate("/create");
@@ -61,8 +62,8 @@ const SheetIndex = () => {
               </tr>
             </thead>
             <tbody>
-              {sheets && sheets.length
-                ? sheets.map((sheet, i) => {
+              {titles && titles.length
+                ? titles.map((sheet, i) => {
                     return (
                       <tr key={i}>
                         <td>{sheet.title}</td>

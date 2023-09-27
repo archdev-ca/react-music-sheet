@@ -1,5 +1,4 @@
 import Toolbar from "@/components/Toolbar";
-import usePersistedData from "@/hooks/usePersistedData";
 import { SheetRowInterface } from "@/interfaces";
 import { Clear, Edit, Home, Save } from "@mui/icons-material";
 import StickyBox from "react-sticky-box";
@@ -8,13 +7,14 @@ import SheetView from "@/components/SheetView";
 import { useContext, useEffect, useState } from "react";
 import { useParams, Link as RouterLink } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { SheetContext, SheetContextProvider } from "@/context/SheetContext";
+import { SheetContext } from "@/context/SheetContext";
+import { StorageContext } from "@/context/StorageContext";
 
 const SheetViewPage = () => {
   const { id } = useParams<"id">();
-  const { sheets } = usePersistedData();
+  const { titles } = useContext(StorageContext);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
-  const { sheetData, setSheetData } = useContext(SheetContext);
+  const { setSheetData } = useContext(SheetContext);
 
   const handleClickEdit = () => {
     setIsEditMode(true);
@@ -30,7 +30,7 @@ const SheetViewPage = () => {
 
   let currentSheet: SheetRowInterface | undefined;
   if (id !== undefined) {
-    currentSheet = sheets[Number(id)];
+    currentSheet = titles[Number(id)];
   }
 
   useEffect(() => {
