@@ -2,12 +2,15 @@ import { SheetRowInterface } from "@/interfaces";
 import Staff from "./Staff";
 import { Box, FormControl, FormLabel, Grid, Input } from "@mui/joy";
 import { ChangeEvent, useEffect, useState } from "react";
+import { UseFormRegister } from "react-hook-form";
+import { FormInterface } from "@/interfaces/common";
 
 type Props = {
   data: SheetRowInterface | undefined;
+  register: UseFormRegister<FormInterface>;
 };
 
-const SheetView = ({ data }: Props) => {
+const SheetView = ({ data, register }: Props) => {
   const [title, setTitle] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
 
@@ -40,6 +43,7 @@ const SheetView = ({ data }: Props) => {
             <FormControl>
               <FormLabel>Title</FormLabel>
               <Input
+                {...register("title")}
                 placeholder="Title"
                 value={title}
                 name="title"
@@ -52,6 +56,7 @@ const SheetView = ({ data }: Props) => {
             <FormControl>
               <FormLabel>Author</FormLabel>
               <Input
+                {...register("author")}
                 placeholder="Author"
                 value={author}
                 name="author"

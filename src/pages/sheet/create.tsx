@@ -27,7 +27,7 @@ import Add from "@mui/icons-material/Add";
 import { NoteCursorMap } from "@/interfaces/images";
 import SheetView from "@/components/SheetView";
 import { BeatType, SheetRowInterface } from "@/interfaces";
-import { ToolData } from "@/interfaces/common";
+import { FormInterface, ToolData } from "@/interfaces/common";
 import { Home, PlayArrow, Save } from "@mui/icons-material";
 import { getToneSequence, playPreview, preloadAudio } from "@/utils";
 import { produce } from "immer";
@@ -35,6 +35,7 @@ import StickyBox from "react-sticky-box";
 import { SheetContext } from "@/context/SheetContext";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Toolbar from "@/components/Toolbar";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 interface Props {
   sheetData: SheetRowInterface;
@@ -48,6 +49,13 @@ const SheetCreate = ({ sheetData }: Props) => {
     setTimeSignature,
     DEFAULT_CLEF_DATA,
   } = useContext(AppContext);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<FormInterface>();
 
   const { setSheetData } = useContext(SheetContext);
 
@@ -119,6 +127,10 @@ const SheetCreate = ({ sheetData }: Props) => {
     return null;
   };
 
+  const onSubmit: SubmitHandler<FormInterface> = (data) => {
+    console.log("Data: ", data);
+  };
+
   const handleClickNote = (type: BeatType, length: number) => {
     if (activeTool?.type === type && activeTool?.length === length) {
       setActiveTool(null);
@@ -170,33 +182,36 @@ const SheetCreate = ({ sheetData }: Props) => {
         <Typography>Create</Typography>
       </Breadcrumbs>
       <Box sx={{ px: 2 }}>
-        <Stack
-          alignContent="center"
-          alignItems="center"
-          direction="row"
-          justifyContent="space-between"
-          marginBottom={2}
-        >
-          <Typography level="h4">Create Sheet Music</Typography>
-          <Button
-            onClick={() => {}}
-            sx={{
-              alignSelf: "center",
-            }}
-            color="success"
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Stack
+            alignContent="center"
+            alignItems="center"
+            direction="row"
+            justifyContent="space-between"
+            marginBottom={2}
           >
-            <Save sx={{ mr: 0.5 }} fontSize="inherit" />
-            Save Changes
-          </Button>
-        </Stack>
-        <StickyBox offsetTop={16} style={{ zIndex: 5 }}>
-          <Toolbar />
-        </StickyBox>
-        <Card>
-          <CardContent>
-            <SheetView data={sheetData} />
-          </CardContent>
-        </Card>
+            <Typography level="h4">Create Sheet Music</Typography>
+            <Button
+              // onClick={handleClickSave}
+              type="submit"
+              sx={{
+                alignSelf: "center",
+              }}
+              color="success"
+            >
+              <Save sx={{ mr: 0.5 }} fontSize="inherit" />
+              Save Changes
+            </Button>
+          </Stack>
+          <StickyBox offsetTop={16} style={{ zIndex: 5 }}>
+            <Toolbar />
+          </StickyBox>
+          <Card>
+            <CardContent>
+              <SheetView data={sheetData} register={register} />
+            </CardContent>
+          </Card>
+        </form>
       </Box>
     </>
   );

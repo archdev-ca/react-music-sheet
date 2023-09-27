@@ -22,3 +22,8 @@ export interface ToolData {
   type: BeatType;
   length: number;
 }
+
+export interface FormInterface {
+  title: string;
+  author: string;
+}
