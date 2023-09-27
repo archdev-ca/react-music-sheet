@@ -1,9 +1,7 @@
 import { StorageContext } from "@/context/StorageContext";
 import { useContext } from "react";
 
-type Props = {};
-
-function useStorage({}: Props) {
+function useStorage() {
   const { titles, setTitles } = useContext(StorageContext);
   return {
     titles,

@@ -7,13 +7,20 @@ import { useContext, useEffect } from "react";
 import PopupToolbar from "./components/PopupToolbar";
 import SheetView from "@/pages/sheet/view";
 import { SheetRowInterface } from "./interfaces";
+import useStorage from "./hooks/useStorage";
 
 function App() {
   const { selectedSymbol } = useContext(SelectionContext);
+  const { setTitles } = useStorage();
   useEffect(() => {
-    const sheets = localStorage.getItem("sheets");
-    if (!sheets) {
-      const sheetsJSON: SheetRowInterface[] = [
+    const titlesFromStorage = localStorage.getItem("titles");
+    let titleJSON: SheetRowInterface[] = [];
+
+    /**
+     * Local storage is empty so let's create it
+     */
+    if (!titlesFromStorage) {
+      titleJSON = [
         {
           title: "Fur Elise",
           author: "Ludwiig Von Beethoven",
@@ -992,8 +999,9 @@ function App() {
           },
         },
       ];
-      localStorage.setItem("sheets", JSON.stringify(sheetsJSON));
+      localStorage.setItem("titles", JSON.stringify(titleJSON));
     }
+    setTitles(titleJSON);
   }, []);
   return (
     <>
