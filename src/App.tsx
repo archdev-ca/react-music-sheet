@@ -999,8 +999,12 @@ function App() {
           },
         },
       ];
+
       localStorage.setItem("titles", JSON.stringify(titleJSON));
+    } else {
+      titleJSON = JSON.parse(titlesFromStorage);
     }
+
     setTitles(titleJSON);
   }, []);
   return (

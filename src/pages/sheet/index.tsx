@@ -12,10 +12,11 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { useNavigate } from "react-router-dom";
 import { StorageContext } from "@/context/StorageContext";
 import { useContext } from "react";
+import useStorage from "@/hooks/useStorage";
 
 const SheetIndex = () => {
   const navigate = useNavigate();
-  const { titles } = useContext(StorageContext);
+  const { titles } = useStorage();
 
   const handleClickCreate = () => {
     navigate("/create");
