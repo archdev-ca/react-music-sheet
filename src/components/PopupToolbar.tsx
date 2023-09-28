@@ -128,7 +128,7 @@ const PopupToolbar = () => {
     >
       <Card
         sx={{
-          borderRadius: 4,
+          borderRadius: 40,
           boxShadow: "0 0 10px 0 rgba(0,0,0, .25)",
           p: 1,
         }}
@@ -147,6 +147,7 @@ const PopupToolbar = () => {
                 onClick={handleClickSharp}
                 size="sm"
                 variant={noteData?.sharp ? "solid" : "plain"}
+                sx={{ borderRadius: "50%" }}
               >
                 <img alt="" height="14" src={sharpImage} />
               </IconButton>
@@ -156,6 +157,7 @@ const PopupToolbar = () => {
               onClick={handleClickDelete}
               size="sm"
               variant="plain"
+              sx={{ borderRadius: "50%" }}
             >
               <ClearIcon />
             </IconButton>
