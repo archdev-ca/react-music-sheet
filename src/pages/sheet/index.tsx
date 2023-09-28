@@ -42,7 +42,7 @@ const SheetIndex = () => {
           marginBottom={2}
         >
           <Typography level="h4">Sheet Music</Typography>
-          <Button
+          {/* <Button
             onClick={handleClickCreate}
             sx={{
               alignSelf: "center",
@@ -50,7 +50,7 @@ const SheetIndex = () => {
           >
             <Add sx={{ mr: 0.5 }} fontSize="inherit" />
             Create New Sheet
-          </Button>
+          </Button> */}
         </Stack>
         <Card>
           <CardContent>
