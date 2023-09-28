@@ -109,8 +109,14 @@ const SheetViewPage = () => {
         </StickyBox>
         <Card>
           <CardContent>
-            <SheetMeta data={currentSheet} register={() => {}} />
-            <SheetView data={currentSheet} register={() => {}} />
+            <SheetMeta
+              readOnly
+              data={{
+                title: currentSheet?.title || "",
+                author: currentSheet?.author || "",
+              }}
+            />
+            <SheetView data={currentSheet} />
           </CardContent>
         </Card>
       </Box>
