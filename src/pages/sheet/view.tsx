@@ -17,6 +17,7 @@ import { useParams, Link as RouterLink } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { SheetContext } from "@/context/SheetContext";
 import useStorage from "@/hooks/useStorage";
+import SheetMeta from "@/components/SheetMeta";
 
 const SheetViewPage = () => {
   const { id } = useParams<"id">();
@@ -108,7 +109,8 @@ const SheetViewPage = () => {
         </StickyBox>
         <Card>
           <CardContent>
-            <SheetView data={currentSheet} />
+            <SheetMeta data={currentSheet} register={() => {}} />
+            <SheetView data={currentSheet} register={() => {}} />
           </CardContent>
         </Card>
       </Box>
