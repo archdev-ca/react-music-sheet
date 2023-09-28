@@ -3,9 +3,10 @@ import Staff from "./Staff";
 
 type Props = {
   data: SheetRowInterface | undefined;
+  readOnly?: boolean;
 };
 
-const SheetView = ({ data }: Props) => {
+const SheetView = ({ data, readOnly }: Props) => {
   return (
     <>
       {data?.sheetData?.staves && data?.sheetData?.staves.length
