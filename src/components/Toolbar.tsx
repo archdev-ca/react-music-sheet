@@ -16,7 +16,11 @@ import { PlayArrow } from "@mui/icons-material";
 import { getToneSequence, playPreview, preloadAudio } from "@/utils";
 import { SheetContext } from "@/context/SheetContext";
 
-const Toolbar = () => {
+type Props = {
+  readOnly?: boolean;
+};
+
+const Toolbar = ({ readOnly }: Props) => {
   const { activeTool, setActiveTool, setTimeSignature } =
     useContext(AppContext);
 
@@ -77,200 +81,204 @@ const Toolbar = () => {
         zIndex: 2,
       }}
     >
+      {!readOnly ? (
+        <>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 1,
+            }}
+          >
+            <IconButton
+              variant={
+                activeTool?.type === "note" && activeTool?.length === 1
+                  ? "outlined"
+                  : "plain"
+              }
+              onClick={() => {
+                handleClickNote("note", 1);
+              }}
+            >
+              <img
+                src={wholeNote}
+                alt=""
+                style={{ width: "auto", height: " 10px" }}
+              />
+            </IconButton>
+            <IconButton
+              variant={
+                activeTool?.type === "note" && activeTool?.length === 2
+                  ? "outlined"
+                  : "plain"
+              }
+              onClick={() => {
+                handleClickNote("note", 2);
+              }}
+            >
+              <img
+                src={halfNote}
+                alt=""
+                style={{ width: "auto", height: " 24px" }}
+              />
+            </IconButton>
+            <IconButton
+              variant={
+                activeTool?.type === "note" && activeTool?.length === 4
+                  ? "outlined"
+                  : "plain"
+              }
+              onClick={() => {
+                handleClickNote("note", 4);
+              }}
+            >
+              <img
+                src={quarterNote}
+                alt=""
+                style={{ width: "auto", height: " 24px" }}
+              />
+            </IconButton>
+            <IconButton
+              variant={
+                activeTool?.type === "note" && activeTool?.length === 8
+                  ? "outlined"
+                  : "plain"
+              }
+              onClick={() => {
+                handleClickNote("note", 8);
+              }}
+            >
+              <img
+                src={eightNote}
+                alt=""
+                style={{ width: "auto", height: " 24px" }}
+              />
+            </IconButton>
+            <IconButton
+              variant={
+                activeTool?.type === "note" && activeTool?.length === 16
+                  ? "outlined"
+                  : "plain"
+              }
+              onClick={() => {
+                handleClickNote("note", 16);
+              }}
+            >
+              <img
+                src={sixteenthNote}
+                alt=""
+                style={{ width: "auto", height: " 24px" }}
+              />
+            </IconButton>
+            <Select
+              defaultValue={`${timeSignature?.beatsPerBar}/${timeSignature?.beat}`}
+              onChange={handleChangeSignature}
+            >
+              <Option value="4/4">4/4</Option>
+              <Option value="3/4">3/4</Option>
+              <Option value="2/4">2/4</Option>
+              <Option value="2/2">2/2</Option>
+              <Option value="3/8">3/8</Option>
+              <Option value="6/8">6/8</Option>
+              <Option value="9/8">9/8</Option>
+            </Select>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 1,
+              borderLeft: "1px dotted #bbb",
+              pl: 2,
+            }}
+          >
+            <IconButton
+              variant={
+                activeTool?.type === "rest" && activeTool?.length === 1
+                  ? "outlined"
+                  : "plain"
+              }
+              onClick={() => {
+                handleClickNote("rest", 1);
+              }}
+            >
+              <img
+                src={wholeRest}
+                alt=""
+                style={{ width: "auto", height: " 7px" }}
+              />
+            </IconButton>
+            <IconButton
+              variant={
+                activeTool?.type === "rest" && activeTool?.length === 2
+                  ? "outlined"
+                  : "plain"
+              }
+              onClick={() => {
+                handleClickNote("rest", 2);
+              }}
+            >
+              <img
+                src={halfRest}
+                alt=""
+                style={{ width: "auto", height: " 7px" }}
+              />
+            </IconButton>
+            <IconButton
+              variant={
+                activeTool?.type === "rest" && activeTool?.length === 4
+                  ? "outlined"
+                  : "plain"
+              }
+              onClick={() => {
+                handleClickNote("rest", 4);
+              }}
+            >
+              <img
+                src={quarterRest}
+                alt=""
+                style={{ width: "auto", height: " 24px" }}
+              />
+            </IconButton>
+            <IconButton
+              variant={
+                activeTool?.type === "rest" && activeTool?.length === 8
+                  ? "outlined"
+                  : "plain"
+              }
+              onClick={() => {
+                handleClickNote("rest", 8);
+              }}
+            >
+              <img
+                src={eightRest}
+                alt=""
+                style={{ width: "auto", height: " 24px" }}
+              />
+            </IconButton>
+            <IconButton
+              variant={
+                activeTool?.type === "rest" && activeTool?.length === 16
+                  ? "outlined"
+                  : "plain"
+              }
+              onClick={() => {
+                handleClickNote("rest", 16);
+              }}
+            >
+              <img
+                src={sixteenthRest}
+                alt=""
+                style={{ width: "auto", height: " 24px" }}
+              />
+            </IconButton>
+          </Box>
+        </>
+      ) : null}
       <Box
         sx={{
           display: "flex",
           gap: 1,
-        }}
-      >
-        <IconButton
-          variant={
-            activeTool?.type === "note" && activeTool?.length === 1
-              ? "outlined"
-              : "plain"
-          }
-          onClick={() => {
-            handleClickNote("note", 1);
-          }}
-        >
-          <img
-            src={wholeNote}
-            alt=""
-            style={{ width: "auto", height: " 10px" }}
-          />
-        </IconButton>
-        <IconButton
-          variant={
-            activeTool?.type === "note" && activeTool?.length === 2
-              ? "outlined"
-              : "plain"
-          }
-          onClick={() => {
-            handleClickNote("note", 2);
-          }}
-        >
-          <img
-            src={halfNote}
-            alt=""
-            style={{ width: "auto", height: " 24px" }}
-          />
-        </IconButton>
-        <IconButton
-          variant={
-            activeTool?.type === "note" && activeTool?.length === 4
-              ? "outlined"
-              : "plain"
-          }
-          onClick={() => {
-            handleClickNote("note", 4);
-          }}
-        >
-          <img
-            src={quarterNote}
-            alt=""
-            style={{ width: "auto", height: " 24px" }}
-          />
-        </IconButton>
-        <IconButton
-          variant={
-            activeTool?.type === "note" && activeTool?.length === 8
-              ? "outlined"
-              : "plain"
-          }
-          onClick={() => {
-            handleClickNote("note", 8);
-          }}
-        >
-          <img
-            src={eightNote}
-            alt=""
-            style={{ width: "auto", height: " 24px" }}
-          />
-        </IconButton>
-        <IconButton
-          variant={
-            activeTool?.type === "note" && activeTool?.length === 16
-              ? "outlined"
-              : "plain"
-          }
-          onClick={() => {
-            handleClickNote("note", 16);
-          }}
-        >
-          <img
-            src={sixteenthNote}
-            alt=""
-            style={{ width: "auto", height: " 24px" }}
-          />
-        </IconButton>
-        <Select
-          defaultValue={`${timeSignature?.beatsPerBar}/${timeSignature?.beat}`}
-          onChange={handleChangeSignature}
-        >
-          <Option value="4/4">4/4</Option>
-          <Option value="3/4">3/4</Option>
-          <Option value="2/4">2/4</Option>
-          <Option value="2/2">2/2</Option>
-          <Option value="3/8">3/8</Option>
-          <Option value="6/8">6/8</Option>
-          <Option value="9/8">9/8</Option>
-        </Select>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          gap: 1,
-          borderLeft: "1px dotted #bbb",
-          pl: 2,
-        }}
-      >
-        <IconButton
-          variant={
-            activeTool?.type === "rest" && activeTool?.length === 1
-              ? "outlined"
-              : "plain"
-          }
-          onClick={() => {
-            handleClickNote("rest", 1);
-          }}
-        >
-          <img
-            src={wholeRest}
-            alt=""
-            style={{ width: "auto", height: " 7px" }}
-          />
-        </IconButton>
-        <IconButton
-          variant={
-            activeTool?.type === "rest" && activeTool?.length === 2
-              ? "outlined"
-              : "plain"
-          }
-          onClick={() => {
-            handleClickNote("rest", 2);
-          }}
-        >
-          <img
-            src={halfRest}
-            alt=""
-            style={{ width: "auto", height: " 7px" }}
-          />
-        </IconButton>
-        <IconButton
-          variant={
-            activeTool?.type === "rest" && activeTool?.length === 4
-              ? "outlined"
-              : "plain"
-          }
-          onClick={() => {
-            handleClickNote("rest", 4);
-          }}
-        >
-          <img
-            src={quarterRest}
-            alt=""
-            style={{ width: "auto", height: " 24px" }}
-          />
-        </IconButton>
-        <IconButton
-          variant={
-            activeTool?.type === "rest" && activeTool?.length === 8
-              ? "outlined"
-              : "plain"
-          }
-          onClick={() => {
-            handleClickNote("rest", 8);
-          }}
-        >
-          <img
-            src={eightRest}
-            alt=""
-            style={{ width: "auto", height: " 24px" }}
-          />
-        </IconButton>
-        <IconButton
-          variant={
-            activeTool?.type === "rest" && activeTool?.length === 16
-              ? "outlined"
-              : "plain"
-          }
-          onClick={() => {
-            handleClickNote("rest", 16);
-          }}
-        >
-          <img
-            src={sixteenthRest}
-            alt=""
-            style={{ width: "auto", height: " 24px" }}
-          />
-        </IconButton>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          gap: 1,
-          borderLeft: "1px dotted #bbb",
-          pl: 2,
+          borderLeft: !readOnly ? "1px dotted #bbb" : "",
+          pl: !readOnly ? 2 : 0,
         }}
       >
         <IconButton

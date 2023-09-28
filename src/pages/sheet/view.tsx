@@ -105,7 +105,7 @@ const SheetViewPage = () => {
           ) : null}
         </Stack>
         <StickyBox offsetTop={16} style={{ zIndex: 5 }}>
-          <Toolbar />
+          <Toolbar readOnly />
         </StickyBox>
         <Card>
           <CardContent>
