@@ -1,3 +1,4 @@
+import useAppStore from "@/store/app";
 import { Add, Home, Visibility } from "@mui/icons-material";
 import {
   Box,
@@ -15,11 +16,10 @@ import {
 } from "@mui/material";
 // import Breadcrumbs from "@/components/Breadcrumbs";
 import { useNavigate } from "react-router-dom";
-import useStorage from "@/hooks/useStorage";
 
 const SheetIndex = () => {
   const navigate = useNavigate();
-  const { titles } = useStorage();
+  const titles = useAppStore((state) => state.titles);
 
   const handleClickCreate = () => {
     navigate("/create");
