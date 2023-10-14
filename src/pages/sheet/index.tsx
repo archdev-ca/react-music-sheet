@@ -32,7 +32,7 @@ const SheetIndex = () => {
   return (
     <>
       <Box sx={{ px: 2, py: 2 }}>
-        <Breadcrumbs sx={{ my: 2 }}>
+        <Breadcrumbs sx={{ my: 1, mb: 4 }}>
           <Link href="/" sx={{ display: "flex", alignItems: "center" }}>
             <Home fontSize="inherit" sx={{ mr: 0.5 }} />
             Music Sheets
