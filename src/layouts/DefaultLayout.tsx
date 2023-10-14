@@ -19,36 +19,40 @@ const DefaultLayout = () => {
           borderRadius: 0,
         }}
       >
-        <CardContent>
-          <Box
-            sx={{
-              maxWidth: 1200,
-              width: "100%",
-              mx: "auto",
-            }}
-          >
-            <Stack direction="row" justifyContent="space-between">
-              <Typography variant="h4">
-                <Link to="/">
-                  <img
-                    src={logo}
-                    style={{
-                      marginBottom: "-20px",
-                    }}
-                  />
-                </Link>
-              </Typography>
-              <IconButton
-                component="a"
-                href="https://github.com/archdev-ca/react-music-sheet"
-                target="_blank"
-                // variant="plain"
-              >
-                <GitHubIcon />
-              </IconButton>
-            </Stack>
-          </Box>
-        </CardContent>
+        <Box
+          sx={{
+            maxWidth: 1200,
+            width: "100%",
+            mx: "auto",
+            px: 2,
+            py: 2,
+          }}
+        >
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Stack direction="row" justifyContent="space-between">
+                <Typography variant="h4">
+                  <Link to="/">
+                    <img
+                      src={logo}
+                      style={{
+                        marginBottom: "-10px",
+                      }}
+                    />
+                  </Link>
+                </Typography>
+                <IconButton
+                  component="a"
+                  href="https://github.com/archdev-ca/react-music-sheet"
+                  target="_blank"
+                  // variant="plain"
+                >
+                  <GitHubIcon />
+                </IconButton>
+              </Stack>
+            </Grid>
+          </Grid>
+        </Box>
       </Card>
       <Box
         sx={{
