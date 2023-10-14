@@ -11,6 +11,17 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./css/global.css";
+import { ThemeProvider, createTheme } from "@mui/material";
+
+const theme = createTheme({
+  components: {
+    MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -19,7 +30,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <StorageContextProvider>
           <SheetContextProvider>
             <SelectionContextProvider>
-              <App />
+              <ThemeProvider theme={theme}>
+                <App />
+              </ThemeProvider>
             </SelectionContextProvider>
           </SheetContextProvider>
         </StorageContextProvider>
