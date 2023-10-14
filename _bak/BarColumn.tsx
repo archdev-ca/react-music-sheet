@@ -1,7 +1,7 @@
 import { ClefType, BeatData, BarSpaceData } from "@/interfaces";
 import BarSpace from "./BarSpace";
 import Beat from "./Beat";
-import { styled } from "@mui/joy";
+import { styled } from "@mui/material";
 
 interface Props {
   barID?: number;

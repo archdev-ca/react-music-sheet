@@ -1,4 +1,3 @@
-import { Box, Card, IconButton, Option, Select } from "@mui/joy";
 import wholeNote from "@/assets/notes/whole.png";
 import halfNote from "@/assets/notes/half.png";
 import quarterNote from "@/assets/notes/quarter.png";
@@ -15,6 +14,7 @@ import { BeatType } from "@/interfaces";
 import { PlayArrow } from "@mui/icons-material";
 import { getToneSequence, playPreview, preloadAudio } from "@/utils";
 import { SheetContext } from "@/context/SheetContext";
+import { Card, Box, IconButton, Select } from "@mui/material";
 
 type Props = {
   readOnly?: boolean;

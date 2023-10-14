@@ -1,4 +1,4 @@
-import { styled } from "@mui/joy";
+import { styled } from "@mui/material";
 import BarColumn from "./BarColumn";
 import trebleSign from "@/assets/images/treble.png";
 import bassSign from "@/assets/images/bass.png";

@@ -1,5 +1,5 @@
 import Bar from "@/components/Bar";
-import { styled } from "@mui/joy";
+import { styled } from "@mui/material";
 import BarSignature from "./BarSignature";
 import { ClefData, ClefType } from "@/interfaces";
 import * as React from "react";

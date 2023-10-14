@@ -3,10 +3,10 @@ import {
   CardContent,
   Grid,
   IconButton,
-  Sheet,
+  Box,
   Stack,
   Typography,
-} from "@mui/joy";
+} from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import logo from "@/assets/images/logo.svg";
@@ -20,7 +20,7 @@ const DefaultLayout = () => {
         }}
       >
         <CardContent>
-          <Sheet
+          <Box
             sx={{
               maxWidth: 1200,
               width: "100%",
@@ -28,7 +28,7 @@ const DefaultLayout = () => {
             }}
           >
             <Stack direction="row" justifyContent="space-between">
-              <Typography level="h4">
+              <Typography variant="h4">
                 <Link to="/">
                   <img
                     src={logo}
@@ -42,15 +42,15 @@ const DefaultLayout = () => {
                 component="a"
                 href="https://github.com/archdev-ca/react-music-sheet"
                 target="_blank"
-                variant="plain"
+                // variant="plain"
               >
                 <GitHubIcon />
               </IconButton>
             </Stack>
-          </Sheet>
+          </Box>
         </CardContent>
       </Card>
-      <Sheet
+      <Box
         sx={{
           maxWidth: 1200,
           mx: "auto",
@@ -64,7 +64,7 @@ const DefaultLayout = () => {
             <Outlet />
           </Grid>
         </Grid>
-      </Sheet>
+      </Box>
     </>
   );
 };

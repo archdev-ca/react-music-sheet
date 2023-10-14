@@ -8,8 +8,8 @@ import {
   Stack,
   Table,
   Typography,
-} from "@mui/joy";
-import Breadcrumbs from "@/components/Breadcrumbs";
+} from "@mui/material";
+// import Breadcrumbs from "@/components/Breadcrumbs";
 import { useNavigate } from "react-router-dom";
 import useStorage from "@/hooks/useStorage";
 
@@ -27,12 +27,12 @@ const SheetIndex = () => {
 
   return (
     <>
-      <Breadcrumbs>
+      {/* <Breadcrumbs>
         <Link href="/">
           <Home fontSize="inherit" sx={{ mr: 0.5 }} />
           Music Sheets
         </Link>
-      </Breadcrumbs>
+      </Breadcrumbs> */}
       <Box sx={{ px: 2 }}>
         <Stack
           alignContent="center"
@@ -41,7 +41,7 @@ const SheetIndex = () => {
           justifyContent="space-between"
           marginBottom={2}
         >
-          <Typography level="h4">Sheet Music</Typography>
+          <Typography variant="h4">Sheet Music</Typography>
           {/* <Button
             onClick={handleClickCreate}
             sx={{
@@ -54,7 +54,7 @@ const SheetIndex = () => {
         </Stack>
         <Card>
           <CardContent>
-            <Table variant="plain">
+            <Table>
               <thead>
                 <tr>
                   <th style={{ width: "50%" }}>Title</th>
@@ -74,8 +74,8 @@ const SheetIndex = () => {
                               onClick={() => {
                                 handleClickView(i);
                               }}
-                              size="sm"
-                              variant="soft"
+                              size="small"
+                              variant="contained"
                             >
                               <Visibility sx={{ mr: 1 }} fontSize="inherit" />
                               View

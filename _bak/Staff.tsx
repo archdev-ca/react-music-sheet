@@ -1,4 +1,4 @@
-import { styled } from "@mui/joy";
+import { styled } from "@mui/material";
 import Clef from "./Clef";
 import { StaffData } from "@/interfaces/index";
 

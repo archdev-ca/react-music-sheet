@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@mui/joy";
+import { styled } from "@mui/material";
 type Props = {
   children: React.ReactNode;
 };

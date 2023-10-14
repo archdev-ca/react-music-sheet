@@ -4,7 +4,7 @@ import SheetIndex from "@/pages/sheet";
 import SheetCreate from "@/pages/sheet/create";
 import { SelectionContext } from "./context/SelectionContext";
 import { useContext, useEffect } from "react";
-import PopupToolbar from "./components/PopupToolbar";
+// import PopupToolbar from "./components/PopupToolbar";
 import SheetView from "@/pages/sheet/view";
 import { SheetRowInterface } from "./interfaces";
 import useStorage from "./hooks/useStorage";
@@ -1012,11 +1012,11 @@ function App() {
       <Routes>
         <Route element={<DefaultLayout />} path="/">
           <Route element={<SheetIndex />} index />
-          <Route element={<SheetCreate />} path="create" />
-          <Route element={<SheetView />} path="view/:id" />
+          {/* <Route element={<SheetCreate />} path="create" />
+          <Route element={<SheetView />} path="view/:id" /> */}
         </Route>
       </Routes>
-      {selectedSymbol ? <PopupToolbar /> : null}
+      {/* {selectedSymbol ? <PopupToolbar /> : null} */}
     </>
   );
 }

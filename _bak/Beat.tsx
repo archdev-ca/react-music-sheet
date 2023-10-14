@@ -19,7 +19,7 @@ import quarterRest from "@/assets/rest/quarterRest.png";
 import eightRest from "@/assets/rest/eightRest.png";
 import sixteenthRest from "@/assets/rest/sixteenthRest.png";
 import sharp from "@/assets/sharp.png";
-import { styled, useTheme } from "@mui/joy";
+import { styled, useTheme } from "@mui/material";
 import { BeatPos, BeatPosMap } from "@/interfaces/common";
 import { SelectionContext } from "@/context/SelectionContext";
 import SymbolImage from "./SymbolImage";

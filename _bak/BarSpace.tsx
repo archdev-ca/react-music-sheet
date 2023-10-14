@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
 import { NoteType } from "@/interfaces";
-import { styled } from "@mui/joy";
+import { styled } from "@mui/material";
 import { Clef } from "@/interfaces/common";
 import { produce } from "immer";
 

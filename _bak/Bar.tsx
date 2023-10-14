@@ -1,9 +1,9 @@
 import * as React from "react";
-import { styled } from "@mui/joy";
 import { useContext } from "react";
 import { AppContext } from "@/context/AppContext";
 import BarColumn from "./BarColumn";
 import { BarData, ClefType } from "@/interfaces";
+import { styled } from "@mui/material";
 
 interface Props {
   clef: ClefType;
