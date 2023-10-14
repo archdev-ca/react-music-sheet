@@ -1,6 +1,7 @@
 import { Add, Home, Visibility } from "@mui/icons-material";
 import {
   Box,
+  Breadcrumbs,
   Button,
   Card,
   CardContent,
@@ -27,13 +28,13 @@ const SheetIndex = () => {
 
   return (
     <>
-      {/* <Breadcrumbs>
-        <Link href="/">
-          <Home fontSize="inherit" sx={{ mr: 0.5 }} />
-          Music Sheets
-        </Link>
-      </Breadcrumbs> */}
-      <Box sx={{ px: 2 }}>
+      <Box sx={{ px: 2, py: 2 }}>
+        <Breadcrumbs sx={{ my: 2 }}>
+          <Link href="/" sx={{ display: "flex", alignItems: "center" }}>
+            <Home fontSize="inherit" sx={{ mr: 0.5 }} />
+            Music Sheets
+          </Link>
+        </Breadcrumbs>
         <Stack
           alignContent="center"
           alignItems="center"

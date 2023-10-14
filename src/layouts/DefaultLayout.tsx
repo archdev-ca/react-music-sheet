@@ -60,7 +60,7 @@ const DefaultLayout = () => {
         }}
       >
         <Grid container spacing={2}>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <Outlet />
           </Grid>
         </Grid>
