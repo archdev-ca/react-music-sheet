@@ -7,11 +7,12 @@ import { useEffect } from "react";
 // import PopupToolbar from "./components/PopupToolbar";
 // import SheetView from "@/pages/sheet/view";
 import { SheetRowInterface } from "./interfaces";
-// import useStorage from "./hooks/useStorage";
+import useAppStore from "./store/app";
 
 function App() {
   // const { selectedSymbol } = useContext(SelectionContext);
   // const { setTitles } = useStorage();
+  const setTitles = useAppStore((state) => state.setTitles);
   useEffect(() => {
     const titlesFromStorage = localStorage.getItem("titles");
     let titleJSON: SheetRowInterface[] = [];
@@ -1005,7 +1006,7 @@ function App() {
       titleJSON = JSON.parse(titlesFromStorage);
     }
 
-    // setTitles(titleJSON);
+    setTitles(titleJSON);
   }, []);
   return (
     <>
