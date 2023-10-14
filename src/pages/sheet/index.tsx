@@ -4,10 +4,13 @@ import {
   Breadcrumbs,
   Button,
   Card,
-  CardContent,
   Link,
   Stack,
   Table,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   Typography,
 } from "@mui/material";
 // import Breadcrumbs from "@/components/Breadcrumbs";
@@ -42,8 +45,8 @@ const SheetIndex = () => {
           justifyContent="space-between"
           marginBottom={2}
         >
-          <Typography variant="h4">Sheet Music</Typography>
-          {/* <Button
+          <Typography variant="h4">Music Sheets</Typography>
+          <Button
             onClick={handleClickCreate}
             sx={{
               alignSelf: "center",
@@ -51,26 +54,28 @@ const SheetIndex = () => {
           >
             <Add sx={{ mr: 0.5 }} fontSize="inherit" />
             Create New Sheet
-          </Button> */}
+          </Button>
         </Stack>
         <Card>
-          <CardContent>
+          <TableContainer>
             <Table>
-              <thead>
-                <tr>
-                  <th style={{ width: "50%" }}>Title</th>
-                  <th>Author</th>
-                  <th style={{ width: "10%", textAlign: "center" }}>Actions</th>
-                </tr>
-              </thead>
+              <TableHead>
+                <TableRow>
+                  <TableCell style={{ width: "50%" }}>Title</TableCell>
+                  <TableCell>Author</TableCell>
+                  <TableCell style={{ width: "10%", textAlign: "center" }}>
+                    Actions
+                  </TableCell>
+                </TableRow>
+              </TableHead>
               <tbody>
                 {titles && titles.length
                   ? titles.map((sheet, i) => {
                       return (
-                        <tr key={i}>
-                          <td>{sheet.title}</td>
-                          <td>{sheet.author}</td>
-                          <td align="center">
+                        <TableRow key={i}>
+                          <TableCell>{sheet.title}</TableCell>
+                          <TableCell>{sheet.author}</TableCell>
+                          <TableCell align="center">
                             <Button
                               onClick={() => {
                                 handleClickView(i);
@@ -81,14 +86,14 @@ const SheetIndex = () => {
                               <Visibility sx={{ mr: 1 }} fontSize="inherit" />
                               View
                             </Button>
-                          </td>
-                        </tr>
+                          </TableCell>
+                        </TableRow>
                       );
                     })
                   : null}
               </tbody>
             </Table>
-          </CardContent>
+          </TableContainer>
         </Card>
       </Box>
     </>
