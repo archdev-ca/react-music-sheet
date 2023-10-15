@@ -1,17 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import DefaultLayout from "@/layouts/DefaultLayout";
 import SheetIndex from "@/pages/sheet";
-// import SheetCreate from "@/pages/sheet/create";
-// import { SelectionContext } from "./context/SelectionContext";
 import { useEffect } from "react";
-// import PopupToolbar from "./components/PopupToolbar";
-// import SheetView from "@/pages/sheet/view";
 import { SheetRowInterface } from "./interfaces";
 import useAppStore from "./store/app";
 
 function App() {
-  // const { selectedSymbol } = useContext(SelectionContext);
-  // const { setTitles } = useStorage();
   const setTitles = useAppStore((state) => state.setTitles);
   useEffect(() => {
     const titlesFromStorage = localStorage.getItem("titles");

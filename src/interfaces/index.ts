@@ -1,5 +1,5 @@
 export type SheetData = {
-  staves: StaffData[];
+  staves?: StaffData[];
 };
 
 export interface StaffData {
