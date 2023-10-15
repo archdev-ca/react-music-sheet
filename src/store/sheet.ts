@@ -41,11 +41,14 @@ const INITIAL_SHEET_DATA: SheetData = {
   staves: [DEFAULT_CLEF_DATA],
 };
 
-const useSheetStore = create<SheetStoreInterface>(() => ({
-  title: "",
-  author: "",
-  timeSignature: "",
-  sheetData: INITIAL_SHEET_DATA,
+const useSheetStore = create<SheetStoreInterface>((set) => ({
+  data: {
+    title: "",
+    author: "",
+    timeSignature: "",
+    sheetData: INITIAL_SHEET_DATA,
+  },
+  setData: (state: SheetStoreInterface["data"]) => set(() => ({ data: state })),
 }));
 
 export default useSheetStore;

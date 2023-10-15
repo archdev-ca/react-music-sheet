@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import DefaultLayout from "@/layouts/DefaultLayout";
 import SheetIndex from "@/pages/sheet";
+import SheetView from "@/pages/sheet/view";
 import { useEffect } from "react";
 import { SheetRowInterface } from "./interfaces";
 import useAppStore from "./store/app";
@@ -1007,8 +1008,8 @@ function App() {
       <Routes>
         <Route element={<DefaultLayout />} path="/">
           <Route element={<SheetIndex />} index />
-          {/* <Route element={<SheetCreate />} path="create" />
-          <Route element={<SheetView />} path="view/:id" /> */}
+          {/* <Route element={<SheetCreate />} path="create" /> */}
+          <Route element={<SheetView />} path="view/:id" />
         </Route>
       </Routes>
       {/* {selectedSymbol ? <PopupToolbar /> : null} */}
