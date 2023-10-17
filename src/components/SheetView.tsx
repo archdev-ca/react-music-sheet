@@ -1,4 +1,5 @@
 import { Box, Card } from "@mui/material";
+import GrandStaff from "./GrandStaff";
 
 type Props = {};
 
@@ -6,6 +7,7 @@ function SheetView({}: Props) {
   return (
     <Card>
       <Box>
+        <GrandStaff />
         <svg
           width="19"
           height="14"
