@@ -1,3 +1,4 @@
+import SheetView from "@/components/SheetView";
 import useAppStore from "@/store/app";
 import useSheetStore from "@/store/sheet";
 import { Home } from "@mui/icons-material";
@@ -35,7 +36,10 @@ const SheetIndex = () => {
         >
           <Typography variant="h4">View Music</Typography>
         </Stack>
-        <Card>Some Stuff</Card>
+        <Box sx={{ mb: 2 }}>
+          <Card>Some Stuff</Card>
+        </Box>
+        <SheetView />
       </Box>
     </>
   );
