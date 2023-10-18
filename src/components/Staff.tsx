@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import treble from "./../assets/images/treble.png";
 import bass from "./../assets/images/bass.png";
 import Space from "./Space";
@@ -7,25 +7,42 @@ type Props = {
   type: "treble" | "bass";
 };
 
+const SpaceLayer = styled("div")`
+  position: relative;
+`;
+
+const SymbolLayer = styled("div")`
+  position: absolute;
+  padding-left: 5px;
+`;
+
 function Staff({ type }: Props) {
   let sigImage = "";
   let sigImageProps = {};
   switch (type) {
     case "treble":
       sigImage = treble;
-      sigImageProps = { width: 20 };
+      sigImageProps = {
+        width: 35,
+        style: { position: "relative", top: "-4px" },
+      };
       break;
     case "bass":
       sigImage = bass;
-      sigImageProps = { width: 30 };
+      sigImageProps = {
+        width: 40,
+        style: { position: "relative", top: "16px" },
+      };
       break;
     default:
       sigImage = treble;
   }
   return (
     <Box>
-      <Box>
-        <img src={sigImage} alt="" width="20" {...sigImageProps} />
+      <SpaceLayer>
+        <SymbolLayer>
+          <img src={sigImage} alt="" width="20" {...sigImageProps} />
+        </SymbolLayer>
         <Space line />
         <Space />
         <Space line />
@@ -35,7 +52,7 @@ function Staff({ type }: Props) {
         <Space line />
         <Space />
         <Space line />
-      </Box>
+      </SpaceLayer>
     </Box>
   );
 }

@@ -6,8 +6,11 @@ type Props = {};
 function GrandStaff({}: Props) {
   return (
     <Box>
+      <div style={{ height: 40 }} />
       <Staff type="treble" />
+      <div style={{ height: 40 }} />
       <Staff type="bass" />
+      <div style={{ height: 40 }} />
     </Box>
   );
 }

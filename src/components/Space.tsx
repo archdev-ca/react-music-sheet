@@ -14,7 +14,11 @@ type Props = {
 };
 
 function Space({ line }: Props) {
-  return <StyledSpace>{line ? <StyledLine /> : null}</StyledSpace>;
+  return (
+    <StyledSpace sx={{ height: line ? "auto" : "9px" }}>
+      {line ? <StyledLine /> : null}
+    </StyledSpace>
+  );
 }
 
 export default Space;
