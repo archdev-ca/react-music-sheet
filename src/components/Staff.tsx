@@ -14,6 +14,7 @@ const SpaceLayer = styled("div")`
 const SymbolLayer = styled("div")`
   position: absolute;
   padding-left: 5px;
+  width: 75px;
 `;
 
 function Staff({ type }: Props) {
@@ -43,6 +44,8 @@ function Staff({ type }: Props) {
         <SymbolLayer>
           <img src={sigImage} alt="" width="20" {...sigImageProps} />
         </SymbolLayer>
+        <Space line floating />
+        <Space floating />
         <Space line />
         <Space />
         <Space line />
@@ -52,6 +55,8 @@ function Staff({ type }: Props) {
         <Space line />
         <Space />
         <Space line />
+        <Space floating />
+        <Space line floating />
       </SpaceLayer>
     </Box>
   );
