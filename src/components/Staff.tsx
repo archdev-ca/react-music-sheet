@@ -2,6 +2,7 @@ import { Box, styled } from "@mui/material";
 import treble from "./../assets/images/treble.png";
 import bass from "./../assets/images/bass.png";
 import Space from "./Space";
+import BeatRow from "./BeatRow";
 
 type Props = {
   type: "treble" | "bass";
@@ -39,7 +40,11 @@ function Staff({ type }: Props) {
       sigImage = treble;
   }
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+      }}
+    >
       <SpaceLayer>
         <SymbolLayer>
           <img src={sigImage} alt="" width="20" {...sigImageProps} />
@@ -58,6 +63,8 @@ function Staff({ type }: Props) {
         <Space floating />
         <Space line floating />
       </SpaceLayer>
+      <BeatRow />
+      <BeatRow />
     </Box>
   );
 }
