@@ -1,32 +1,16 @@
-import { Box, styled } from "@mui/material";
+import { styled } from "@mui/material";
 import Space from "./Space";
 
 const BeatRowContainer = styled("div")`
   width: 200px;
 `;
 
-type Props = {};
+type Props = {
+  children: React.ReactNode;
+};
 
-function BeatRow({}: Props) {
-  return (
-    <BeatRowContainer>
-      <Box>
-        <Space line floating />
-        <Space floating />
-        <Space line />
-        <Space />
-        <Space line />
-        <Space />
-        <Space line />
-        <Space />
-        <Space line />
-        <Space />
-        <Space line />
-        <Space floating />
-        <Space line floating />
-      </Box>
-    </BeatRowContainer>
-  );
+function BeatRow({ children }: Props) {
+  return <BeatRowContainer>{children}</BeatRowContainer>;
 }
 
 export default BeatRow;
