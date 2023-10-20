@@ -213,14 +213,14 @@ function Staff({ type }: Props) {
       sigImage = treble;
       sigImageProps = {
         width: 35,
-        style: { position: "relative", top: "-4px" },
+        style: { position: "relative", top: "80px" },
       };
       break;
     case "bass":
       sigImage = bass;
       sigImageProps = {
         width: 40,
-        style: { position: "relative", top: "16px" },
+        style: { position: "relative", top: "40px" },
       };
       break;
     default:
@@ -242,7 +242,7 @@ function Staff({ type }: Props) {
             ? trebleSpaces.map((space, i) => {
                 return (
                   <Space
-                    fixed
+                    ornamental
                     line={space.line}
                     floating={space.floating}
                     key={i}
@@ -254,7 +254,7 @@ function Staff({ type }: Props) {
             ? bassSpaces.map((space, i) => {
                 return (
                   <Space
-                    fixed
+                    ornamental
                     line={space.line}
                     floating={space.floating}
                     key={i}
