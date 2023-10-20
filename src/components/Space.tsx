@@ -1,5 +1,9 @@
 import { styled } from "@mui/material";
 
+type StyleSpaceProps = {
+  ornamental?: boolean;
+};
+
 const StyledLine = styled("div")`
   height: 1px;
   background-color: #000;
@@ -9,11 +13,12 @@ const StyledFloatingLine = styled("div")`
   background-color: rgba(0, 0, 0, 0.1);
 `;
 
-const StyledSpace = styled("div")(
-  ({ theme }) => `
+const StyledSpace = styled("div")<StyleSpaceProps>(
+  ({ theme, ornamental }) => `
+  height: 9px;
   padding: 4px 0;
   &:hover {
-    background-color: ${theme.palette.primary.light};
+    background-color: ${ornamental ? "inherit" : theme.palette.primary.light};
   }
 `
 );
@@ -21,11 +26,12 @@ const StyledSpace = styled("div")(
 type Props = {
   line?: boolean;
   floating?: boolean;
+  ornamental?: boolean;
 };
 
-function Space({ line, floating }: Props) {
+function Space({ line, floating, ornamental }: Props) {
   return (
-    <StyledSpace sx={{ height: line ? "auto" : "9px" }}>
+    <StyledSpace ornamental={ornamental}>
       {!floating && line ? <StyledLine /> : null}
       {floating && line ? <StyledFloatingLine /> : null}
     </StyledSpace>

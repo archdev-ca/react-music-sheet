@@ -237,7 +237,32 @@ function Staff({ type }: Props) {
         <SymbolLayer>
           <img src={sigImage} alt="" width="20" {...sigImageProps} />
         </SymbolLayer>
-        test
+        <BeatRow>
+          {type === "treble"
+            ? trebleSpaces.map((space, i) => {
+                return (
+                  <Space
+                    fixed
+                    line={space.line}
+                    floating={space.floating}
+                    key={i}
+                  />
+                );
+              })
+            : null}
+          {type === "bass"
+            ? bassSpaces.map((space, i) => {
+                return (
+                  <Space
+                    fixed
+                    line={space.line}
+                    floating={space.floating}
+                    key={i}
+                  />
+                );
+              })
+            : null}
+        </BeatRow>
       </SpaceLayer>
       <BeatRow>
         {type === "treble"
