@@ -3,7 +3,7 @@ import DefaultLayout from "@/layouts/DefaultLayout";
 import SheetIndex from "@/pages/sheet";
 import SheetView from "@/pages/sheet/view";
 import { useEffect } from "react";
-import { SheetRowInterface } from "./interfaces";
+import { SheetRowInterface } from "../../src/app/interfaces";
 import useAppStore from "./store/app";
 
 function App() {
