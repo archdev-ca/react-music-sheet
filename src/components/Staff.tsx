@@ -1,8 +1,8 @@
 import { Box, styled } from "@mui/material";
-import treble from "./../assets/images/treble.png";
-import bass from "./../assets/images/bass.png";
-import Space from "./Space";
-import BeatRow from "./BeatRow";
+import treble from "@/assets/images/treble.png";
+import bass from "@/assets/images/bass.png";
+import Space from "@/components/Space";
+import BeatRow from "@/components/BeatRow";
 
 type Props = {
   type: "treble" | "bass";

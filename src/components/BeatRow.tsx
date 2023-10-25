@@ -1,5 +1,4 @@
 import { styled } from "@mui/material";
-import Space from "./Space";
 
 const BeatRowContainer = styled("div")`
   width: 200px;

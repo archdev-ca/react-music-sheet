@@ -1,5 +1,5 @@
 import { Box, Card } from "@mui/material";
-import GrandStaff from "./GrandStaff";
+import GrandStaff from "@/components/GrandStaff";
 
 type Props = {};
 

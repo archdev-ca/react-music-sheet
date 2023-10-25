@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import Staff from "./Staff";
+import Staff from "@/components/Staff";
 
 type Props = {};
 

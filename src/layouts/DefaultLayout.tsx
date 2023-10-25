@@ -1,17 +1,13 @@
-import {
-  Card,
-  CardContent,
-  Grid,
-  IconButton,
-  Box,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { Link, Outlet } from "react-router-dom";
+import { Card, Grid, IconButton, Box, Stack, Typography } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import logo from "@/assets/images/logo.svg";
+import Link from "next/link";
 
-const DefaultLayout = () => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const DefaultLayout = ({ children }: Props) => {
   return (
     <>
       <Card
@@ -32,9 +28,9 @@ const DefaultLayout = () => {
             <Grid item xs={12}>
               <Stack direction="row" justifyContent="space-between">
                 <Typography variant="h4">
-                  <Link to="/">
+                  <Link href="/">
                     <img
-                      src={logo}
+                      src={logo.src}
                       style={{
                         marginBottom: "-10px",
                       }}
@@ -65,7 +61,7 @@ const DefaultLayout = () => {
       >
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Outlet />
+            {children}
           </Grid>
         </Grid>
       </Box>
