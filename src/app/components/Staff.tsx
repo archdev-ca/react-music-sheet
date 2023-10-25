@@ -205,7 +205,7 @@ const bassSpaces = [
 ];
 
 function Staff({ type }: Props) {
-  let sigImage = "";
+  let sigImage;
   let sigImageProps = {};
 
   switch (type) {
@@ -235,7 +235,7 @@ function Staff({ type }: Props) {
     >
       <SpaceLayer>
         <SymbolLayer>
-          <img src={sigImage} alt="" width="20" {...sigImageProps} />
+          <img src={sigImage.src} alt="" width="20" {...sigImageProps} />
         </SymbolLayer>
         <BeatRow>
           {type === "treble"
