@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import useAppStore from "@/store/app";
 import { SheetRowInterface } from "@/interfaces";
+import DefaultLayout from "@/layouts/DefaultLayout";
 
 const theme = createTheme({
   components: {
@@ -1028,7 +1029,7 @@ function AppLayout({
         <body>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            {children}
+            <DefaultLayout>{children}</DefaultLayout>
           </ThemeProvider>
         </body>
       </html>
