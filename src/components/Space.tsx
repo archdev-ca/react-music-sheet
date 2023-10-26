@@ -22,25 +22,12 @@ const StyledFloatingLine = mstyled("div")`
 const StyledSpace = styled.div<StyleSpaceProps>`
   height: 9px;
   padding: 4px 0;
-  transition: background-color 0.3s ease;
   &:hover {
     background-color: ${(props) =>
       props.ornamental ? "inherit" : props.theme.palette.primary.light};
   }
   &:hover > ${StyledLine} {
-    background-color: #fff;
-  }
-`;
-
-const StyledSpace2 = mstyled("div")`
-  height: 9px;
-  padding: 4px 0;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: #00f;
-  }
-  &:hover > ${StyledLine2} {
-    background-color: #fff;
+    background-color: ${(props) => (props.ornamental ? "#000" : "#fff")};
   }
 `;
 
@@ -53,10 +40,10 @@ type Props = {
 function Space({ line, floating, ornamental }: Props) {
   return (
     <>
-      <StyledSpace2 ornamental={ornamental}>
+      <StyledSpace ornamental={ornamental}>
         {!floating && line ? <StyledLine /> : null}
         {floating && line ? <StyledFloatingLine /> : null}
-      </StyledSpace2>
+      </StyledSpace>
     </>
   );
 }
