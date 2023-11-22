@@ -6,11 +6,8 @@ export interface AppStoreInterface {
 }
 
 export interface SheetStoreInterface {
-  data: {
-    title: string;
-    author: string;
-    timeSignature?: string;
-    sheetData: SheetData;
-  };
-  setData: (data: SheetStoreInterface["data"]) => void;
+  title: string;
+  author: string;
+  timeSignature?: string;
+  sheetData: SheetData;
 }

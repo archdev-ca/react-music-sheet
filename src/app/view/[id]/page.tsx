@@ -1,15 +1,16 @@
 "use client";
 import SheetView from "@/components/SheetView";
 import useAppStore from "@/store/app";
-import useSheetStore from "@/store/sheet";
+import { sheetAtom } from "@/store/sheet";
 import { Home } from "@mui/icons-material";
 import { Box, Breadcrumbs, Card, Link, Stack, Typography } from "@mui/material";
+import { useAtom } from "jotai";
 import { useEffect } from "react";
 
 const SheetIndex = () => {
   const id = 0;
   const titles = useAppStore((state) => state.titles);
-  const { data, setData } = useSheetStore((state) => state);
+  const [data, setData] = useAtom(sheetAtom);
 
   useEffect(() => {
     if (id !== undefined && titles[Number(id)]) {

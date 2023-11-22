@@ -1,6 +1,6 @@
 import { StaffData, SheetData } from "@/interfaces";
 import { SheetStoreInterface } from "@/interfaces/store";
-import { create } from "zustand";
+import { atom } from "jotai";
 
 const DEFAULT_CLEF_DATA: StaffData = {
   treble: {
@@ -41,14 +41,9 @@ const INITIAL_SHEET_DATA: SheetData = {
   staves: [DEFAULT_CLEF_DATA],
 };
 
-const useSheetStore = create<SheetStoreInterface>((set) => ({
-  data: {
-    title: "",
-    author: "",
-    timeSignature: "",
-    sheetData: INITIAL_SHEET_DATA,
-  },
-  setData: (state: SheetStoreInterface["data"]) => set(() => ({ data: state })),
-}));
-
-export default useSheetStore;
+export const sheetAtom = atom<SheetStoreInterface>({
+  title: "",
+  author: "",
+  timeSignature: "",
+  sheetData: INITIAL_SHEET_DATA,
+});
