@@ -5,7 +5,7 @@ type Props = {};
 
 function GrandStaff({}: Props) {
   return (
-    <Box>
+    <Box sx={{ px: 2 }}>
       <div style={{ height: 40 }} />
       <Staff type="treble" />
       <div style={{ height: 40 }} />
