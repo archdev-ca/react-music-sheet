@@ -44,6 +44,9 @@ const INITIAL_SHEET_DATA: SheetData = {
 export const sheetAtom = atom<SheetStoreInterface>({
   title: "",
   author: "",
-  timeSignature: "",
+  timeSignature: {
+    beatsPerBar: 3,
+    wholeBeatNote: 4,
+  },
   sheetData: INITIAL_SHEET_DATA,
 });

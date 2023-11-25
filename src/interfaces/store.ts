@@ -8,6 +8,9 @@ export interface AppStoreInterface {
 export interface SheetStoreInterface {
   title: string;
   author: string;
-  timeSignature?: string;
+  timeSignature?: {
+    beatsPerBar: number;
+    wholeBeatNote: number;
+  };
   sheetData: SheetData;
 }
