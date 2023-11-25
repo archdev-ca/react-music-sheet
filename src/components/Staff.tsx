@@ -2,20 +2,13 @@ import { Box, styled } from "@mui/material";
 import treble from "@/assets/images/treble.png";
 import bass from "@/assets/images/bass.png";
 import Space from "@/components/Space";
-import BeatRow from "@/components/BeatRow";
 
 type Props = {
   type: "treble" | "bass";
 };
 
-const SpaceLayer = styled("div")`
+const SymbolCol = styled("div")`
   position: relative;
-`;
-
-const SymbolLayer = styled("div")`
-  position: absolute;
-  padding-left: 5px;
-  width: 75px;
 `;
 
 const trebleSpaces = [
@@ -213,14 +206,14 @@ function Staff({ type }: Props) {
       sigImage = treble;
       sigImageProps = {
         width: 35,
-        style: { position: "relative", top: "80px" },
+        style: { marginLeft: 10, position: "absolute", top: "80px" },
       };
       break;
     case "bass":
       sigImage = bass;
       sigImageProps = {
         width: 40,
-        style: { position: "relative", top: "40px" },
+        style: { marginLeft: 10, position: "absolute", top: "40px" },
       };
       break;
     default:
@@ -233,11 +226,9 @@ function Staff({ type }: Props) {
         display: "flex",
       }}
     >
-      <SpaceLayer>
-        <SymbolLayer>
-          <img src={sigImage.src} alt="" width="20" {...sigImageProps} />
-        </SymbolLayer>
-        <BeatRow>
+      <SymbolCol>
+        <img src={sigImage.src} alt="" width="20" {...sigImageProps} />
+        <Box sx={{ width: 80 }}>
           {type === "treble"
             ? trebleSpaces.map((space, i) => {
                 return (
@@ -262,9 +253,9 @@ function Staff({ type }: Props) {
                 );
               })
             : null}
-        </BeatRow>
-      </SpaceLayer>
-      <BeatRow>
+        </Box>
+      </SymbolCol>
+      <Box sx={{ width: "100%" }}>
         {type === "treble"
           ? trebleSpaces.map((space, i) => {
               return (
@@ -279,7 +270,7 @@ function Staff({ type }: Props) {
               );
             })
           : null}
-      </BeatRow>
+      </Box>
     </Box>
   );
 }
