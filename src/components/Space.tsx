@@ -10,7 +10,7 @@ const StyledLine = styled.div`
   height: 1px;
   background-color: #000;
 `;
-const StyledFloatingLine = mstyled("div")`
+const StyledFloatingLine = styled.div<StyleSpaceProps>`
   height: 1px;
   background-color: rgba(0, 0, 0, 0.1);
 `;
@@ -23,6 +23,10 @@ const StyledSpace = styled.div<StyleSpaceProps>`
   }
   &:hover > ${StyledLine} {
     background-color: ${(props) => (props.ornamental ? "#000" : "#fff")};
+  }
+  &:hover > ${StyledFloatingLine} {
+    background-color: ${(props) =>
+      props.ornamental ? "rgba(0, 0, 0, 0.1);" : "#fff"};
   }
 `;
 
